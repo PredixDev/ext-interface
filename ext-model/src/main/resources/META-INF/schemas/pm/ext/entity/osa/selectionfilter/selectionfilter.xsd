@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/osa/selectionfilter"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:selectionfilter="http://dsp.ge.com/pm/ext/entity/osa/selectionfilter"
+	xmlns:fieldidentifier="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier"
+	xmlns:field="http://dsp.ge.com/pm/ext/entity/field" 
+	xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1"
+	xmlns:fieldIdentifierValue="http://dsp.ge.com/pm/ext/entity/fieldidentifiervalue"
+	>
+
+	<import schemaLocation="../../../../../osa/schema1.xsd"
+		namespace="http://www.mimosa.org/OSACBMV3.3.1">
+	</import>
+
+	<import schemaLocation="../../field/identifier/fieldidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier">
+	</import>
+
+	<import schemaLocation="../../field/field.xsd" namespace="http://dsp.ge.com/pm/ext/entity/field">
+	</import>
+	<import schemaLocation="../../fieldIdentifierValue/fieldidentifiervalue.xsd" 
+			namespace="http://dsp.ge.com/pm/ext/entity/fieldidentifiervalue">
+	</import>
+
+
+	<simpleType name="AnchorTimeType">
+		<restriction base="string">
+			<enumeration value="ABSOLUTE" />
+			<enumeration value="DISPATCHER" />
+			<enumeration value="NOW" />
+			<enumeration value="FIELD" />
+		</restriction>
+	</simpleType>
+	<simpleType name="SampleMode">
+		<restriction base="string">
+			<enumeration value="AVERAGE" />
+			<enumeration value="MAXIMUM" />
+			<enumeration value="MINIMUM" />
+			<enumeration value="LAST" />
+			<enumeration value="FIRST" />
+			<enumeration value="STDEV" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="SelectionFilterType">
+		<restriction base="string">
+			<enumeration value="TimeSelectionFilter" />
+			<enumeration value="RowSelectionFilter" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TimeOffsetUnits">
+		<restriction base="string">
+			<enumeration value="NANOSECONDS" />
+			<enumeration value="MILLISECONDS" />
+			<enumeration value="MICROSECONDS" />
+			<enumeration value="SECONDS" />
+			<enumeration value="MINUTES" />
+			<enumeration value="HOURS" />
+			<enumeration value="DAYS" />
+			<enumeration value="WEEKS" />
+			<enumeration value="YEARS" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="IntervalUnits">
+		<restriction base="string">
+			<enumeration value="NANOSECONDS" />
+			<enumeration value="MILLISECONDS" />
+			<enumeration value="MICROSECONDS" />
+			<enumeration value="SECONDS" />
+			<enumeration value="MINUTES" />
+			<enumeration value="HOURS" />
+			<enumeration value="DAYS" />
+			<enumeration value="WEEKS" />
+			<enumeration value="YEARS" />
+			<enumeration value="DATAPOINTS" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="TimeSelectionFilter">
+        <annotation>
+        	<documentation>Time Selection Filter to define Time type like Dispatcher Time,
+			Runtime Time, etc with Time/Row offset details.</documentation></annotation>
+        <sequence>
+			<element name="anchorTimeType" type="selectionfilter:AnchorTimeType"
+				minOccurs="1">
+			</element>
+			<element name="anchorTime" type="osa:OsacbmTime" minOccurs="1">
+			</element>
+			<element name="timeOffset" type="integer" minOccurs="0"></element>
+			<element name="timeOffsetUnits" type="selectionfilter:TimeOffsetUnits"
+				minOccurs="0">
+			</element>
+			<element name="rowOffset" type="integer" minOccurs="0"></element>
+			<element name="field" type="fieldidentifier:FieldIdentifier"
+				minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="SelectionFilterDefinition">
+		<annotation>
+			<documentation>Defines Start Time/Row and End Time/Row selection filter along with
+			sample
+			interval and mode</documentation>
+		</annotation>
+
+		<complexContent>
+			<extension base="osa:SelectionFilter">
+				<sequence>
+                    <element name="assetSelectionFilter" type="fieldIdentifierValue:FieldIdentifierValue" minOccurs="0" maxOccurs="unbounded"></element>
+                    <element name="startDefinition"
+						type="selectionfilter:TimeOrRowSelectionFilter" minOccurs="1"
+						maxOccurs="1">
+					</element>
+					<element name="endDefinition"
+						type="selectionfilter:TimeOrRowSelectionFilter" minOccurs="1"
+						maxOccurs="1">
+					</element>
+					<element name="sampleInterval" type="integer"
+						minOccurs="0">
+					</element>
+					<element name="intervalUnits"
+						type="selectionfilter:IntervalUnits" minOccurs="0">
+					</element>
+					<element name="sampleMode"
+						type="selectionfilter:SampleMode" minOccurs="0">
+					</element>
+					<element name="otherValue" type="string"
+						minOccurs="0">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RowSelectionFilter">
+		<sequence>
+			<element name="row" type="integer" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="NameValueSelectionFilter">
+		<annotation>
+			<documentation>Defines the structure for name/value selection filter. This filter is
+			used to send list of name/value filter rows to ADH
+			Please note:
+			runtimeOrchestrationContextId is Insight internal use only</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="osa:SelectionFilter">
+				<sequence>
+					<element name="nameValueSelectionFilterRow" type="selectionfilter:NameValueSelectionFilterRow"
+						maxOccurs="unbounded">
+					</element>
+					<element name="runtimeOrchestrationContextId" type="string"
+						minOccurs="0" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="EntireDataSetSelectionFilter">
+		<complexContent>
+			<extension base="osa:SelectionFilter">
+				<sequence>
+					<element name="entireSet" type="boolean" default="true"
+						minOccurs="1">
+					</element>
+					<element name="sampleInterval" type="integer" minOccurs="0">
+					</element>
+					<element name="intervalUnits" type="selectionfilter:IntervalUnits"
+						minOccurs="0">
+					</element>
+					<element name="sampleMode" type="selectionfilter:SampleMode"
+						minOccurs="0">
+					</element>
+					<element name="otherSampleValues" type="string" minOccurs="0">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="NameStringOrField">
+		<choice>
+			<element minOccurs="0" name="nameField" type="field:Field" />
+			<element minOccurs="0" name="nameString" type="string" />
+		</choice>
+	</complexType>
+
+	<complexType name="ValueStringOrField">
+		<choice>
+			<element minOccurs="0" name="valueField" type="field:Field" />
+			<element minOccurs="0" name="valueString" type="string" />
+		</choice>
+	</complexType>
+
+	<complexType name="NameValueSelectionFilterRow">
+		<annotation>
+			<documentation>Each name/value selection filter row has a Name field, Value field
+			and a flag to enable or disable the row. Both name and value field
+			has a fieldType, which could be Adh General field, Adh temporary
+			field or Other. Other field means that the field is manual field and
+			has no relation to ADH</documentation>
+		</annotation>
+		<sequence>
+			<element name="name" type="selectionfilter:NameStringOrField"
+				minOccurs="1" maxOccurs="1"></element>
+			<element name="value" type="selectionfilter:ValueStringOrField"
+				minOccurs="1" maxOccurs="1"></element>
+			<element name="enabled" type="boolean" default="true"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="TimeOrRowSelectionFilter">
+		<sequence>
+			<element name="selectionFilterType" type="selectionfilter:SelectionFilterType"
+				minOccurs="1" maxOccurs="1">
+			</element>
+			<element name="timeSelectionFilter" type="selectionfilter:TimeSelectionFilter"
+				minOccurs="1" maxOccurs="1">
+			</element>
+			<element name="rowSelectionFilter" type="selectionfilter:RowSelectionFilter"
+				minOccurs="1" maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<element name="selectionFilterDefinition" type="selectionfilter:SelectionFilterDefinition">
+	</element>
+
+	<element name="entireDataSetSelectionFilter" type="selectionfilter:EntireDataSetSelectionFilter">
+	</element>
+
+	<element name="nameValueSelectionFilter" type="selectionfilter:NameValueSelectionFilter">
+	</element>
+
+	<element name="rowSelectionFilter" type="selectionfilter:RowSelectionFilter">
+	</element>
+
+	<element name="timeOrRowSelectionFilter" type="selectionfilter:TimeOrRowSelectionFilter">
+	</element>
+
+	<element name="selectionFilterRoot">
+		<complexType>
+			<sequence>
+				<element name="selectionFilter" type="osa:SelectionFilter"
+					minOccurs="0" maxOccurs="unbounded">
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<element name="sampleMode" type="selectionfilter:SampleMode">
+	</element>
+
+	<simpleType name="OperatorEnum">
+		<restriction base="string">
+			<enumeration value="AND" />
+			<enumeration value="OR" />
+			<enumeration value="EQUALS" />
+		</restriction>
+	</simpleType>
+</schema>

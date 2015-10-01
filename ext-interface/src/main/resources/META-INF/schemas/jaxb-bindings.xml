@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<jxb:bindings version="1.0" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jxb:extensionBindingPrefixes="xjc" xmlns:annox="http://annox.dev.java.net"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<jxb:bindings>
+		<jxb:globalBindings>
+			<xjc:simple/>
+            <xjc:serializable/>
+			<xjc:generateElementProperty>false</xjc:generateElementProperty>
+		</jxb:globalBindings>
+	</jxb:bindings>
+
+	<!-- DoNotDelete: Example of how to Annotate the following classes with XmlRootElement 
+	<jxb:bindings schemaLocation="pm/service/fielddatahandler/getfielddata/getfielddata.xsd" 
+			node="/xs:schema"> 
+				<jxb:bindings node="xs:complexType[@name='GetFieldDataResult']"> 
+				<annox:annotate> <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" 
+					name="GetFieldDataResult" /> </annox:annotate> 
+		</jxb:bindings> 
+	</jxb:bindings> -->
+
+	<!-- DoNotDelete: Example of how to Annotate the following classes with XmlRootElement 
+	<jxb:bindings schemaLocation="pm/service/fielddatahandler/getfielddata/getfielddata.xsd" 
+			node="/xs:schema"> 
+				<jxb:bindings node="xs:complexType"> 
+				<annox:annotate> 
+					<annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" /> 
+				</annox:annotate> 
+		</jxb:bindings> 
+	</jxb:bindings>
+	-->
+</jxb:bindings>
+
+

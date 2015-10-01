@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/iidhfield"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:iidhfield="http://dsp.ge.com/pm/ext/entity/iidhfield"
+	xmlns:attribute="http://dsp.ge.com/pm/ext/entity/attribute"
+	xmlns:fieldIdentifier="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier"
+	xmlns:field="http://dsp.ge.com/pm/ext/entity/field"
+	xmlns:tenantIdentifier="http://dsp.ge.com/pm/ext/entity/tenant/tenantidentifier"
+	xmlns:solutionIdentifier="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier" xmlns:appIdentifier="http://dsp.ge.com/pm/ext/entity/app/appidentifier">
+
+
+	<import schemaLocation="../field/field.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/field">
+	</import>
+	<import schemaLocation="../tenant/identifier/tenantidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/tenant/tenantidentifier">
+	</import>
+	<import
+		schemaLocation="../solution/identifier/solutionidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier">
+	</import>
+	<import schemaLocation="../app/identifier/appidentifier.xsd" namespace="http://dsp.ge.com/pm/ext/entity/app/appidentifier"></import>
+	<complexType name="IidhField">
+		<complexContent>
+			<extension base="field:Field"></extension>
+		</complexContent>
+	</complexType>
+	<element name="iidhField" type="iidhfield:IidhField"></element>
+
+	<complexType name="IidhFieldList">
+		<complexContent>
+			<extension base="field:Field">
+				<sequence>
+					<element name="NewElement" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="iidhFieldList" type="iidhfield:IidhFieldList" />
+
+
+
+
+
+</schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/asset"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:asset="http://dsp.ge.com/pm/ext/entity/asset"
+	xmlns:assetIdentifier="http://dsp.ge.com/pm/ext/entity/asset/assetidentifier"
+	xmlns:assetSelector="http://dsp.ge.com/pm/ext/entity/assetselector"
+	xmlns:fieldIdentifier="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier">
+
+	<import schemaLocation="identifier/assetidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/asset/assetidentifier">
+	</import>
+	<import schemaLocation="../assetselector/assetselector.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/assetselector">
+	</import>
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd" namespace="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier"></import>
+	<complexType name="Asset">
+		<sequence>
+            <element ref="assetIdentifier:assetIdentifier" minOccurs="1" maxOccurs="1"></element>
+			<element name="assetIdFieldIdentifier"
+				type="fieldIdentifier:FieldIdentifier" minOccurs="0">
+			</element>
+			<element ref="assetSelector:assetSelector" minOccurs="0"
+				maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="asset" type="asset:Asset"></element>
+
+	<complexType name="AssetList">
+		<sequence>
+			<element ref="asset:asset" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="assetList" type="asset:AssetList" />
+
+
+</schema>

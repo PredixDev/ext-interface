@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/fielddatahandler/entity/createfields"
+	xmlns:createFields="http://dsp.ge.com/pm/fielddatahandler/entity/createfields"
+	xmlns:fieldCriteria="http://dsp.ge.com/pm/fielddatahandler/entity/fieldcriteria"
+	xmlns:resultInfo="http://dsp.ge.com/aaas/entity/resultinfo" xmlns:field="http://dsp.ge.com/pm/ext/entity/field"
+	xmlns:modelField="http://dsp.ge.com/pm/ext/entity/modelfield"
+	xmlns:asset="http://dsp.ge.com/pm/ext/entity/asset">
+
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/aaas/entity/resultinfo/resultinfo.xsd"
+		namespace="http://dsp.ge.com/aaas/entity/resultinfo">
+	</import>
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/modelfield/modelfield.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/modelfield">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/asset/asset.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/asset">
+	</import>
+	<import schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/field/field.xsd" namespace="http://dsp.ge.com/pm/ext/entity/field"></import>
+	<element name="createFieldsRequest">
+		<complexType>
+			<sequence>
+				<element ref="modelField:modelField" minOccurs="0" maxOccurs="unbounded"></element>
+				<element ref="asset:asset" minOccurs="0" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<element name="createFieldsResult">
+		<complexType>
+			<sequence>
+				<element ref="resultInfo:resultInfo" minOccurs="1"></element>
+				<element ref="field:field" minOccurs="0" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
+

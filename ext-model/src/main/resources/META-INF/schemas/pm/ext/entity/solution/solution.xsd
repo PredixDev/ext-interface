@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/solution"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:solution="http://dsp.ge.com/pm/ext/entity/solution"
+	xmlns:solutionIdentifier="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier">
+
+	<import schemaLocation="identifier/solutionidentifier.xsd" 
+		namespace="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier"></import>
+	
+	<complexType name="Solution">
+		<sequence>
+            <element ref="solutionIdentifier:solutionIdentifier" minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="solution" type="solution:Solution"></element>
+
+	<complexType name="SolutionList">
+		<sequence>
+			<element ref="solution:solution" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="solutionList" type="solution:SolutionList" />
+
+</schema>

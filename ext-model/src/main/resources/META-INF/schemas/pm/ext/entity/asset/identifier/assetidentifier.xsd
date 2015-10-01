@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/asset/assetidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:assetIdentifier="http://dsp.ge.com/pm/ext/entity/asset/assetidentifier"
+	xmlns:attribute="http://dsp.ge.com/pm/ext/entity/attribute" 
+	xmlns:identifier="http://dsp.ge.com/aaas/entity/identifier">
+
+	<import schemaLocation="../../../../../aaas/entity/identifier/identifier.xsd" 
+		namespace="http://dsp.ge.com/aaas/entity/identifier"></import>
+	<complexType name="AssetIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier">
+				<sequence>
+					<element name="source" type="string" minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="assetIdentifier"
+		type="assetIdentifier:AssetIdentifier">
+	</element>
+
+	<complexType name="AssetIdentifierList">
+		<sequence>
+			<element ref="assetIdentifier:assetIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="assetIdentifierList"
+		type="assetIdentifier:AssetIdentifierList" />
+
+</schema>

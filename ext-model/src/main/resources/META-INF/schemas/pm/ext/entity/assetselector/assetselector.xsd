@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/assetselector"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:assetselector="http://dsp.ge.com/pm/ext/entity/assetselector"
+    xmlns:fieldIdentifierValue="http://dsp.ge.com/pm/ext/entity/fieldidentifiervalue" 
+    >
+
+    <import schemaLocation="../fieldIdentifierValue/fieldidentifiervalue.xsd"
+    namespace="http://dsp.ge.com/pm/ext/entity/fieldidentifiervalue"/>
+
+	<complexType name="AssetSelector">
+		<sequence>
+            <element ref="fieldIdentifierValue:fieldIdentifierValue" minOccurs="1" maxOccurs="unbounded"></element>
+        </sequence>
+	</complexType>
+
+    <element name="assetSelector" type="assetselector:AssetSelector"></element>
+
+
+</schema>

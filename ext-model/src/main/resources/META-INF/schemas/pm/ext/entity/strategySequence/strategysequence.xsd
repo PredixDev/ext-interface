@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/strategysequence" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:strategySequence="http://dsp.ge.com/pm/ext/entity/strategysequence"
+	xmlns:strategy="http://dsp.ge.com/pm/ext/entity/strategy" xmlns:action="http://dsp.ge.com/pm/ext/entity/action"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map" xmlns:strategyDetail="http://dsp.ge.com/pm/ext/entity/strategydetail">
+
+	<import schemaLocation="../strategy/strategy.xsd" namespace="http://dsp.ge.com/pm/ext/entity/strategy"></import>
+	<import schemaLocation="../util/map/map.xsd" namespace="http://dsp.ge.com/pm/ext/entity/util/map"></import>
+	<import schemaLocation="../strategydetail/strategydetail.xsd" namespace="http://dsp.ge.com/pm/ext/entity/strategydetail"></import>
+	<complexType name="StrategySequence">
+		<annotation>
+			<documentation>
+				A set of Strategies that can be ordered. There are 2 use-cases. Passing information for strategy storage
+				and maintenance purposes. Passing information for strategy processing purposes.
+
+				Within each of those there are 2 use-cases. Using an Action and not using Action.
+
+				Not Using an Action - The strategyList is simply a List of of strategies relative to a sequence number.
+				This allows for passing different kinds of strategies (RETREIVAL, STORAGE, etc) relative to the same
+				sequence number.
+
+				Using an Action - this allows for driving an ActionBehavior relative to an ActionType and within the
+				ActionType relative to an ActionCondition.
+
+				Lining these 'columns' up in a spreadsheet or database table is more intuitive to see the power of this
+				design. This allows for data driven behaviors using an Action and encapsulation of behavior within a
+				strategy.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="sequence" type="int" minOccurs="1"></element>
+			<element ref="strategy:strategy" minOccurs="0" maxOccurs="unbounded"></element>
+			<element ref="map:map" minOccurs="0" maxOccurs="1"></element>
+			<element ref="strategyDetail:strategyDetail" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="strategySequence" type="strategySequence:StrategySequence"></element>
+
+	<complexType name="StrategySequenceList">
+		<sequence>
+			<element ref="strategySequence:strategySequence" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="strategySequenceList" type="strategySequence:StrategySequenceList" />
+
+</schema>

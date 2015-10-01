@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/source" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:source="http://dsp.ge.com/pm/ext/entity/source" xmlns:attribute="http://dsp.ge.com/pm/ext/entity/attribute"
+	xmlns:sourceType="http://dsp.ge.com/pm/ext/entity/sourcetype">
+
+	<complexType name="Source">
+        <annotation>
+        	<documentation>A source is like an Entity but may cover other concepts such as a File source</documentation>
+        </annotation>
+        <sequence>
+            <element name="sourceType" type="source:SourceType"></element>
+            <element name="sourceURI" type="string"></element>
+            <element name="name" type="string"></element>
+        </sequence>
+	</complexType>
+
+	<element name="source" type="source:Source"></element>
+
+<complexType name="SourceType">
+		<sequence>
+			<element name="sourceTypeEnum" type="source:SourceTypeEnum" minOccurs="1"></element>
+			<element name="otherValue" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="sourceType" type="source:SourceType"></element>
+
+	<complexType name="SourceTypeList">
+		<sequence>
+			<element ref="source:sourceType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="sourceTypeList" type="source:SourceTypeList" />
+
+	<simpleType name="SourceTypeEnum">
+		<restriction base="string">
+			<enumeration value="CSV" />
+			<enumeration value="RELATIONAL" />
+			<enumeration value="TIMESERIES" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+</schema>

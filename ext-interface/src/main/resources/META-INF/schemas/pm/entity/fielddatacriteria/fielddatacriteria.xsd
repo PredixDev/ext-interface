@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/fielddatahandler/entity/fielddatacriteria"
+	xmlns:fieldDataCriteria="http://dsp.ge.com/pm/fielddatahandler/entity/fielddatacriteria"
+	xmlns:fieldSelection="http://dsp.ge.com/pm/ext/entity/fieldselection"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:context="http://dsp.ge.com/pm/ext/entity/context" xmlns:selectionFilter="http://dsp.ge.com/pm/ext/entity/selectionfilter">
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/fieldselection/fieldselection.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/fieldselection">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/util/map/map.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/util/map">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/context/context.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/context">
+	</import>
+
+	<import schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/selectionfilter/selectionfilter.xsd" namespace="http://dsp.ge.com/pm/ext/entity/selectionfilter"></import>
+	<complexType name="FieldDataCriteria">
+		<annotation>
+			<documentation>
+				the criteria for requesting one field from the asset
+				data handler
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="fieldSelection:fieldSelection" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element ref="selectionFilter:selectionFilter" minOccurs="0"
+				maxOccurs="1">
+			</element>
+            <element minOccurs="0" name="resultId" type="string"><annotation></annotation></element>
+        </sequence>
+	</complexType>
+	<element name="fieldDataCriteria"
+		type="fieldDataCriteria:FieldDataCriteria">
+	</element>
+
+	<complexType name="FieldDataCriteriaList">
+		<sequence>
+			<element ref="fieldDataCriteria:fieldDataCriteria"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldDataCriteriaList"
+		type="fieldDataCriteria:FieldDataCriteriaList" />
+
+</schema>
+

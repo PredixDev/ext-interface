@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/timeselectionfilter"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:timeSelectionFilter="http://dsp.ge.com/pm/ext/entity/timeselectionfilter"
+	xmlns:selectionFilter="http://dsp.ge.com/pm/ext/entity/selectionfilter"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1">
+
+
+	<import schemaLocation="../selectionfilter/selectionfilter.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/selectionfilter">
+	</import>
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://dsp.ge.com/pm/ext/entity/util/map"></import>
+	<complexType name="PredixTimeSelectionFilter">
+		<complexContent>
+			<extension base="selectionFilter:SelectionFilter">
+				<sequence>
+
+					<element name="startAbsolute" type="dateTime"></element>
+					<element name="endAbsolute" type="dateTime"></element>
+					<element name="endRelativeToNow"
+						type="timeSelectionFilter:RelativeTime">
+					</element>
+					<element name="startRelativeToNow"
+						type="timeSelectionFilter:RelativeTime">
+					</element>
+					<element name="limit" type="string"></element>
+					<element name="orderBy" type="string"></element>
+					<element ref="timeSelectionFilter:Tags"
+						minOccurs="0" maxOccurs="unbounded">
+					</element>
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+
+	<complexType name="Tags">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="aggregator"
+				type="timeSelectionFilter:Aggregator" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="attribute" type="map:SimpleMap" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="groupBy"
+				type="timeSelectionFilter:GroupBy">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="Tags" type="timeSelectionFilter:Tags"></element>
+
+	<complexType name="Aggregator">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="sampling"
+				type="timeSelectionFilter:Sampling">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Sampling">
+		<sequence>
+			<element name="value" type="string"></element>
+			<element name="unit" type="string"></element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="GroupBy">
+		<sequence>
+			<element name="name" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TimeGroupBy">
+		<complexContent>
+			<extension base="timeSelectionFilter:GroupBy">
+				<sequence>
+					<element name="rangeSize"
+						type="timeSelectionFilter:RangeSize">
+					</element>
+					<element name="groupCount" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RangeSize">
+		<sequence>
+			<element name="value" type="string"></element>
+			<element name="unit" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TagGroupBy">
+		<complexContent>
+			<extension base="timeSelectionFilter:GroupBy">
+				<sequence>
+
+
+					<element name="tags" type="string" minOccurs="0"
+						maxOccurs="unbounded">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ValueGroupBy">
+		<complexContent>
+			<extension base="timeSelectionFilter:GroupBy">
+				<sequence>
+					<element name="rangeSize" type="int"></element>
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RelativeTime">
+		<sequence>
+			<element name="value" type="string"></element>
+			<element name="unit" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PredixEventTimeSelectionFilter">
+		<complexContent>
+			<extension
+				base="timeSelectionFilter:PredixTimeSelectionFilter">
+				<sequence>
+					<element name="eventTime" type="dateTime"></element>
+					<element name="eventRelativeTime"
+						type="timeSelectionFilter:RelativeTime">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="PredixTimeSelection"></complexType>
+
+	<complexType name="PredixTimeseriesIngestion">
+		<sequence>
+			<element name="messageId" type="string"></element>
+			<element name="body" type="timeSelectionFilter:IngestBody"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="IngestBody">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="datapoints"
+				type="timeSelectionFilter:Datapoint" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="attributes" type="map:SimpleMap"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Datapoint">
+		<sequence>
+			<element name="value" type="string" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+</schema>

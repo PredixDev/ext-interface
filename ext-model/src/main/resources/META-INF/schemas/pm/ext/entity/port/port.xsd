@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/analytic/port"
+	xmlns:port="http://dsp.ge.com/pm/ext/entity/analytic/port"
+	xmlns:fieldSelection="http://dsp.ge.com/pm/ext/entity/fieldselection"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:context="http://dsp.ge.com/pm/ext/entity/context"
+	xmlns:selectionFilter="http://dsp.ge.com/pm/ext/entity/selectionfilter"
+	xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1"
+	xmlns:fieldIdentifier="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier"
+	xmlns:engUnit="http://dsp.ge.com/pm/ext/entity/engunit"
+	xmlns:portIdentifier="http://dsp.ge.com/pm/ext/entity/analytic/port/portidentifier" xmlns:fieldData="http://dsp.ge.com/pm/ext/entity/fielddata">
+
+	<import schemaLocation="../fieldselection/fieldselection.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/fieldselection">
+	</import>
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/util/map">
+	</import>
+
+	<import schemaLocation="../selectionfilter/selectionfilter.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/selectionfilter">
+	</import>
+
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier">
+	</import>
+
+	<import schemaLocation="../engunit/engunit.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/engunit">
+	</import>
+	<import schemaLocation="identifier/portidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/analytic/port/portidentifier">
+	</import>
+	<import schemaLocation="../selectionfilter/selectionfilter.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/selectionfilter">
+	</import>
+	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://dsp.ge.com/pm/ext/entity/fielddata"></import>
+	<complexType name="Port">
+		<annotation>
+			<documentation>
+				the criteria for requesting one field from the asset
+				data handler
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="portIdentifier:portIdentifier" minOccurs="0"
+				maxOccurs="1">
+			</element>
+            <element ref="fieldSelection:fieldSelection" minOccurs="0" maxOccurs="1"></element>
+            <element name="portType" type="string" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element ref="selectionFilter:selectionFilter" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element ref="fieldData:data" minOccurs="0" maxOccurs="1">
+			</element>
+
+
+		</sequence>
+	</complexType>
+	<element name="port" type="port:Port"></element>
+
+	<complexType name="PortList">
+		<sequence>
+			<element ref="port:port" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="portList" type="port:PortList" />
+
+</schema>
+

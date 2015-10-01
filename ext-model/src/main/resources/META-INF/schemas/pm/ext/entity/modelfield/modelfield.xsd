@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/modelfield"
+	xmlns:modelField="http://dsp.ge.com/pm/ext/entity/modelfield"
+	xmlns:field="http://dsp.ge.com/pm/ext/entity/field"
+	xmlns:strategy="http://dsp.ge.com/pm/ext/entity/strategy"
+	xmlns:sourceInfo="http://dsp.ge.com/pm/ext/entity/sourceinfo"
+	xmlns:appIdentifier="http://dsp.ge.com/pm/ext/entity/app/appidentifier"
+	xmlns:tenantIdentifier="http://dsp.ge.com/pm/ext/entity/tenant/tenantidentifier"
+	xmlns:solutionIdentifier="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	 
+	xmlns:engUnit="http://dsp.ge.com/pm/ext/entity/engunit">
+
+	<import schemaLocation="../sourceinfo/sourceinfo.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/sourceinfo">
+	</import>
+	<import schemaLocation="../field/field.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/field">
+	</import>
+
+
+	<import schemaLocation="../app/identifier/appidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/app/appidentifier">
+	</import>
+	<import schemaLocation="../tenant/identifier/tenantidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/tenant/tenantidentifier">
+	</import>
+	<import schemaLocation="../strategy/strategy.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/strategy">
+	</import>
+	<import
+		schemaLocation="../solution/identifier/solutionidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier">
+	</import>
+	<import></import>
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/util/map">
+	</import>
+	<import schemaLocation="../engunit/engunit.xsd" namespace="http://dsp.ge.com/pm/ext/entity/engunit"></import>
+	<complexType name="ModelField">
+		<sequence>
+			<element name="tenantIdentifier"
+				type="tenantIdentifier:TenantIdentifier" minOccurs="0">
+			</element>
+			<element name="appIdentifier"
+				type="appIdentifier:AppIdentifier" minOccurs="0">
+			</element>
+			<element ref="solutionIdentifier:solutionIdentifier"
+				minOccurs="0">
+			</element>
+			<element ref="field:field" minOccurs="1"></element>
+
+			<element ref="strategy:strategy" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element ref="sourceInfo:sourceInfo" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+
+			<element name="engUnit" type="engUnit:EngUnit" minOccurs="0"></element>
+
+			<element name="map" type="map:Map" minOccurs="0"
+				maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="modelField" type="modelField:ModelField"></element>
+
+	<complexType name="ModelFieldList">
+		<sequence>
+			<element ref="modelField:modelField" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="modelFieldList" type="modelField:ModelFieldList" />
+</schema>
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/fielddatahandler/entity/putfielddata"
+	xmlns:putFieldData="http://dsp.ge.com/pm/fielddatahandler/entity/putfielddata"
+	xmlns:resultInfo="http://dsp.ge.com/aaas/entity/resultinfo"
+	xmlns:fieldData="http://dsp.ge.com/pm/ext/entity/fielddata"
+	xmlns:asset="http://dsp.ge.com/pm/ext/entity/asset"
+	xmlns:context="http://dsp.ge.com/pm/ext/entity/context"
+	xmlns:errorDataEvent="http://dsp.ge.com/pm/ext/entity/osa/errordataevent"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:selectionFilter="http://dsp.ge.com/pm/ext/entity/selectionfilter" xmlns:solutionIdentifier="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier" xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1">
+
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/aaas/entity/resultinfo/resultinfo.xsd"
+		namespace="http://dsp.ge.com/aaas/entity/resultinfo">
+	</import>
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/fielddata/fielddata.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/fielddata">
+	</import>
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/util/map/map.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/util/map">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/asset/asset.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/asset">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/context/context.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/context">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/osa/errordataevent/errordataevent.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/osa/errordataevent">
+	</import>
+
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/selectionfilter/selectionfilter.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/selectionfilter">
+	</import>
+	<import schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/solution/identifier/solutionidentifier.xsd" namespace="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier"></import>
+	<element name="putFieldDataRequest">
+		<complexType>
+			<sequence>
+
+				<element ref="solutionIdentifier:solutionIdentifier"
+					minOccurs="0" maxOccurs="1">
+				</element>
+				<element name="correlationId" type="string"
+					minOccurs="0">
+					<annotation>
+						<documentation>
+							execution context id.
+						</documentation>
+					</annotation>
+				</element>
+
+
+                <element name="putFieldDataCriteria" type="putFieldData:PutFieldDataCriteria" minOccurs="0" maxOccurs="unbounded"></element>
+                <element ref="map:externalAttributeMap" minOccurs="0"
+					maxOccurs="1">
+				</element>
+
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="putFieldDataResult">
+		<complexType>
+			<sequence>
+				<element name="errorEvent" type="string"
+					minOccurs="0" maxOccurs="unbounded">
+				</element>
+				<element minOccurs="0" ref="map:externalAttributeMap" />
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<complexType name="PutFieldDataCriteria">
+		<sequence>
+            <element ref="fieldData:fieldData" minOccurs="0" maxOccurs="1">
+				</element>
+            <element ref="selectionFilter:selectionFilter" minOccurs="0" maxOccurs="1">
+				</element>
+        </sequence>
+	</complexType>
+</schema>
+

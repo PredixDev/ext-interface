@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/aaas/entity/attributedefidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:attributeDefIdentifier="http://dsp.ge.com/aaas/entity/attributedefidentifier"
+	xmlns:identifier="http://dsp.ge.com/aaas/entity/identifier">
+
+	<import schemaLocation="../../../../../aaas/entity/identifier/identifier.xsd" 
+		namespace="http://dsp.ge.com/aaas/entity/identifier"></import>
+	<complexType name="AttributeDefIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="attributeDefIdentifier"
+		type="attributeDefIdentifier:AttributeDefIdentifier">
+	</element>
+
+	<complexType name="AttributeDefIdentifierList">
+		<sequence>
+			<element ref="attributeDefIdentifier:attributeDefIdentifier"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="attributeDefIdentifierList"
+		type="attributeDefIdentifier:AttributeDefIdentifierList" />
+
+</schema>

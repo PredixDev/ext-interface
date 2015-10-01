@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema 
+	version="1.0" 
+	elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	>
+
+	<complexType name="Entry">
+		<sequence>
+			<element name="key" type="anySimpleType"></element>
+			<element name="value" type="anySimpleType"></element>
+		</sequence>
+	</complexType>
+	<element name="entry" type="map:Entry" />
+
+
+	<complexType name="SimpleMap">
+		<sequence>
+			<element name="key" type="anySimpleType"></element>
+			<element name="value" type="anySimpleType"></element>
+		</sequence>
+	</complexType>
+	
+
+	<complexType name="Map">
+		<sequence>
+			<element ref="map:entry" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<element name="map" type="map:Map"/>
+	<element name="attributeMap" type="map:Map"/>
+	<element name="externalAttributeMap" type="map:Map"/>
+
+
+	
+</schema>
+

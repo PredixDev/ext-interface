@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/model"
+	xmlns:model="http://dsp.ge.com/pm/ext/entity/model"
+	xmlns:field="http://dsp.ge.com/pm/ext/entity/field"
+	xmlns:strategy="http://dsp.ge.com/pm/ext/entity/strategy"
+	xmlns:sourceInfo="http://dsp.ge.com/pm/ext/entity/sourceinfo"
+	xmlns:appIdentifier="http://dsp.ge.com/pm/ext/entity/app/appidentifier"
+	xmlns:tenantIdentifier="http://dsp.ge.com/pm/ext/entity/tenant/tenantidentifier"
+	xmlns:solutionIdentifier="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:engUnit="http://dsp.ge.com/pm/ext/entity/engunit"
+	xmlns:fieldData="http://dsp.ge.com/pm/ext/entity/fielddata"
+	xmlns:attribute="http://dsp.ge.com/pm/ext/entity/attribute">
+
+	<import schemaLocation="../fielddata/fielddata.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/fielddata">
+	</import>
+	<import schemaLocation="../attribute/attribute.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/attribute">
+	</import>
+	<import></import>
+	<complexType name="Model">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element name="uri" type="string"></element>
+					<element name="name" type="string"></element>
+					<element name="classificationUri" type="string"></element>
+                    <element name="additionalAttributes" type="attribute:PositionalAttributes"></element>
+                </sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="model" type="model:Model"></element>
+
+	<complexType name="ModelList">
+		<sequence>
+			<element ref="model:model" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="modelList" type="model:ModelList" />
+	
+	<complexType name="SampleEngine">
+		<complexContent>
+			<extension base="model:Model">
+				<sequence>
+					<element name="averageSpeed" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="sampleEngine" type="model:SampleEngine"></element>
+
+	<complexType name="Entry">
+		<sequence>
+			<element name="key" type="string"></element>
+			<element name="value" type="string"></element>
+		</sequence>
+	</complexType>
+</schema>
+

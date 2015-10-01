@@ -1,0 +1,114 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/fielddata"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldData="http://dsp.ge.com/pm/ext/entity/fielddata"
+	xmlns:field="http://dsp.ge.com/pm/ext/entity/field"
+	xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1"
+	xmlns:engUnit="http://dsp.ge.com/pm/ext/entity/engunit"
+		xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+		xmlns:annox="http://annox.dev.java.net"
+		xmlns:ja="http://annox.dev.java.net/org.codehaus.jackson.annotate"
+		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:extensionBindingPrefixes="xjc annox" 
+	jaxb:version="2.0" 
+	>
+
+	<import schemaLocation="../field/field.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/field">
+	</import>
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier">
+	</import>
+	<import schemaLocation="../engunit/engunit.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/engunit">
+	</import>
+	<import schemaLocation="../../../../osa/schema1.xsd" namespace="http://www.mimosa.org/OSACBMV3.3.1"></import>
+	<complexType name="FieldData">
+		<sequence>
+            <element name="resultId" type="string" minOccurs="0" maxOccurs="1"></element>
+            <element ref="field:field" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation></documentation>
+				</annotation>
+			</element>
+            <element name="data" type="fieldData:Data" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element ref="engUnit:engUnit" minOccurs="0"
+				maxOccurs="1">
+				<annotation>
+					<documentation>
+						The Engineering Units which the DataEvent is
+						being delivered in
+					</documentation>
+				</annotation>
+			</element>
+			<element name="knownDataTypes"
+				type="fieldData:KnownDataTypes" minOccurs="0" maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldData" type="fieldData:FieldData"></element>
+
+	<complexType name="FieldDataList">
+		<sequence>
+			<element ref="fieldData:fieldData" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldDataList" type="fieldData:FieldDataList" />
+
+	<complexType name="KnownDataTypes">
+		<sequence>
+			<element ref="osa:DataEvent"></element>
+			<element ref="fieldData:data"></element>
+		</sequence>
+	</complexType>
+	<element name="knownDataTypes" type="fieldData:KnownDataTypes" />
+
+
+	<complexType name="Data">
+		<annotation>
+			<documentation>
+				For new objects that you want to pass around the SOA,
+				inherit from Data so that marshaling/unmarshaling is
+				seamless when using a FieldData object. For JSON
+				unmarshaling add the @Type annotation and register the
+				Data parent class with the Unmarshaler (e.g.
+				JacksonJsonProvider). For standard Jaxb xml unmarshaling
+				simply define the XSD and auto-generate the classes. Or
+				manually create the Java class with the @XmlElement
+				(etc) annotations and ensure it's in the classpath.
+			</documentation>
+			<appinfo>
+				<annox:annotate>
+					<!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->
+					<ja:JsonTypeInfo use="NAME" include="PROPERTY"
+						property="@type" />
+				</annox:annotate>
+			</appinfo>
+		</annotation>		
+	</complexType>
+	<element name="data" type="fieldData:Data" />
+
+	<complexType name="OsaData">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element ref="osa:DataEvent"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="Fields">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element ref="field:field" minOccurs="0" maxOccurs="unbounded"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/strategy/identifier/strategyidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:strategyIdentifier="http://dsp.ge.com/pm/ext/entity/strategy/identifier/strategyidentifier"
+	xmlns:identifier="http://dsp.ge.com/aaas/entity/identifier">
+
+	<import schemaLocation="../../../../../aaas/entity/identifier/identifier.xsd" 
+		namespace="http://dsp.ge.com/aaas/entity/identifier">
+	</import>
+	<complexType name="StrategyIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="strategyIdentifier"
+		type="strategyIdentifier:StrategyIdentifier">
+	</element>
+
+	<complexType name="StrategyIdentifierList">
+		<sequence>
+			<element ref="strategyIdentifier:strategyIdentifier"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="strategyIdentifierList"
+		type="strategyIdentifier:StrategyIdentifierList" />
+
+</schema>

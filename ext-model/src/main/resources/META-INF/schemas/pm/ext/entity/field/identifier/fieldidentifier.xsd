@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldIdentifier="http://dsp.ge.com/pm/ext/entity/field/fieldidentifier"
+	xmlns:attribute="http://dsp.ge.com/pm/ext/entity/attribute"
+	xmlns:identifier="http://dsp.ge.com/aaas/entity/identifier">
+
+	<import schemaLocation="../../../../../aaas/entity/identifier/identifier.xsd"
+		namespace="http://dsp.ge.com/aaas/entity/identifier"></import>
+	<complexType name="FieldIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier">
+				<sequence>
+					<element name="source" type="string" minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="fieldIdentifier" type="fieldIdentifier:FieldIdentifier">
+	</element>
+
+	<complexType name="FieldIdentifierList">
+		<sequence>
+			<element ref="fieldIdentifier:fieldIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldIdentifierList" type="fieldIdentifier:FieldIdentifierList" />
+
+	<simpleType name="fieldSourceEnum">
+		<restriction base="string">
+			<enumeration value="PREDIX_ASSET" />
+			<enumeration value="PREDIX_TIMESERIES" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+</schema>

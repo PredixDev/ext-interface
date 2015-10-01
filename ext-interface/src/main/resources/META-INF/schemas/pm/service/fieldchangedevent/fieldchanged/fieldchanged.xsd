@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/pm/solution/service/entity/fieldchanged"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldChanged="http://dsp.ge.com/pm/solution/service/entity/fieldchanged"
+	xmlns:tns="http://www.mimosa.org/OSACBMV3.3.1"
+	xmlns:map="http://dsp.ge.com/pm/ext/entity/util/map"
+	xmlns:solutionIdentifier="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier"
+	xmlns:asset="http://dsp.ge.com/pm/ext/entity/asset"
+	xmlns:fieldIdentifierValue="http://dsp.ge.com/pm/ext/entity/fieldidentifiervalue">
+
+	<!--  This is XSD for FieldChanged which has properties specific to Field Change Event 
+		
+		1.	solutionIdentifier - SolutuionId for example Water
+		2.  fieldIdentifierList - FieldIdentifierList , which has List<FieldIdentifier> Temp
+		3.  assetList - AssetList which has List<Asset> 
+		4.  externalContext - Any Context related - breadcrumps
+		5.  timeChanged   - Breadcrump passed through for example to Asset handler
+	-->
+	<import
+		schemaLocation="../../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/osa/schema1.xsd"
+		namespace="http://www.mimosa.org/OSACBMV3.3.1">
+	</import>
+
+	<import
+		schemaLocation="../../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/solution/identifier/solutionidentifier.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/solution/identifier/solutionidentifier">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/asset/asset.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/asset">
+	</import>
+
+	<import
+		schemaLocation="../../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/fieldIdentifierValue/fieldidentifiervalue.xsd"
+		namespace="http://dsp.ge.com/pm/ext/entity/fieldidentifiervalue">
+	</import>
+	<import schemaLocation="../../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/pm/ext/entity/util/map/map.xsd" namespace="http://dsp.ge.com/pm/ext/entity/util/map"></import>
+	<complexType name="FieldChanged">
+		<sequence>
+			<element ref="solutionIdentifier:solutionIdentifier"
+				minOccurs="1">
+			</element>
+			<element ref="asset:assetList" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element ref="fieldIdentifierValue:fieldIdentifierValueList"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="timeChanged" type="dateTime" minOccurs="0"></element>
+
+			<element ref="map:externalAttributeMap" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<element name="fieldChanged" type="fieldChanged:FieldChanged"></element>
+
+	<!--  This is XSD for FieldChangedList which has List<FieldChanged> Object-->
+
+	<complexType name="FieldChangedList">
+		<sequence>
+			<element ref="fieldChanged:fieldChanged" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldChangedList"
+		type="fieldChanged:FieldChangedList" />
+
+
+	<!-- 	<complexType name="FieldType">
+		<sequence>
+		<element name="fieldTypeEnum" type="field:FieldTypeEnum"
+		minOccurs="1">
+		</element>
+		<element name="otherValue" type="string" minOccurs="0"></element>
+		</sequence>
+		</complexType>
+		<element name="fieldType" type="field:FieldType"></element> -->
+
+	<!-- 	<complexType name="FieldTypeList">
+		<sequence>
+		<element ref="field:fieldType" minOccurs="0"
+		maxOccurs="unbounded">
+		</element>
+		</sequence>
+		</complexType>
+		<element name="fieldTypeList" type="field:FieldTypeList" /> -->
+
+	<simpleType name="FieldTypeEnum">
+		<restriction base="string">
+			<enumeration value="ASSETMODEL" />
+			<enumeration value="PARAMETERMODEL" />
+			<enumeration value="PARAMETER" />
+			<enumeration value="ASSETDATA" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+
+</schema>

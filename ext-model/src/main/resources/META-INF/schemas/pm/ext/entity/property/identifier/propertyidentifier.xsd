@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://dsp.ge.com/pm/ext/entity/property/propertyidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:propertyIdentifier="http://dsp.ge.com/pm/ext/entity/property/propertyidentifier"
+	xmlns:attribute="http://dsp.ge.com/pm/ext/entity/attribute" 
+	xmlns:identifier="http://dsp.ge.com/aaas/entity/identifier">
+
+	<import schemaLocation="../../../../../aaas/entity/identifier/identifier.xsd" namespace="http://dsp.ge.com/aaas/entity/identifier"></import>
+	<complexType name="PropertyIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="propertyIdentifier"
+		type="propertyIdentifier:PropertyIdentifier">
+	</element>
+
+	<complexType name="PropertyIdentifierList">
+		<sequence>
+			<element ref="propertyIdentifier:propertyIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="propertyIdentifierList"
+		type="propertyIdentifier:PropertyIdentifierList" />
+
+</schema>
