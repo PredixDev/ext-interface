@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://predix.ge.com/entity/assetfilter"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:assetFilter="http://predix.ge.com/entity/assetfilter"
+	xmlns:filter="http://ge.com/predix/entity/filter">
+
+
+	<import schemaLocation="../filter/filter.xsd" namespace="http://ge.com/predix/entity/filter">
+	</import>
+
+	<complexType name="AssetFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+                    <element name="uri" type="string"></element>
+                    <element name="filterString" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="assetFilter" type="assetFilter:AssetFilter">
+	</element>
+
+
+</schema>

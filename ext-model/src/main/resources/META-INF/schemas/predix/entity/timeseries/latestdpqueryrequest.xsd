@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://predix.ge.com/entity/timeseries/datapoints/queryrequest/latest"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:latestdpqueryrequest="http://predix.ge.com/entity/timeseries/datapoints/queryrequest/latest"
+	xmlns:map="http://ge.com/predix/entity/util/map">
+
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://ge.com/predix/entity/util/map"></import>
+
+	<element name="DatapointsLatestQuery"
+		type="latestdpqueryrequest:DatapointsLatestQuery">
+
+	</element>
+
+	<complexType name="DatapointsLatestQuery">
+			<sequence>
+				<element ref="latestdpqueryrequest:tags" minOccurs="0"
+					maxOccurs="unbounded">
+				</element>
+			</sequence>
+		</complexType>
+	
+	<complexType name="Tag">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element ref="latestdpqueryrequest:filters"></element>
+		</sequence>
+	</complexType>
+	<element name="tags" type="latestdpqueryrequest:Tag"></element>
+
+	<complexType name="Filters">
+		<sequence>
+			<element name="attributes" type="map:Map"></element>
+			<element ref="latestdpqueryrequest:measurements"></element>
+			<element ref="latestdpqueryrequest:qualities"></element>
+		</sequence>
+	</complexType>
+	<element name="filters" type="latestdpqueryrequest:Filters"></element>
+
+	<complexType name="Measurements">
+		<sequence>
+			<element name="condition" type="string"></element>
+			<element name="values" type="int" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="measurements" type="latestdpqueryrequest:Measurements"></element>
+
+	<complexType name="Qualities">
+		<sequence>
+			<element name="values" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="qualities" type="latestdpqueryrequest:Qualities"></element>
+
+</schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/field/fieldidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier"
+	xmlns:attribute="http://ge.com/predix/entity/attribute"
+	xmlns:identifier="http://ge.com/predix/entity/identifier"
+	xmlns:source="http://ge.com/predix/entity/source"
+	xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1">
+
+	<import schemaLocation="../../identifier/identifier.xsd"
+		namespace="http://ge.com/predix/entity/identifier">
+	</import>
+	<import schemaLocation="../../source/source.xsd"
+		namespace="http://ge.com/predix/entity/source">
+	</import>
+	<complexType name="FieldIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier">
+				<sequence>
+					<element name="source" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="fieldIdentifier"
+		type="fieldIdentifier:FieldIdentifier">
+	</element>
+
+	<complexType name="FieldIdentifierList">
+		<sequence>
+			<element ref="fieldIdentifier:fieldIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldIdentifierList"
+		type="fieldIdentifier:FieldIdentifierList" />
+
+	<simpleType name="fieldSourceEnum">
+		<restriction base="string">
+			<enumeration value="PREDIX_ASSET" />
+			<enumeration value="PREDIX_TIMESERIES" />
+			<enumeration value="RABBITMQ_QUEUE" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+	<element name="namespace" type="string">
+	</element>
+
+
+	<element name="namespaceList" type="string" />
+</schema>

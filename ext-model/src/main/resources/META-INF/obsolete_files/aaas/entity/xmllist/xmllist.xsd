@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/xmllist" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xmlList="http://ge.com/predix/entity/xmllist">
+
+
+	<simpleType name="ListOfDouble">
+		<list itemType="double" />
+	</simpleType>
+	<element name="listOfDouble" type="xmlList:ListOfDouble" />
+
+	<simpleType name="ListOfBoolean">
+		<list itemType="boolean" />
+	</simpleType>
+	<element name="listOfBoolean" type="xmlList:ListOfBoolean" />
+
+	<simpleType name="ListOfInteger">
+		<list itemType="integer" />
+	</simpleType>
+	<element name="listOfInteger" type="xmlList:ListOfInteger" />
+
+</schema>

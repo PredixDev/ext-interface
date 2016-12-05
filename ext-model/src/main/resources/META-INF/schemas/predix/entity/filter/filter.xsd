@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/filter"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:filter="http://ge.com/predix/entity/filter"
+	xmlns:fieldidentifier="http://ge.com/predix/entity/field/fieldidentifier"
+	xmlns:field="http://ge.com/predix/entity/field" xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1"
+	xmlns:fieldIdentifierValue="http://ge.com/predix/entity/fieldidentifiervalue"
+	xmlns:fieldValue="http://ge.com/predix/entity/fieldvalue"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:annox="http://annox.dev.java.net"
+	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0">
+
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd"
+		namespace="http://ge.com/predix/entity/field/fieldidentifier">
+	</import>
+
+	<import schemaLocation="../field/field.xsd" namespace="http://ge.com/predix/entity/field">
+	</import>
+	<import schemaLocation="../fieldIdentifierValue/fieldidentifiervalue.xsd"
+		namespace="http://ge.com/predix/entity/fieldidentifiervalue">
+	</import>
+
+	<import schemaLocation="../../../osa/schema1.xsd" namespace="http://www.mimosa.org/OSACBMV3.3.1">
+	</import>
+	<import schemaLocation="../fieldValue/fieldvalue.xsd"
+		namespace="http://ge.com/predix/entity/fieldvalue">
+	</import>
+
+	<complexType name="Filter">
+		<annotation>
+			<appinfo>
+				<annox:annotate>
+					<!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->
+					<ja:JsonTypeInfo use="NAME" include="PROPERTY"
+						property="complexType" />
+				</annox:annotate>
+			</appinfo>
+		</annotation>
+		<sequence />
+	</complexType>
+	<element name="filter" type="filter:Filter">
+	</element>
+
+	<complexType name="FieldFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+					<element ref="fieldIdentifierValue:fieldIdentifierValue"
+						minOccurs="0" maxOccurs="unbounded">
+					</element>
+					<element name="operator" type="filter:OperatorEnum"
+						minOccurs="0" maxOccurs="1">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<simpleType name="SampleMode">
+		<restriction base="string">
+			<enumeration value="AVERAGE" />
+			<enumeration value="MAXIMUM" />
+			<enumeration value="MINIMUM" />
+			<enumeration value="LAST" />
+			<enumeration value="FIRST" />
+			<enumeration value="STDEV" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TimeOffsetUnits">
+		<restriction base="string">
+			<enumeration value="NANOSECONDS" />
+			<enumeration value="MILLISECONDS" />
+			<enumeration value="MICROSECONDS" />
+			<enumeration value="SECONDS" />
+			<enumeration value="MINUTES" />
+			<enumeration value="HOURS" />
+			<enumeration value="DAYS" />
+			<enumeration value="WEEKS" />
+			<enumeration value="YEARS" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="IntervalUnits">
+		<restriction base="string">
+			<enumeration value="NANOSECONDS" />
+			<enumeration value="MILLISECONDS" />
+			<enumeration value="MICROSECONDS" />
+			<enumeration value="SECONDS" />
+			<enumeration value="MINUTES" />
+			<enumeration value="HOURS" />
+			<enumeration value="DAYS" />
+			<enumeration value="WEEKS" />
+			<enumeration value="YEARS" />
+			<enumeration value="DATAPOINTS" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+
+
+	<simpleType name="OperatorEnum">
+		<restriction base="string">
+			<enumeration value="AND" />
+			<enumeration value="OR" />
+			<enumeration value="EQUALS" />
+			<enumeration value="BETWEEN" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="OsaFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+					<element ref="osa:SelectionFilter"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+	<complexType name="NestedFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+					<element name="fieldIdentifierValue" type="fieldIdentifierValue:FieldIdentifierObject"
+						minOccurs="0" maxOccurs="unbounded">
+					</element>
+					<element name="operator" type="filter:OperatorEnum">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+    <complexType name="FieldIdentifierNestedValue"></complexType>
+
+
+    <complexType name="JoinFilter">
+    	<sequence>
+    		<element ref="fieldIdentifierValue:fieldIdentifierValue" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    <element name="joinFilter" type="filter:JoinFilter">
+	</element>
+</schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/action"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:action="http://ge.com/predix/entity/action"
+	>
+
+	<complexType name="Action">
+        <annotation>
+        	<documentation>A way to qualify a set of items.  For example, a StrategyDetail uses Actions to drive behavior within a Strategy.The ActionInstruction instructs a Process how to behave.  This is useful when setting up ActionTypes, Behaviors, Conditions and Outcomes.  For example, some Actions are used to create data.  But the Instruction can qualify that Create Behavior.The ActionType creates a Set.  So within the Set we evaluate Behaviors and Conditions to pick the right outcome.The ActionBehavior and ActionCondition are meant to be used as key/value pairs.  If they match a situation, the ActionOutcome is used.There are many permutations that are possible, the API is flexible to allow for creativity. </documentation>
+        </annotation>
+        <sequence>
+        	<element name="actionType" type="string" minOccurs="0"></element>
+            <element name="actionInstruction" type="string" minOccurs="0"></element>
+            <element name="actionBehavior" type="string" minOccurs="0"></element>
+        	<element name="actionCondition" type="string" minOccurs="0"></element>
+        	<element name="actionOutcome" type="string" minOccurs="0"></element>
+        </sequence>
+	</complexType>
+	<element name="action" type="action:Action"></element>
+
+	<complexType name="ActionList">
+		<sequence>
+			<element ref="action:action" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="actionList" type="action:ActionList" />
+
+</schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/property" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:property="http://ge.com/predix/entity/property"
+	xmlns:attributeDef="http://ge.com/predix/entity/attributedef"
+	xmlns:propertyType="http://ge.com/predix/entity/propertytype" xmlns:propertyIdentifier="http://ge.com/predix/entity/property/propertyidentifier">
+
+	<import schemaLocation="../attributedef/attributedef.xsd" namespace="http://ge.com/predix/entity/attributedef"></import>
+	<import schemaLocation="../propertyType/propertytype.xsd"
+		namespace="http://ge.com/predix/entity/propertytype">
+	</import>
+	<import schemaLocation="identifier/propertyidentifier.xsd" namespace="http://ge.com/predix/entity/property/propertyidentifier"></import>
+	<complexType name="Property">
+		<annotation>
+			<documentation>A Property is like a column in a table.  Or a row in an Entity-Attribute-Value table.  An Attribute is like a column 'type' defintion in a table. e.g. varchar2(64), datetime, etcA Property differs from an Attribute by assigning a PropertyType. This gives context to the Property so the system can drive behavior off the PropertyType. There are 2 use-cases for Property.  One in an Entity-Attribute-Value or Column Family architecture where the Property is a row.  The other in an Entity-Column architecture where the Property is a column.In the first use case, propertyType can be physical or conceptual.  In the 2nd use case, propertyType is conceptual.Property is used with Source.  A Source (think of an entity) can have many Properties.  Each Property has a shape which is described by the Property Attribute.In both use-cases, PropertyType can drive setup behavior when a new Property is created.  For example, setting up child properties based on the property type.  
+</documentation>
+		</annotation>
+		<sequence>
+			<element ref="propertyIdentifier:propertyIdentifier" minOccurs="0"></element>
+			<element name="propertyType" type="propertyType:PropertyType" minOccurs="0"></element>
+			<element name="name" type="string" minOccurs="0"></element>
+			<element name="value" type="string" minOccurs="0"></element>
+            <element ref="attributeDef:attributeDef" minOccurs="0"></element>
+        </sequence>
+	</complexType>
+
+	<element name="property" type="property:Property"></element>
+
+
+</schema>

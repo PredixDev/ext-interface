@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/fieldvalues"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldValues="http://ge.com/predix/entity/fieldvalues"
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier">
+
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd" 
+		namespace="http://ge.com/predix/entity/field/fieldidentifier"></import>
+	
+	<complexType name="FieldValues">
+		<sequence>
+            <element ref="fieldIdentifier:fieldIdentifier" minOccurs="1"></element>
+            <element name="values" type="anySimpleType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="fieldValues" type="fieldValues:FieldValues"></element>
+
+	<complexType name="FieldValuesList">
+		<sequence>
+			<element ref="fieldValues:fieldValues" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldValuesList" type="fieldValues:FieldValuesList" />
+
+</schema>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/trigger"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:trigger="http://ge.com/predix/entity/trigger"
+	xmlns:triggerIdentifier="http://ge.com/predix/entity/trigger/triggeridentifier"
+	>
+
+	<import schemaLocation="identifier/triggeridentifier.xsd"
+		namespace="http://ge.com/predix/entity/trigger/triggeridentifier">
+	</import>
+	<complexType name="Trigger" abstract="true">
+		<sequence>
+		</sequence>
+	</complexType>
+	<element name="trigger" type="trigger:Trigger"></element>
+
+	<complexType name="TriggerList">
+		<sequence>
+			<element ref="trigger:trigger" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="triggerList" type="trigger:TriggerList" />
+
+
+</schema>

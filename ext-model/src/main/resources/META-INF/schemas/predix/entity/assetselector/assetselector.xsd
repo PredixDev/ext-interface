@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/assetselector"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:assetselector="http://ge.com/predix/entity/assetselector"
+    xmlns:fieldIdentifierValue="http://ge.com/predix/entity/fieldidentifiervalue" 
+    >
+
+    <import schemaLocation="../fieldIdentifierValue/fieldidentifiervalue.xsd"
+    namespace="http://ge.com/predix/entity/fieldidentifiervalue"/>
+
+	<complexType name="AssetSelector">
+		<sequence>
+            <element ref="fieldIdentifierValue:fieldIdentifierValue" minOccurs="1" maxOccurs="unbounded"></element>
+        </sequence>
+	</complexType>
+
+    <element name="assetSelector" type="assetselector:AssetSelector"></element>
+
+
+</schema>

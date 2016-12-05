@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+
+	targetNamespace="http://predix.ge.com/entity/timeseries/datapoints/ingestionrequest"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:ingestionrequest="http://predix.ge.com/entity/timeseries/datapoints/ingestionrequest"
+	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+
+	<element name="DatapointsIngestion">
+		<complexType>
+			<complexContent>
+				<extension base="fieldData:Data">
+					<sequence>
+						<element name="messageId" type="string"></element>
+						<element ref="ingestionrequest:body" minOccurs="0"
+							maxOccurs="unbounded">
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<complexType name="Body">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="datapoints" minOccurs="0" maxOccurs="unbounded"></element>
+			<element name="attributes" type="map:Map"></element>
+		</sequence>
+	</complexType>
+	<element name="body" type="ingestionrequest:Body"></element>
+</schema>
+

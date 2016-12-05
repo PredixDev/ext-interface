@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/property/propertyidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:propertyIdentifier="http://ge.com/predix/entity/property/propertyidentifier"
+	xmlns:attribute="http://ge.com/predix/entity/attribute" 
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="PropertyIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="propertyIdentifier"
+		type="propertyIdentifier:PropertyIdentifier">
+	</element>
+
+	<complexType name="PropertyIdentifierList">
+		<sequence>
+			<element ref="propertyIdentifier:propertyIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="propertyIdentifierList"
+		type="propertyIdentifier:PropertyIdentifierList" />
+
+</schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/strategydetail/identifier/strategydetailidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:strategyDetailIdentifier="http://ge.com/predix/entity/strategydetail/identifier/strategydetailidentifier"
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" 
+		namespace="http://ge.com/predix/entity/identifier">
+	</import>
+	<complexType name="StrategyDetailIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="strategydetailIdentifier"
+		type="strategyDetailIdentifier:StrategyDetailIdentifier">
+	</element>
+
+	<complexType name="StrategyDetailIdentifierList">
+		<sequence>
+
+			<element name="strategyDetailIdentifier" type="strategyDetailIdentifier:StrategyDetailIdentifier" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="strategydetailIdentifierList"
+		type="strategyDetailIdentifier:StrategyDetailIdentifierList" />
+
+</schema>

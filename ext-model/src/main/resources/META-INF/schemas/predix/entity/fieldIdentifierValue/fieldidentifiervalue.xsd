@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/fieldidentifiervalue"
+elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:fieldIdentifierValue="http://ge.com/predix/entity/fieldidentifiervalue"
+xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier" 
+xmlns:field="http://ge.com/predix/entity/field">
+
+<import schemaLocation="../field/identifier/fieldidentifier.xsd"
+namespace="http://ge.com/predix/entity/field/fieldidentifier">
+</import>
+<import schemaLocation="../field/field.xsd" namespace="http://ge.com/predix/entity/field"></import>
+
+<complexType name="FieldIdentifierValue">
+<sequence>
+<element ref="fieldIdentifier:fieldIdentifier"
+minOccurs="1">
+</element>
+<element name="value" type="anySimpleType" minOccurs="0"></element>
+</sequence>
+</complexType>
+<element name="fieldIdentifierValue" type="fieldIdentifierValue:FieldIdentifierValue"></element>
+
+<complexType name="FieldIdentifierObject">
+<sequence>
+<element ref="fieldIdentifier:fieldIdentifier"
+minOccurs="1">
+</element>
+<element name="value" type="anyType" minOccurs="0"></element>
+</sequence>
+</complexType>
+<element name="fieldIdentifierObject" type="fieldIdentifierValue:FieldIdentifierObject"></element>
+
+<complexType name="FieldIdentifierValueList">
+<sequence>
+<element ref="fieldIdentifierValue:fieldIdentifierValue" minOccurs="0"
+maxOccurs="unbounded">
+</element>
+</sequence>
+</complexType>
+
+<element name="fieldIdentifierValueList" type="fieldIdentifierValue:FieldIdentifierValueList" />
+
+</schema>

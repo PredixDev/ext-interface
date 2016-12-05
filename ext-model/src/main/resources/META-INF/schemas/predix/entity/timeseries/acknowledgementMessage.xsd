@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+
+	targetNamespace="http://predix.ge.com/entity/timeseries/datapoints/ingestionresponse"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:dpingestionresponse="http://predix.ge.com/entity/timeseries/datapoints/ingestionresponse"
+	>
+			
+	<element name="AcknowledgementMessage">
+		<complexType>
+				<sequence>
+					<element name="messageId" type="long"></element>
+					<element name="statusCode" type="int"></element>				
+				</sequence>	
+		</complexType>
+	</element>
+</schema>

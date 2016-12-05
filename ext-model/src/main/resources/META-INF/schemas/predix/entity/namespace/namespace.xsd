@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/field/namespace"
+	xmlns:namespace="http://ge.com/predix/entity/field/namespace"
+	xmlns:source="http://ge.com/predix/entity/source"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	>
+
+	<import schemaLocation="../source/source.xsd"
+		namespace="http://ge.com/predix/entity/source">
+	</import>
+
+
+
+	<complexType name="Namespace">
+		<sequence>
+			<element name="prefix" type="string"></element>
+			<element name="uri" type="string"></element>
+			<element ref="source:source"></element>
+		</sequence>
+	</complexType>
+	<element name="namespace" type="namespace:Namespace">
+	</element>
+
+
+	<complexType name="NamespaceList">
+		<sequence>
+			<element ref="namespace:namespace" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="namespaceList" type="namespace:NamespaceList" />
+</schema>

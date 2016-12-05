@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/dxasset"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:dxAsset="http://ge.com/predix/entity/dxasset"
+	xmlns:model="http://ge.com/predix/entity/model"
+	xmlns:map="http://ge.com/predix/entity/util/map"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xmlns:annox="http://annox.dev.java.net"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+	xmlns:jad="http://annox.dev.java.net/com.fasterxml.jackson.databind.annotation"
+	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0">
+
+
+	<import schemaLocation="../model/model.xsd"
+		namespace="http://ge.com/predix/entity/model">
+	</import>
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://ge.com/predix/entity/util/map">
+	</import>
+	<complexType name="DxAsset">
+		<complexContent>
+			<extension base="model:TypedModel">
+				<sequence>
+					<element name="asset" type="map:Map">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="dxAsset" type="dxAsset:DxAsset"></element>
+
+	<complexType name="DxAssetList">
+		<sequence>
+			<element ref="dxAsset:dxAsset" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="dxAssetList" type="dxAsset:DxAssetList" />
+
+
+</schema>

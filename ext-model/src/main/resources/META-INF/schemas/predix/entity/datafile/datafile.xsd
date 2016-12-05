@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ge.com/predix/entity/datafile"
+	xmlns:datafile="http://ge.com/predix/entity/datafile"
+	xmlns:field="http://ge.com/predix/entity/field"
+	xmlns:strategy="http://ge.com/predix/entity/strategy"
+	xmlns:sourceInfo="http://ge.com/predix/entity/sourceinfo"
+	xmlns:appIdentifier="http://ge.com/predix/entity/app/appidentifier"
+	xmlns:tenantIdentifier="http://ge.com/predix/entity/tenant/tenantidentifier"
+	xmlns:map="http://ge.com/predix/entity/util/map"
+	xmlns:engUnit="http://ge.com/predix/entity/engunit"
+	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:attribute="http://ge.com/predix/entity/attribute">
+
+	<import schemaLocation="../fielddata/fielddata.xsd"
+		namespace="http://ge.com/predix/entity/fielddata">
+	</import>
+	<import schemaLocation="../attribute/attribute.xsd"
+		namespace="http://ge.com/predix/entity/attribute">
+	</import>
+	<import></import>
+	<complexType name="DataFile">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element name="file" type="anySimpleType"></element>
+					<element name="name" type="string"></element>
+				    <element name="additionalAttributes" type="attribute:PositionalAttributes"></element>
+                </sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+<element name="datafile" type="datafile:DataFile"></element>
+
+</schema>
+

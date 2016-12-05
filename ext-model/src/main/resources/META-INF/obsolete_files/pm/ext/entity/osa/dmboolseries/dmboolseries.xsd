@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/osa/dmboolseries" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:dmBoolSeries="http://ge.com/predix/entity/osa/dmboolseries"
+	xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1" 
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0" 
+	xmlns:xmlList="http://ge.com/predix/entity/xmllist">
+
+	<import schemaLocation="../../../../osa/schema1.xsd" namespace="http://www.mimosa.org/OSACBMV3.3.1"></import>
+	<import schemaLocation="../../../../../aaas/entity/xmllist/xmllist.xsd" namespace="http://ge.com/predix/entity/xmllist"></import>
+	<complexType name="DMBoolSeries">
+		<complexContent>
+			<annotation>
+				<documentation>
+					xAxisDeltas and Values can be stored as a list of individual double elements (values or
+					xAxisDeltas), as a single space-separated list of doubles which saves space when tranporting the xml
+					around (valuesList or xAxisDeltasList), or as a base64 string (which represents binary data in an
+					ASCII string format).
+				</documentation>
+			</annotation>
+
+			<extension base="osa:DMDataEvent">
+				<sequence>
+					<element name="xAxisStart" type="double" minOccurs="0" />
+					<choice>
+						<annotation>
+							<documentation>
+								Values can be stored as a list of individual double elements, as a single
+								space-separated list of doubles, or as a base64 string
+							</documentation>
+						</annotation>
+						<element name="values" type="double" minOccurs="0" maxOccurs="unbounded" />
+						<element name="valuesList" type="xmlList:ListOfBoolean" minOccurs="0"/>
+						<element name="valuesBinary" type="base64Binary" minOccurs="0" maxOccurs="unbounded" />
+					</choice>
+					<choice>
+						<annotation>
+							<documentation>
+								xAxisDeltas can be stored as a list of individual double elements, as a single
+								space-separated list of doubles, or as a base64 string
+							</documentation>
+						</annotation>
+
+						<element maxOccurs="unbounded" name="xAxisOffsets" type="double" minOccurs="0" />
+						<element name="xAxisOffsetsList" type="xmlList:ListOfBoolean" minOccurs="0" maxOccurs="1"/>
+						<element name="xAxisOffsetsBinary" type="base64Binary" minOccurs="0" maxOccurs="unbounded" />
+					</choice>
+					<element name="valueQualities" type="double" maxOccurs="unbounded" minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="dmBoolSeries" type="dmBoolSeries:DMBoolSeries"></element>
+
+
+</schema>

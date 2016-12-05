@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/tenant/tenantidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tenantIdentifier="http://ge.com/predix/entity/tenant/tenantidentifier"
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="TenantIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="tenantIdentifier"
+		type="tenantIdentifier:TenantIdentifier">
+	</element>
+
+	<complexType name="TenantIdentifierList">
+		<sequence>
+			<element ref="tenantIdentifier:tenantIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="tenantIdentifierList"
+		type="tenantIdentifier:TenantIdentifierList" />
+
+</schema>

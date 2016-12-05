@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/eventAsset/eventAssetidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:eventAssetIdentifier="http://ge.com/predix/entity/eventAsset/eventAssetidentifier"
+	xmlns:attribute="http://ge.com/predix/entity/attribute" 
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" 
+		namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="AssetIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier">
+				<sequence>
+					<element name="source" type="string" minOccurs="0"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="assetIdentifier"
+		type="eventAssetIdentifier:AssetIdentifier">
+	</element>
+
+	<complexType name="AssetIdentifierList">
+		<sequence>
+			<element ref="eventAssetIdentifier:assetIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="assetIdentifierList"
+		type="eventAssetIdentifier:AssetIdentifierList" />
+
+</schema>

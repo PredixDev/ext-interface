@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+        xmlns:analytic="http://ge.com/predix/service/analytic"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://ge.com/predix/service/analytic"
+        xmlns:xsd3="http://ge.com/predix/entity/analytic/runanalytic"
+        >
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import
+                    namespace="http://ge.com/predix/entity/analytic/runanalytic"
+                    schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/runanalytic/runanalytic.xsd">
+            </xsd:import>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="runAnalyticRequest">
+        <wsdl:part name="parameters" element="xsd3:runAnalyticRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="runAnalyticResponse">
+        <wsdl:part name="parameters" element="xsd3:runAnalyticResult"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="analytic">
+        <wsdl:operation name="runAnalytic">
+            <wsdl:input message="analytic:runAnalyticRequest">
+            </wsdl:input>
+            <wsdl:output message="analytic:runAnalyticResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="analyticSOAP" type="analytic:analytic">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="runAnalytic">
+            <wsdl:documentation>This entry point to the service will invokde analytic with the list of fields given filter
+                for the fields.</wsdl:documentation>
+            <soap:operation soapAction="http://ge.com/predix/service/analytic/RunAnalytic" />
+            <wsdl:input><soap:body use="literal" /></wsdl:input>
+            <wsdl:output><soap:body use="literal" /></wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="analytic">
+        <wsdl:port binding="analytic:analyticSOAP"
+                   name="analyticSOAP">
+            <soap:address location="http://ge.com/predix/service/analytic/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

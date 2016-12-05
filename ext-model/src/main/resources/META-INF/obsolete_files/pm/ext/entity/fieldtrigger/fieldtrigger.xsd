@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/fieldtrigger"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldTrigger="http://ge.com/predix/entity/fieldtrigger"
+	xmlns:trigger="http://ge.com/predix/entity/trigger"
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier" 
+	xmlns:fieldIdentifierValue="http://ge.com/predix/entity/fieldidentifiervalue">
+
+	<import schemaLocation="../trigger/trigger.xsd"
+		namespace="http://ge.com/predix/entity/trigger">
+	</import>
+
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd"
+		namespace="http://ge.com/predix/entity/field/fieldidentifier">
+	</import>
+
+	<import schemaLocation="../fieldIdentifierValue/fieldidentifiervalue.xsd" 
+		namespace="http://ge.com/predix/entity/fieldidentifiervalue">
+	</import>
+		
+	<complexType name="FieldTrigger">
+		<complexContent>
+			<extension base="trigger:Trigger">
+				<sequence>
+					<element
+						ref="fieldIdentifierValue:fieldIdentifierValue" minOccurs="0" maxOccurs="unbounded">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="fieldTrigger" type="fieldTrigger:FieldTrigger"></element>
+
+	<complexType name="FieldTriggerList">
+		<sequence>
+			<element ref="fieldTrigger:fieldTrigger" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldTriggerList"
+		type="fieldTrigger:FieldTriggerList" />
+
+
+</schema>

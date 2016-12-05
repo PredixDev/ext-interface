@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/attributedefidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:attributeDefIdentifier="http://ge.com/predix/entity/attributedefidentifier"
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" 
+		namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="AttributeDefIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="attributeDefIdentifier"
+		type="attributeDefIdentifier:AttributeDefIdentifier">
+	</element>
+
+	<complexType name="AttributeDefIdentifierList">
+		<sequence>
+			<element ref="attributeDefIdentifier:attributeDefIdentifier"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="attributeDefIdentifierList"
+		type="attributeDefIdentifier:AttributeDefIdentifierList" />
+
+</schema>

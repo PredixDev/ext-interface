@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/fieldselection"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldSelection="http://ge.com/predix/entity/fieldselection"
+	xmlns:field="http://ge.com/predix/entity/field"
+	xmlns:engUnit="http://ge.com/predix/entity/engunit" 
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier">
+
+
+	<import schemaLocation="../field/field.xsd"
+		namespace="http://ge.com/predix/entity/field">
+	</import>
+
+	<import schemaLocation="../engunit/engunit.xsd"
+		namespace="http://ge.com/predix/entity/engunit">
+	</import>
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd" namespace="http://ge.com/predix/entity/field/fieldidentifier"></import>
+	<complexType name="FieldSelection">
+		<annotation>
+			<documentation>
+				this structure is used to identify the field (from the
+				asset model) whose value is requested. The selection
+				filter specifies to constrain the return value to the
+				subset of values within the time seleciton.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="fieldIdentifier:fieldIdentifier" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="expectedDataType" type="string" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="expectedEU" type="engUnit:EngUnit"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="resultId" type="string" minOccurs="0">
+				<annotation>
+					<documentation>
+						"dataEventResultId" is an attribute that the
+						DSP-PM will populate with an unique ID. ADH will
+						take this id and populate the
+						Configuration.Algorithm.AlgorithmOutput.MonitorId.id
+						in the DataEvent as a response.
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldSelection"
+		type="fieldSelection:FieldSelection">
+	</element>
+
+	<complexType name="FieldSelectionList">
+		<annotation>
+			<documentation>
+				FIXME - This field may be deprecated- we need to verify
+				that it isn't being used an remove it
+			</documentation>
+		</annotation>
+		<sequence>
+			<element ref="fieldSelection:fieldSelection" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldSelectionList"
+		type="fieldSelection:FieldSelectionList" />
+
+
+</schema>

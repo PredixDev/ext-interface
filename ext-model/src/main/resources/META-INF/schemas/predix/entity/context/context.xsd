@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/context"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:context="http://ge.com/predix/entity/context" xmlns:map="http://ge.com/predix/entity/util/map"
+    xmlns:asset="http://ge.com/predix/entity/asset">
+
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://ge.com/predix/entity/util/map">
+	</import>
+
+    <import schemaLocation="../asset/asset.xsd"
+            namespace="http://ge.com/predix/entity/asset">
+    </import>
+
+	<complexType name="OrchestrationContext">
+		<annotation>
+			<documentation>This object contains the context information that is
+				needed by the analytic core runtime
+				components. The
+				contents lifecycle
+				is documented in the detailed design -> core runtime
+				platform page in
+				the project
+				wiki.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="contextIdentifier" minOccurs="1" maxOccurs="1"
+				type="string"></element>
+			<element name="adhServiceIdentifier" minOccurs="1" maxOccurs="1"
+				type="context:ServiceIdentifier"></element>
+			<element name="rdrServiceIdentifier" minOccurs="1" maxOccurs="1"
+				type="context:ServiceIdentifier"></element>
+            <element ref="asset:asset" minOccurs="0" maxOccurs="1"/>
+			<element minOccurs="1" maxOccurs="1" ref="map:attributeMap"></element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="AnalyticContext">
+		<annotation>
+			<documentation>This object contains the context information about the
+				running analytic.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="processActivityID" minOccurs="1" maxOccurs="1"
+				type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="OrchestrationDesignContext">
+		<annotation>
+			<documentation>This object contains the orchestration execution
+				context information that is needed by the analytic core runtime
+				components.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="testModuleIdentifier" minOccurs="0" maxOccurs="1"
+				type="string"></element>
+			<element name="testJobInstanceIdentifier" minOccurs="0"
+				maxOccurs="1" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="serviceIdentifier" type="context:ServiceIdentifier" />
+	<element name="orchestrationContext" type="context:OrchestrationContext" />
+	<element name="orchestrationDesignContext" type="context:OrchestrationDesignContext" />
+
+	<simpleType name="OrchestrationContextMapEntries">
+		<restriction base="string">
+			<enumeration value="SolutionId" />
+			<enumeration value="SolutionName" />
+			<enumeration value="OrchestrationId" />
+			<enumeration value="Asset" />
+			<enumeration value="ExternalAttributeMap" />
+			<enumeration value="DateTime" />
+			<enumeration value="RDRServiceIdentifier" />
+			<!-- ServiceIdentifier type -->
+			<enumeration value="ADHServiceIdentifier" />
+			<!-- ServiceIdentifier type -->
+			<enumeration value="BundleDataWithAnalyticCall" />
+			<enumeration value="StreamingEnabled" />
+			<enumeration value="ProcessDefinitionId" />
+			<enumeration value="ProcessInstanceId" />
+			<enumeration value="OrchestrationName" />
+			<enumeration value="OrchestrationGroupName" />
+			<enumeration value="DispatchRuleId" />
+			<enumeration value="DispatchRuleName" />
+			<enumeration value="UomProviderHostAddress" />
+			<enumeration value="UomProviderPortNumber" />
+			<enumeration value="AssetGroupId" />
+			<enumeration value="AssetGroupName" />
+			<enumeration value="LongRunning" />
+            <enumeration value="OrchestrationGroupId" />
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="DSPPMServices">
+		<annotation>
+			<documentation>
+				These are the services that will be retrieved via
+				registry lookup
+				mechanisms.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="RDR" />
+			<enumeration value="ADH" />
+			<enumeration value="Orchestration" />
+			<enumeration value="AnalyticWrapper" />
+			<enumeration value="ConfigurationSelector" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DSPPMTransportTypes">
+		<restriction base="string">
+			<enumeration value="OSGI" />
+			<enumeration value="PointToPoint" />
+			<enumeration value="Systinet" />
+			<enumeration value="POJO" />
+		</restriction>
+	</simpleType>
+
+
+	<complexType name="ServiceIdentifier">
+		<annotation>
+			<documentation>
+				This object carries the information/objects for
+				accessing one of the analytic services. The platform
+				will retrieve this
+				information from the service registry. dspPMService
+				identifies the
+				dsp pm service.
+				transport type identifies the transport type for this
+				service. serviceName is
+				the name used to find
+				the service in the
+				registry. ServiceURL is the URL - this is only used
+				for PointToPoint
+				and Systinet.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="dspPMService" minOccurs="1" maxOccurs="1"
+				type="context:DSPPMServices" />
+			<element name="transportType" minOccurs="1" maxOccurs="1"
+				type="context:DSPPMTransportTypes" />
+			<element name="serviceName" minOccurs="1" maxOccurs="1" type="string" />
+			<element name="serviceURL" minOccurs="1" maxOccurs="1" type="string" />
+		</sequence>
+	</complexType>
+
+
+</schema>

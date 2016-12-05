@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/iidhfield"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:iidhfield="http://ge.com/predix/entity/iidhfield"
+	xmlns:attribute="http://ge.com/predix/entity/attribute"
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier"
+	xmlns:field="http://ge.com/predix/entity/field"
+	xmlns:tenantIdentifier="http://ge.com/predix/entity/tenant/tenantidentifier"
+	xmlns:appIdentifier="http://ge.com/predix/entity/app/appidentifier">
+
+
+	<import schemaLocation="../field/field.xsd"
+		namespace="http://ge.com/predix/entity/field">
+	</import>
+	<import schemaLocation="../tenant/identifier/tenantidentifier.xsd"
+		namespace="http://ge.com/predix/entity/tenant/tenantidentifier">
+	</import>
+
+	<import schemaLocation="../app/identifier/appidentifier.xsd" namespace="http://ge.com/predix/entity/app/appidentifier"></import>
+	<complexType name="IidhField">
+		<complexContent>
+			<extension base="field:Field"></extension>
+		</complexContent>
+	</complexType>
+	<element name="iidhField" type="iidhfield:IidhField"></element>
+
+	<complexType name="IidhFieldList">
+		<complexContent>
+			<extension base="field:Field">
+				<sequence>
+					<element name="NewElement" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="iidhFieldList" type="iidhfield:IidhFieldList" />
+
+
+
+
+
+</schema>

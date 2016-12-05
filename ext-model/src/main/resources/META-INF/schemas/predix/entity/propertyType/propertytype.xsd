@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/propertytype" 
+	elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:propertyType="http://ge.com/predix/entity/propertytype" 
+	>
+
+	<complexType name="PropertyType">
+        <annotation>
+        	<documentation>Property Type is relative to the underlying domain model, such as Vibration, Temperature, Customer, Address, City, Employee, Manager.  This allows the system to have another level of items to further describe the property.  This is useful when creating new properties, a set of child properties or child sources can be created which further describes the Property.  One use-case is setting up the ALARM_HI and ALARM_LO threshold properties for a Temperature property.</documentation>
+        </annotation>
+        <sequence>
+			<element name="name" type="string"></element>
+        </sequence>
+	</complexType>
+
+	<element name="propertyType" type="propertyType:PropertyType"></element>
+
+
+</schema>

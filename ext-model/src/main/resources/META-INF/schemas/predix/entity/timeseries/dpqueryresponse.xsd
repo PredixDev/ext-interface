@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+
+	targetNamespace="http://predix.ge.com/entity/timeseries/datapoints/queryresponse"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:queryresponse="http://predix.ge.com/entity/timeseries/datapoints/queryresponse"
+	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:map="http://ge.com/predix/entity/util/map">
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+
+	<element name="DatapointsResponse">
+		<complexType>
+			<complexContent>
+				<extension base="fieldData:Data">
+					<sequence>
+						<element name="start" type="anySimpleType"></element>
+						<element name="end" type="anySimpleType"></element>
+						<element ref="queryresponse:tags" minOccurs="0" maxOccurs="unbounded">
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+
+
+	<complexType name="Tag">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element ref="queryresponse:results" minOccurs="0" maxOccurs="unbounded"></element>
+			<element ref="queryresponse:stats"></element>
+		</sequence>
+	</complexType>
+	<element name="tags" type="queryresponse:Tag"></element>
+
+	<complexType name="Results">
+		<sequence>
+			<element ref="queryresponse:groups" minOccurs="0" maxOccurs="unbounded"></element>
+			<element name="attributes" type="map:Map"></element>
+			<element name="values" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="results" type="queryresponse:Results"></element>
+
+	<complexType name="Stats">
+		<sequence>
+			<element name="rawCount" type="int"></element>
+		</sequence>
+	</complexType>
+	<element name="stats" type="queryresponse:Stats"></element>
+
+	<complexType name="Group">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="type" type="string"></element>
+		</sequence>
+	</complexType>
+	<element name="groups" type="queryresponse:Group"></element>
+</schema>

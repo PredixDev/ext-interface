@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://predix.ge.com/entity/timeseriesfilter"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:timeseriesFilter="http://predix.ge.com/entity/timeseriesfilter"
+	xmlns:filter="http://ge.com/predix/entity/filter"
+	xmlns:queryrequest="http://predix.ge.com/entity/timeseries/datapoints/queryrequest"
+	xmlns:latestdpqueryrequest="http://predix.ge.com/entity/timeseries/datapoints/queryrequest/latest"
+	xmlns:assetFilter="http://predix.ge.com/entity/assetfilter"
+	xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1" xmlns:fieldIdentifierValue="http://ge.com/predix/entity/fieldidentifiervalue">
+
+
+	<import schemaLocation="../filter/filter.xsd"
+		namespace="http://ge.com/predix/entity/filter">
+	</import>
+
+	<import schemaLocation="dpqueryrequest.xsd"
+		namespace="http://predix.ge.com/entity/timeseries/datapoints/queryrequest">
+	</import>
+	<import schemaLocation="latestdpqueryrequest.xsd"
+		namespace="http://predix.ge.com/entity/timeseries/datapoints/queryrequest/latest">
+	</import>
+
+	<import schemaLocation="../asset/assetfilter.xsd"
+		namespace="http://predix.ge.com/entity/assetfilter">
+	</import>
+	<complexType name="TimeseriesFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+
+					<element ref="queryrequest:DatapointsQuery">
+					</element>
+					<element
+						ref="latestdpqueryrequest:DatapointsLatestQuery">
+					</element>
+				</sequence>
+
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="timeseriesFilter"
+		type="timeseriesFilter:TimeseriesFilter">
+	</element>
+
+	<complexType name="AssetAwareTimeseriesFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+					<element ref="assetFilter:assetFilter"></element>
+                    <element ref="timeseriesFilter:timeseriesFilter"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="AssetAwareTimeseriesJoinFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+					<element ref="assetFilter:assetFilter"></element>
+                    <element ref="filter:joinFilter"></element>
+                    <element ref="timeseriesFilter:timeseriesFilter"></element>
+
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+</schema>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/attribute"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:attribute="http://ge.com/predix/entity/attribute"
+	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:attributeDef="http://ge.com/predix/entity/attributedef">
+
+
+	<import schemaLocation="../attributedef/attributedef.xsd" namespace="http://ge.com/predix/entity/attributedef"></import>
+	<complexType name="Attribute">
+		<annotation>
+			<documentation>
+				An attribute is like a column in a table or a column in
+				a spreadsheet or a reference in a file
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="value" type="anySimpleType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element ref="attributeDef:attributeDef" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="attribute" type="attribute:Attribute"></element>
+
+	<complexType name="AttributeList">
+		<sequence>
+			<element ref="attribute:attribute" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="attributeList" type="attribute:AttributeList" />
+	<element name="parents" type="attribute:AttributeList" />
+
+
+
+	<complexType name="NamedAttribute">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element ref="attribute:attribute"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PositionalAttributes">
+		<sequence>
+			<element name="keys" type="string" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="values" type="anyType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+		
+	</complexType>
+</schema>

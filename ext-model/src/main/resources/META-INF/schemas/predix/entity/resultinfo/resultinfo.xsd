@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/resultinfo"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:resultInfo="http://ge.com/predix/entity/resultinfo"
+	xmlns:message="http://ge.com/predix/entity/message">
+
+	<import schemaLocation="../message/message.xsd"
+		namespace="http://ge.com/predix/entity/message"></import>
+
+	<complexType name="ResultInfo">
+		<sequence>
+			<element name="warnings" type="message:Message" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element name="errorEvents" type="message:Message" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="resultInfo" type="resultInfo:ResultInfo"></element>
+
+	<complexType name="ResultInfoList">
+		<sequence>
+			<element ref="resultInfo:resultInfo" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="resultInfoList" type="resultInfo:ResultInfoList" />
+
+</schema>

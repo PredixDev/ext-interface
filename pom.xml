@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.ge.predix.solsvc</groupId>
+	<artifactId>ext-api</artifactId>
+	<version>2.0.6</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>ext-mapper</module>
+		<module>ext-model</module>
+		<module>ext-interface</module>
+		<module>ext-util</module>
+	</modules>
+	<properties>
+
+	</properties>
+
+	<dependencies>
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>artifactory.releases</id>
+			<url>${release.url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>artifactory.snapshots</id>
+			<name>artifactory.snapshots</name>
+			<url>${snapshot.url}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>

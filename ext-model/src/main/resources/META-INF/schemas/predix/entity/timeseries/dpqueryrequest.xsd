@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://predix.ge.com/entity/timeseries/datapoints/queryrequest"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:queryrequest="http://predix.ge.com/entity/timeseries/datapoints/queryrequest"
+	xmlns:map="http://ge.com/predix/entity/util/map">
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+
+
+	<element name="DatapointsQuery"
+		type="queryrequest:DatapointsQuery">
+
+	</element>
+
+	<complexType name="DatapointsQuery">
+			<sequence>
+				<element name="start" type="anySimpleType"></element>
+				<element name="end" type="anySimpleType"></element>
+				<element ref="queryrequest:tags" minOccurs="0" maxOccurs="unbounded">
+				</element>
+			</sequence>
+		</complexType>
+
+	<complexType name="Tag">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="limit" type="int"></element>
+			<element name="order" type="string"></element>
+			<element ref="queryrequest:aggregations" minOccurs="0"
+				maxOccurs="unbounded"></element>
+			<element ref="queryrequest:filters"></element>
+			<element ref="queryrequest:groups" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="tags" type="queryrequest:Tag"></element>
+
+	<complexType name="Aggregation">
+		<sequence>
+			<element name="type" type="string"></element>
+			<element name="interval" type="string"></element>
+		</sequence>
+	</complexType>
+	<element name="aggregations" type="queryrequest:Aggregation"></element>
+
+	<complexType name="Filters">
+		<sequence>
+			<element name="attributes" type="map:Map"></element>
+			<element ref="queryrequest:measurements"></element>
+			<element ref="queryrequest:qualities"></element>
+		</sequence>
+	</complexType>
+	<element name="filters" type="queryrequest:Filters"></element>
+
+	<complexType name="Group">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="values" type="anySimpleType" minOccurs="0"
+				maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="groups" type="queryrequest:Group"></element>
+
+	<complexType name="Attribute">
+		<sequence>
+			<element name="host" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="attributes" type="queryrequest:Attribute"></element>
+
+	<complexType name="Measurements">
+		<sequence>
+			<element name="condition" type="string"></element>
+			<element name="values" type="int" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="measurements" type="queryrequest:Measurements"></element>
+
+	<complexType name="Qualities">
+		<sequence>
+			<element name="values" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="qualities" type="queryrequest:Qualities"></element>
+
+</schema>

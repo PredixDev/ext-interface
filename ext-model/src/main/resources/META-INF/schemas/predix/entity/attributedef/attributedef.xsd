@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/attributedef"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:attributeDef="http://ge.com/predix/entity/attributedef">
+
+
+	<complexType name="AttributeDef">
+		<annotation>
+			<documentation>An attribute is like a column in a table or a column
+				in a spreadsheet or a reference in a file</documentation>
+		</annotation>
+		<sequence>
+			<element name="id" type="anySimpleType" minOccurs="0"></element>
+			<element ref="attributeDef:attributeType" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="name" type="string"></element>
+			<element name="isEnumerable" type="boolean"></element>
+			<element name="enumeration" type="string"></element>
+			<element name="unique" type="boolean"></element>
+			<element name="cardinality" type="string"></element>
+			<element name="required" type="boolean"></element>
+			<element name="display" type="boolean"></element>
+
+		</sequence>
+	</complexType>
+	<element name="attributeDef" type="attributeDef:AttributeDef"></element>
+
+	<complexType name="AttributeDefList">
+		<sequence>
+			<element ref="attributeDef:attributeDef" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="attributeDefList" type="attributeDef:AttributeDefList" />
+	<element name="parents" type="attributeDef:AttributeDefList" />
+
+
+	<complexType name="AttributeType">
+		<sequence>
+			<element name="attributeTypeEnum" type="attributeDef:AttributeTypeEnum"
+				minOccurs="1"></element>
+			<element name="otherValue" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="attributeType" type="attributeDef:AttributeType"></element>
+
+	<simpleType name="AttributeTypeEnum">
+		<restriction base="string">
+			<enumeration value="STRING" />
+			<enumeration value="BOOLEAN" />
+			<enumeration value="DECIMAL" />
+			<enumeration value="FLOAT" />
+			<enumeration value="DOUBLE" />
+			<enumeration value="DURATION" />
+			<enumeration value="DATETIME" />
+			<enumeration value="TIME" />
+			<enumeration value="DATE" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+
+</schema>

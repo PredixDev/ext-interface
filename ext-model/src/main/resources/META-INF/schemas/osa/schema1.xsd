@@ -1,0 +1,2330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.mimosa.org/OSACBMV3.3.1" 
+			xmlns:tns="http://www.mimosa.org/OSACBMV3.3.1"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+           xmlns:annox="http://annox.dev.java.net"
+           xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+           jaxb:extensionBindingPrefixes="xjc annox"
+           jaxb:version="2.0"
+        >
+
+
+
+	<!--  This makes all the objects created by this schema serializable - we need them
+			serializable for the activiti integration
+
+    <xs:annotation>
+       <xs:appinfo>
+          <jaxb:globalBindings>
+              <xjc:serializable/>
+          </jaxb:globalBindings>
+       </xs:appinfo>
+    </xs:annotation>	
+-->
+
+  <xs:element name="AGDataEvent" nillable="true" type="tns:AGDataEvent"/>
+
+  <xs:element name="AGPort" nillable="true" type="tns:AGPort"/>
+
+  <xs:element name="AgentAlertFilter" nillable="true" type="tns:AgentAlertFilter"/>
+
+  <xs:element name="AlertRegion" nillable="true" type="tns:AlertRegion"/>
+
+  <xs:element name="AlertRegionRef" nillable="true" type="tns:AlertRegionRef"/>
+
+  <xs:element name="AlertRegion_CBM" nillable="true" type="tns:AlertRegion_CBM"/>
+
+  <xs:element name="AlertType" nillable="true" type="tns:AlertType"/>
+
+  <xs:element name="Algorithm" nillable="true" type="tns:Algorithm"/>
+
+  <xs:element name="AlgorithmInputChar" nillable="true" type="tns:AlgorithmInputChar"/>
+
+  <xs:element name="AlgorithmInputData" nillable="true" type="tns:AlgorithmInputData"/>
+
+  <xs:element name="AlgorithmInputInt" nillable="true" type="tns:AlgorithmInputInt"/>
+
+  <xs:element name="AlgorithmInputReal" nillable="true" type="tns:AlgorithmInputReal"/>
+
+  <xs:element name="AlgorithmInputValue" nillable="true" type="tns:AlgorithmInputValue"/>
+
+  <xs:element name="AlgorithmModel" nillable="true" type="tns:AlgorithmModel"/>
+
+  <xs:element name="AlgorithmOutput" nillable="true" type="tns:AlgorithmOutput"/>
+
+  <xs:element name="AmbiguityGroup" nillable="true" type="tns:AmbiguityGroup"/>
+
+  <xs:element name="Ampl" nillable="true" type="tns:Ampl"/>
+
+  <xs:element name="AndConnector" nillable="true" type="tns:AndConnector"/>
+
+  <xs:element name="AppChange" nillable="true" type="tns:AppChange"/>
+
+  <xs:element name="AppInfo" nillable="true" type="tns:AppInfo"/>
+
+  <xs:element name="AppRequest" nillable="true" type="tns:AppRequest"/>
+
+  <xs:element name="Asset" nillable="true" type="tns:Asset"/>
+
+  <xs:element name="AssetInfo" nillable="true" type="tns:AssetInfo"/>
+
+  <xs:element name="BLOB" nillable="true" type="tns:BLOB"/>
+
+  <xs:element name="BooleanArrayValue" nillable="true" type="tns:BooleanArrayValue"/>
+
+  <xs:element name="BooleanValue" nillable="true" type="tns:BooleanValue"/>
+
+  <xs:element name="ByteArrayValue" nillable="true" type="tns:ByteArrayValue"/>
+
+  <xs:element name="ByteValue" nillable="true" type="tns:ByteValue"/>
+
+  <xs:element name="CPB" nillable="true" type="tns:CPB"/>
+
+  <xs:element name="CharArrayValue" nillable="true" type="tns:CharArrayValue"/>
+
+  <xs:element name="CharValue" nillable="true" type="tns:CharValue"/>
+
+  <xs:element name="CmplxArrayValue" nillable="true" type="tns:CmplxArrayValue"/>
+
+  <xs:element name="CmplxFrqSpect" nillable="true" type="tns:CmplxFrqSpect"/>
+
+  <xs:element name="CmplxWaveform" nillable="true" type="tns:CmplxWaveform"/>
+
+  <xs:element name="ComplexValue" nillable="true" type="tns:ComplexValue"/>
+
+  <xs:element name="ConfigRequest" nillable="true" type="tns:ConfigRequest"/>
+
+  <xs:element name="Configuration" nillable="true" type="tns:Configuration"/>
+
+  <xs:element name="ControlChange" nillable="true" type="tns:ControlChange"/>
+
+  <xs:element name="ControlInfo" nillable="true" type="tns:ControlInfo"/>
+
+  <xs:element name="ControlRequest" nillable="true" type="tns:ControlRequest"/>
+
+  <xs:element name="DABLOBData" nillable="true" type="tns:DABLOBData"/>
+
+  <xs:element name="DABool" nillable="true" type="tns:DABool"/>
+
+  <xs:element name="DADataEvent" nillable="true" type="tns:DADataEvent"/>
+
+  <xs:element name="DADataSeq" nillable="true" type="tns:DADataSeq"/>
+
+  <xs:element name="DAInt" nillable="true" type="tns:DAInt"/>
+
+  <xs:element name="DAPort" nillable="true" type="tns:DAPort"/>
+
+  <xs:element name="DAReal" nillable="true" type="tns:DAReal"/>
+
+  <xs:element name="DAString" nillable="true" type="tns:DAString"/>
+
+  <xs:element name="DAValueDataSeq" nillable="true" type="tns:DAValueDataSeq"/>
+
+  <xs:element name="DAValueWaveform" nillable="true" type="tns:DAValueWaveform"/>
+
+  <xs:element name="DAVector" nillable="true" type="tns:DAVector"/>
+
+  <xs:element name="DAWaveform" nillable="true" type="tns:DAWaveform"/>
+
+  <xs:element name="DMBLOBData" nillable="true" type="tns:DMBLOBData"/>
+
+  <xs:element name="DMBool" nillable="true" type="tns:DMBool"/>
+
+  <xs:element name="DMDataEvent" nillable="true" type="tns:DMDataEvent"/>
+
+  <xs:element name="DMDataSeq" nillable="true" type="tns:DMDataSeq"/>
+
+  <xs:element name="DMInt" nillable="true" type="tns:DMInt"/>
+
+  <xs:element name="DMPort" nillable="true" type="tns:DMPort"/>
+
+  <xs:element name="DMReal" nillable="true" type="tns:DMReal"/>
+
+  <xs:element name="DMVector" nillable="true" type="tns:DMVector"/>
+
+  <xs:element name="Data" nillable="true" type="tns:Data"/>
+
+  <xs:element name="DataEvent" nillable="true" type="tns:DataEvent"/>
+
+  <xs:element name="DataEventSet" nillable="true" type="tns:DataEventSet"/>
+
+  <xs:element name="DataRef" nillable="true" type="tns:DataRef"/>
+
+  <xs:element name="DataSource" nillable="true" type="tns:DataSource"/>
+
+  <xs:element name="DataSourceMeasInfo" nillable="true" type="tns:DataSourceMeasInfo"/>
+
+  <xs:element name="DataType" nillable="true" type="tns:DataType"/>
+
+  <xs:element name="DblArrayValue" nillable="true" type="tns:DblArrayValue"/>
+
+  <xs:element name="DoubleValue" nillable="true" type="tns:DoubleValue"/>
+
+  <xs:element name="EPSStatus" nillable="true" type="tns:EPSStatus"/>
+
+  <xs:element name="EngUnit" nillable="true" type="tns:EngUnit"/>
+
+  <xs:element name="EntryPointStringified" nillable="true" type="tns:EntryPointStringified"/>
+
+  <xs:element name="EnumValue" nillable="true" type="tns:EnumValue"/>
+
+  <xs:element name="ErrorInfo" nillable="true" type="tns:ErrorInfo"/>
+
+  <xs:element name="ErrorRequest" nillable="true" type="tns:ErrorRequest"/>
+
+  <xs:element name="Explanation" nillable="true" type="tns:Explanation"/>
+
+  <xs:element name="ExplanationData" nillable="true" type="tns:ExplanationData"/>
+
+  <xs:element name="ExplanationDataRef" nillable="true" type="tns:ExplanationDataRef"/>
+
+  <xs:element name="ExplanationDataRefSet" nillable="true" type="tns:ExplanationDataRefSet"/>
+
+  <xs:element name="ExplanationDataSet" nillable="true" type="tns:ExplanationDataSet"/>
+
+  <xs:element name="ExplanationSrcs" nillable="true" type="tns:ExplanationSrcs"/>
+
+  <xs:element name="ExplanationSrcsStr" nillable="true" type="tns:ExplanationSrcsStr"/>
+
+  <xs:element name="FloatArrayValue" nillable="true" type="tns:FloatArrayValue"/>
+
+  <xs:element name="FloatValue" nillable="true" type="tns:FloatValue"/>
+
+  <xs:element name="Function" nillable="true" type="tns:Function"/>
+
+  <xs:element name="FutureHealth" nillable="true" type="tns:FutureHealth"/>
+
+  <xs:element name="FutureHlthTrend" nillable="true" type="tns:FutureHlthTrend"/>
+
+  <xs:element name="GeneralParameter" nillable="true" type="tns:GeneralParameter"/>
+
+  <xs:element name="HADataEvent" nillable="true" type="tns:HADataEvent"/>
+
+  <xs:element name="HAPort" nillable="true" type="tns:HAPort"/>
+
+  <xs:element name="HlthLevelType" nillable="true" type="tns:HlthLevelType"/>
+
+  <xs:element name="IntArrayValue" nillable="true" type="tns:IntArrayValue"/>
+
+  <xs:element name="IntValue" nillable="true" type="tns:IntValue"/>
+
+  <xs:element name="Item" nillable="true" type="tns:Item"/>
+
+  <xs:element name="ItemAlertRegions" nillable="true" type="tns:ItemAlertRegions"/>
+
+  <xs:element name="ItemEvent" nillable="true" type="tns:ItemEvent"/>
+
+  <xs:element name="ItemEventBLOB" nillable="true" type="tns:ItemEventBLOB"/>
+
+  <xs:element name="ItemEventChar" nillable="true" type="tns:ItemEventChar"/>
+
+  <xs:element name="ItemEventConfig" nillable="true" type="tns:ItemEventConfig"/>
+
+  <xs:element name="ItemEventNumInt" nillable="true" type="tns:ItemEventNumInt"/>
+
+  <xs:element name="ItemEventNumReal" nillable="true" type="tns:ItemEventNumReal"/>
+
+  <xs:element name="ItemHealth" nillable="true" type="tns:ItemHealth"/>
+
+  <xs:element name="ItemId" nillable="true" type="tns:ItemId"/>
+
+  <xs:element name="ItemPrognosis" nillable="true" type="tns:ItemPrognosis"/>
+
+  <xs:element name="ItemRecommendation" nillable="true" type="tns:ItemRecommendation"/>
+
+  <xs:element name="ItemRecommendationRemark" nillable="true" type="tns:ItemRecommendationRemark"/>
+
+  <xs:element name="ItemRequestForWork" nillable="true" type="tns:ItemRequestForWork"/>
+
+  <xs:element name="LocalTime" nillable="true" type="tns:LocalTime"/>
+
+  <xs:element name="LogicalConnector" nillable="true" type="tns:LogicalConnector"/>
+
+  <xs:element name="LongArrayValue" nillable="true" type="tns:LongArrayValue"/>
+
+  <xs:element name="LongValue" nillable="true" type="tns:LongValue"/>
+
+  <xs:element name="MIMAgent" nillable="true" type="tns:MIMAgent"/>
+
+  <xs:element name="MIMKey1" nillable="true" type="tns:MIMKey1"/>
+
+  <xs:element name="MIMKey2" nillable="true" type="tns:MIMKey2"/>
+
+  <xs:element name="MIMKey3" nillable="true" type="tns:MIMKey3"/>
+
+  <xs:element name="MeasLoc" nillable="true" type="tns:MeasLoc"/>
+
+  <xs:element name="MeasLocAlertFilter" nillable="true" type="tns:MeasLocAlertFilter"/>
+
+  <xs:element name="MeasLoc_MIM" nillable="true" type="tns:MeasLoc_MIM"/>
+
+  <xs:element name="Metric" nillable="true" type="tns:Metric"/>
+
+  <xs:element name="MimTypeDescriptors" nillable="true" type="tns:MimTypeDescriptors"/>
+
+  <xs:element name="Mime" nillable="true" type="tns:Mime"/>
+
+  <xs:element name="ModuleDescriptor" nillable="true" type="tns:ModuleDescriptor"/>
+
+  <xs:element name="ModuleRef" nillable="true" type="tns:ModuleRef"/>
+
+  <xs:element name="MonitorId" nillable="true" type="tns:MonitorId"/>
+
+  <xs:element name="MonitorIdGroup" nillable="true" type="tns:MonitorIdGroup"/>
+
+  <xs:element name="MonitorIdGroupList" nillable="true" type="tns:MonitorIdGroupList"/>
+
+  <xs:element name="NotConnector" nillable="true" type="tns:NotConnector"/>
+
+  <xs:element name="NumAlert" nillable="true" type="tns:NumAlert"/>
+
+  <xs:element name="OrConnector" nillable="true" type="tns:OrConnector"/>
+
+  <xs:element name="OsacbmTime" nillable="true" type="tns:OsacbmTime"/>
+
+  <xs:element name="OutPortSet" nillable="true" type="tns:OutPortSet"/>
+
+  <xs:element name="PADataEvent" nillable="true" type="tns:PADataEvent"/>
+
+  <xs:element name="PAPort" nillable="true" type="tns:PAPort"/>
+
+  <xs:element name="Parameter" nillable="true" type="tns:Parameter"/>
+
+  <xs:element name="Port" nillable="true" type="tns:Port"/>
+
+  <xs:element name="PortRef" nillable="true" type="tns:PortRef"/>
+
+  <xs:element name="PropEvent" nillable="true" type="tns:PropEvent"/>
+
+  <xs:element name="RUL" nillable="true" type="tns:RUL"/>
+
+  <xs:element name="RULDistrbn" nillable="true" type="tns:RULDistrbn"/>
+
+  <xs:element name="RealFrqSpect" nillable="true" type="tns:RealFrqSpect"/>
+
+  <xs:element name="RealWaveform" nillable="true" type="tns:RealWaveform"/>
+
+  <xs:element name="RefUnit" nillable="true" type="tns:RefUnit"/>
+
+  <xs:element name="Role" nillable="true" type="tns:Role"/>
+
+  <xs:element name="SDBool" nillable="true" type="tns:SDBool"/>
+
+  <xs:element name="SDDataEvent" nillable="true" type="tns:SDDataEvent"/>
+
+  <xs:element name="SDEnum" nillable="true" type="tns:SDEnum"/>
+
+  <xs:element name="SDEnumSet" nillable="true" type="tns:SDEnumSet"/>
+
+  <xs:element name="SDEnumSetDataItem" nillable="true" type="tns:SDEnumSetDataItem"/>
+
+  <xs:element name="SDEvent" nillable="true" type="tns:SDEvent"/>
+
+  <xs:element name="SDInt" nillable="true" type="tns:SDInt"/>
+
+  <xs:element name="SDPort" nillable="true" type="tns:SDPort"/>
+
+  <xs:element name="SDReal" nillable="true" type="tns:SDReal"/>
+
+  <xs:element name="SDTestInt" nillable="true" type="tns:SDTestInt"/>
+
+  <xs:element name="SDTestReal" nillable="true" type="tns:SDTestReal"/>
+
+  <xs:element name="Segment" nillable="true" type="tns:Segment"/>
+
+  <xs:element name="SelectionFilter" nillable="true" type="tns:SelectionFilter"/>
+
+  <xs:element name="SequenceSelect" nillable="true" type="tns:SequenceSelect"/>
+
+  <xs:element name="ShortArrayValue" nillable="true" type="tns:ShortArrayValue"/>
+
+  <xs:element name="ShortValue" nillable="true" type="tns:ShortValue"/>
+
+  <xs:element name="Site" nillable="true" type="tns:Site"/>
+
+  <xs:element name="StringArrayValue" nillable="true" type="tns:StringArrayValue"/>
+
+  <xs:element name="StringValue" nillable="true" type="tns:StringValue"/>
+
+  <xs:element name="SupportingData" nillable="true" type="tns:SupportingData"/>
+
+  <xs:element name="TimeSelect" nillable="true" type="tns:TimeSelect"/>
+
+  <xs:element name="Transducer" nillable="true" type="tns:Transducer"/>
+
+  <xs:element name="TransducerMeasInfo" nillable="true" type="tns:TransducerMeasInfo"/>
+
+  <xs:element name="UnitConverter" nillable="true" type="tns:UnitConverter"/>
+
+  <xs:element name="UserDef" nillable="true" type="tns:UserDef"/>
+
+  <xs:element name="Value" nillable="true" type="tns:Value"/>
+
+  <xs:element name="WindowType" nillable="true" type="tns:WindowType"/>
+
+  <xs:element name="listOfDouble" nillable="true" type="xs:double"/>
+
+  <xs:complexType name="DataEvent">
+  	<xs:annotation>
+       <xs:appinfo>
+           <annox:annotate>
+               <!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->   
+               <ja:JsonTypeInfo use="NAME" include="PROPERTY" property="complexType"/>   
+           </annox:annotate>
+       </xs:appinfo>
+   </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertStatus" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="confid" type="xs:float" minOccurs="0"/>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="sequenceNum" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site" minOccurs="0"/>
+      <xs:element name="time" type="tns:OsacbmTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ErrorInfo">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Parameter">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GeneralParameter">
+    <xs:complexContent>
+      <xs:extension base="tns:Parameter">
+        <xs:sequence>
+          <xs:element name="datatype" type="tns:XmlDataType"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Site">
+    <xs:sequence>
+      <xs:element name="category" type="tns:SITE_CATEGORY"/>
+      <xs:element name="regId" type="xs:string" minOccurs="0"/>
+      <xs:element name="siteId" type="xs:string" minOccurs="0"/>
+      <xs:element name="systemUserTag" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OsacbmTime">
+    <xs:sequence>
+      <xs:element name="localTime" type="tns:LocalTime" minOccurs="0"/>
+      <xs:element name="time" type="xs:string"/>
+      <xs:element name="time_binary" type="xs:unsignedLong" minOccurs="0"/>
+      <xs:element name="time_type" type="tns:OsacbmTimeType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LocalTime">
+    <xs:sequence>
+      <xs:element name="dst" type="xs:boolean"/>
+      <xs:element name="hourDelta" type="xs:int"/>
+      <xs:element name="minDelta" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PADataEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:DataEvent">
+        <xs:sequence>
+          <xs:element name="itemPrognosis" type="tns:ItemPrognosis" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="prognosis" type="tns:AmbiguityGroup" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ItemPrognosis">
+    <xs:sequence>
+      <xs:element name="estUTC" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="item_id" type="tns:ItemId"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemId">
+    <xs:sequence>
+      <xs:element name="code" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="segOrAs" type="tns:SegOrAs"/>
+      <xs:element name="site" type="tns:Site"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FutureHealth">
+    <xs:complexContent>
+      <xs:extension base="tns:ItemPrognosis">
+        <xs:sequence>
+          <xs:element name="atRef" type="xs:double"/>
+          <xs:element name="error" type="xs:double" minOccurs="0"/>
+          <xs:element name="hlthGrade" type="xs:double"/>
+          <xs:element name="postConfid" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RUL">
+    <xs:complexContent>
+      <xs:extension base="tns:ItemPrognosis">
+        <xs:sequence>
+          <xs:element name="error" type="xs:double" minOccurs="0"/>
+          <xs:element name="postConfid" type="xs:double" minOccurs="0"/>
+          <xs:element name="rul" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RULDistrbn">
+    <xs:complexContent>
+      <xs:extension base="tns:ItemPrognosis">
+        <xs:sequence>
+          <xs:element name="cumulProbs" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="error" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="postConfids" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="ruls" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FutureHlthTrend">
+    <xs:complexContent>
+      <xs:extension base="tns:ItemPrognosis">
+        <xs:sequence>
+          <xs:element name="atRefs" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="errors" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="hlthGrades" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="postConfids" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AmbiguityGroup">
+    <xs:sequence>
+      <xs:element name="ambId" type="tns:MIMKey3"/>
+      <xs:element name="ambiguityType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="estStart" type="tns:OsacbmTime"/>
+      <xs:element name="logConnector" type="tns:LogicalConnector" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MIMKey3">
+    <xs:sequence>
+      <xs:element name="code" type="xs:unsignedInt"/>
+      <xs:element name="dbId" type="xs:unsignedInt"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LogicalConnector">
+    <xs:sequence>
+      <xs:element name="likelihood" type="xs:double" minOccurs="0"/>
+      <xs:element name="nodeEventExplanation" type="tns:Explanation" minOccurs="0"/>
+      <xs:element name="nodeId" type="xs:int"/>
+      <xs:element name="Metric" type="tns:Metric" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Explanation">
+    <xs:sequence>
+      <xs:element name="used" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExplanationSrcs">
+    <xs:complexContent>
+      <xs:extension base="tns:Explanation">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExplanationSrcsStr">
+    <xs:complexContent>
+      <xs:extension base="tns:Explanation">
+        <xs:sequence>
+          <xs:element name="strEntryPoints" type="tns:EntryPointStringified" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="EntryPointStringified">
+    <xs:sequence>
+      <xs:element name="epStr" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExplanationDataSet">
+    <xs:complexContent>
+      <xs:extension base="tns:Explanation">
+        <xs:sequence>
+          <xs:element name="explData" type="tns:ExplanationData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExplanationData">
+    <xs:sequence>
+      <xs:element name="explDataEventSets" type="tns:DataEventSet" maxOccurs="unbounded"/>
+      <xs:element name="explType" type="tns:MIMKey3"/>
+      <xs:element name="explTypeDesc" type="xs:string" minOccurs="0"/>
+      <xs:element name="resultDataRef" type="tns:DataRef" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DataEventSet">
+    <xs:sequence>
+      <xs:element name="alertStatus" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="dataEvents" type="tns:DataEvent" maxOccurs="unbounded"/>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="sequenceNum" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site"/>
+      <xs:element name="time" type="tns:OsacbmTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DataRef">
+    <xs:sequence>
+      <xs:element name="dataIdType" type="tns:DataIdType"/>
+      <xs:element name="dataType" type="tns:OsacbmDataType" minOccurs="0"/>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="itemId" type="tns:ItemId" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site"/>
+      <xs:element name="time" type="tns:OsacbmTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ExplanationDataRefSet">
+    <xs:complexContent>
+      <xs:extension base="tns:Explanation">
+        <xs:sequence>
+          <xs:element name="explDataRefs" type="tns:ExplanationDataRef" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExplanationDataRef">
+    <xs:sequence>
+      <xs:element name="explDataRefSrcs" type="tns:DataRef" maxOccurs="unbounded"/>
+      <xs:element name="explType" type="tns:MIMKey3"/>
+      <xs:element name="explTypeDesc" type="xs:string" minOccurs="0"/>
+      <xs:element name="resultDataRef" type="tns:DataRef" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Metric">
+    <xs:sequence>
+      <xs:element name="metricEU" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="metricId" type="tns:MIMKey3"/>
+      <xs:element name="value" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EngUnit">
+    <xs:sequence>
+      <xs:element name="abbrev" type="xs:string" minOccurs="0"/>
+      <xs:element name="code" type="xs:unsignedInt"/>
+      <xs:element name="dbId" type="xs:unsignedInt"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="refUnit" type="tns:RefUnit" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site"/>
+      <xs:element name="unitConv" type="tns:UnitConverter" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RefUnit">
+    <xs:sequence>
+      <xs:element name="id" type="tns:MIMKey1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MIMKey1">
+    <xs:sequence>
+      <xs:element name="code" type="xs:unsignedInt"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UnitConverter">
+    <xs:sequence>
+      <xs:element name="multiplier" type="xs:double"/>
+      <xs:element name="offset" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PropEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:LogicalConnector">
+        <xs:sequence>
+          <xs:element name="chgPattType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="criticality" type="xs:int" minOccurs="0"/>
+          <xs:element name="estEnd" type="tns:OsacbmTime" minOccurs="0"/>
+          <xs:element name="estStart" type="tns:OsacbmTime" minOccurs="0"/>
+          <xs:element name="eventType" type="tns:MIMKey3"/>
+          <xs:element name="funcs" type="tns:Function" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="hypEventType" type="tns:MIMKey3" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="itemId" type="tns:ItemId"/>
+          <xs:element name="name" type="xs:string" minOccurs="0"/>
+          <xs:element name="severityType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Function">
+    <xs:sequence>
+      <xs:element name="by_agent" type="tns:MIMKey2" minOccurs="0"/>
+      <xs:element name="func_db_id" type="xs:unsignedInt"/>
+      <xs:element name="func_db_site" type="tns:Site"/>
+      <xs:element name="item_id" type="tns:ItemId"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="seq" type="xs:unsignedInt"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MIMKey2">
+    <xs:sequence>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="NotConnector">
+    <xs:complexContent>
+      <xs:extension base="tns:LogicalConnector">
+        <xs:sequence>
+          <xs:element name="notArg" type="tns:LogicalConnector"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="OrConnector">
+    <xs:complexContent>
+      <xs:extension base="tns:LogicalConnector">
+        <xs:sequence>
+          <xs:element name="disjuncts" type="tns:LogicalConnector" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AndConnector">
+    <xs:complexContent>
+      <xs:extension base="tns:LogicalConnector">
+        <xs:sequence>
+          <xs:element name="conjuncts" type="tns:LogicalConnector" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AGDataEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:DataEvent">
+        <xs:sequence>
+          <xs:element name="itemRecommendation" type="tns:ItemRecommendation" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ItemRecommendation">
+    <xs:sequence>
+      <xs:element name="by" type="tns:MIMAgent" minOccurs="0"/>
+      <xs:element name="item_id" type="tns:ItemId"/>
+      <xs:element name="itemRecommendationRemark" type="tns:ItemRecommendationRemark" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="itemRequestForWork" type="tns:ItemRequestForWork" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="priority_type_code" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+      <xs:element name="utc_recommendation" type="tns:OsacbmTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MIMAgent">
+    <xs:sequence>
+      <xs:element name="agent_id" type="xs:unsignedInt"/>
+      <xs:element name="agent_site" type="tns:Site"/>
+      <xs:element name="agentType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="inputs" type="tns:PortRef" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="outputs" type="tns:PortRef" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="roles" type="tns:Role" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PortRef">
+    <xs:sequence>
+      <xs:element name="inPort" type="tns:Port" minOccurs="0"/>
+      <xs:element name="monitorId" type="tns:MonitorId"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Port">
+    <xs:sequence>
+      <xs:element name="config" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="lastUpdate" type="tns:OsacbmTime"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="osacbmDataType" type="tns:OsacbmDataType" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PAPort">
+    <xs:complexContent>
+      <xs:extension base="tns:Port">
+        <xs:sequence>
+          <xs:element name="by" type="tns:MIMAgent" minOccurs="0"/>
+          <xs:element name="refOrRulEU" type="tns:EngUnit" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMPort">
+    <xs:complexContent>
+      <xs:extension base="tns:Port">
+        <xs:sequence>
+          <xs:element name="alertRegs" type="tns:AlertRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="measLoc" type="tns:MeasLoc" minOccurs="0"/>
+          <xs:element name="phaseEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="types" type="tns:MimTypeDescriptors" minOccurs="0"/>
+          <xs:element name="valueEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="xAxisEU" type="tns:EngUnit" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AlertRegion">
+    <xs:sequence>
+      <xs:element name="alertType" type="tns:AlertType"/>
+      <xs:element name="regionName" type="xs:string" minOccurs="0"/>
+      <xs:element name="regionRef" type="tns:AlertRegionRef"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlertType">
+    <xs:sequence>
+      <xs:element name="alertName" type="xs:string" minOccurs="0"/>
+      <xs:element name="alertSeverity" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="alertTypeCode" type="xs:unsignedInt"/>
+      <xs:element name="alertTypeId" type="xs:unsignedInt"/>
+      <xs:element name="alertTypeSite" type="tns:Site"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlertRegionRef">
+    <xs:sequence>
+      <xs:element name="regionId" type="xs:unsignedInt"/>
+      <xs:element name="regionLastUpdate" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="regionSeq" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="regionSite" type="tns:Site" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlertRegion_CBM">
+    <xs:complexContent>
+      <xs:extension base="tns:AlertRegion">
+        <xs:sequence>
+          <xs:element name="amplEU" type="tns:EngUnit"/>
+          <xs:element name="bandDelay" type="xs:double" minOccurs="0"/>
+          <xs:element name="bandDelayEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="hiLowSideUsed" type="xs:boolean"/>
+          <xs:element name="hysteresisEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="maxAmpl" type="xs:double" minOccurs="0"/>
+          <xs:element name="maxAmplHysteresis" type="xs:double" minOccurs="0"/>
+          <xs:element name="maxInclusive" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="meas_loc_type" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="minAmpl" type="xs:double" minOccurs="0"/>
+          <xs:element name="minAmplHysteresis" type="xs:double" minOccurs="0"/>
+          <xs:element name="minInclusive" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="mloc_calc_type" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="regionEnum" type="tns:EnumValue" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="EnumValue">
+    <xs:sequence>
+      <xs:element name="enumEU" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="value" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MeasLoc">
+    <xs:sequence>
+      <xs:element name="measLocId" type="tns:MIMKey2"/>
+      <xs:element name="measLocType" type="tns:MIMKey3"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MeasLoc_MIM">
+    <xs:complexContent>
+      <xs:extension base="tns:MeasLoc">
+        <xs:sequence>
+          <xs:element name="asset" type="tns:MIMKey2" minOccurs="0"/>
+          <xs:element name="barCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="collect_duration" type="xs:int" minOccurs="0"/>
+          <xs:element name="collectEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="dataSrc" type="tns:DataSourceMeasInfo" minOccurs="0"/>
+          <xs:element name="mim_user_prefix" type="xs:string" minOccurs="0"/>
+          <xs:element name="segment" type="tns:MIMKey2" minOccurs="0"/>
+          <xs:element name="segOrAs" type="tns:SegOrAs"/>
+          <xs:element name="transd" type="tns:TransducerMeasInfo" minOccurs="0"/>
+          <xs:element name="update_interval" type="xs:double" minOccurs="0"/>
+          <xs:element name="updateEU" type="tns:EngUnit" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DataSourceMeasInfo">
+    <xs:sequence>
+      <xs:element name="dataSrcType" type="tns:MIMKey3"/>
+      <xs:element name="mCalcSize" type="xs:float" minOccurs="0"/>
+      <xs:element name="mLocCalcType" type="tns:MIMKey3" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TransducerMeasInfo">
+    <xs:sequence>
+      <xs:element name="mim_loc_seq" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="motion_direction" type="xs:string" minOccurs="0"/>
+      <xs:element name="ta_orient_deg" type="xs:int" minOccurs="0"/>
+      <xs:element name="transdType" type="tns:MIMKey3"/>
+      <xs:element name="trAxDirType" type="tns:MIMKey3" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MimTypeDescriptors">
+    <xs:sequence>
+      <xs:element name="postScalType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="srcDetectType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="windowType" type="tns:WindowType" minOccurs="0"/>
+      <xs:element name="xAxisMax" type="xs:double" minOccurs="0"/>
+      <xs:element name="xAxisMin" type="xs:double" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WindowType">
+    <xs:sequence>
+      <xs:element name="id" type="tns:MIMKey3"/>
+      <xs:element name="pf_multiplier" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HAPort">
+    <xs:complexContent>
+      <xs:extension base="tns:Port">
+        <xs:sequence>
+          <xs:element name="by" type="tns:MIMAgent" minOccurs="0"/>
+          <xs:element name="enumEU" type="tns:EngUnit" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDPort">
+    <xs:complexContent>
+      <xs:extension base="tns:Port">
+        <xs:sequence>
+          <xs:element name="alertRegs" type="tns:AlertRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="measLoc" type="tns:MeasLoc" minOccurs="0"/>
+          <xs:element name="measureEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="stateEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="itemEventConfig" type="tns:ItemEventConfig" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ItemEventConfig">
+    <xs:sequence>
+      <xs:element name="eventType" type="tns:MIMKey3"/>
+      <xs:element name="itemId" type="tns:ItemId"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DAPort">
+    <xs:complexContent>
+      <xs:extension base="tns:Port">
+        <xs:sequence>
+          <xs:element name="alertRegs" type="tns:AlertRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="measLoc" type="tns:MeasLoc" minOccurs="0"/>
+          <xs:element name="valueEU" type="tns:EngUnit" minOccurs="0"/>
+          <xs:element name="xAxisEU" type="tns:EngUnit" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AGPort">
+    <xs:complexContent>
+      <xs:extension base="tns:Port">
+        <xs:sequence>
+          <xs:element name="by" type="tns:MIMAgent" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MonitorId">
+    <xs:sequence>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="itemId" type="tns:ItemId" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site" minOccurs="0"/>
+      <xs:element name="type" type="tns:DataIdType"/>
+      <xs:element name="selectionFilter" type="tns:SelectionFilter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SelectionFilter">
+    <xs:annotation>
+       <xs:appinfo>
+           <annox:annotate>
+               <!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->   
+               <ja:JsonTypeInfo use="NAME" include="PROPERTY" property="complexType"/>   
+           </annox:annotate>
+       </xs:appinfo>
+   </xs:annotation>
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="AgentAlertFilter">
+    <xs:complexContent>
+      <xs:extension base="tns:SelectionFilter">
+        <xs:sequence>
+          <xs:element name="eventType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="itemId" type="tns:ItemId" minOccurs="0"/>
+          <xs:element name="severityType" type="tns:MIMKey3" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MeasLocAlertFilter">
+    <xs:complexContent>
+      <xs:extension base="tns:SelectionFilter">
+        <xs:sequence>
+          <xs:element name="alertSeverity" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="alertTypeCode" type="xs:unsignedInt" minOccurs="0"/>
+          <xs:element name="alertTypeId" type="xs:unsignedInt" minOccurs="0"/>
+          <xs:element name="alertTypeSite" type="tns:Site" minOccurs="0"/>
+          <xs:element name="regionEnum" type="tns:EnumValue" minOccurs="0"/>
+          <xs:element name="regionRef" type="tns:AlertRegionRef" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Role">
+    <xs:sequence>
+      <xs:element name="agentRoleType" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="tns:MIMKey2"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemRecommendationRemark">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="ord_seq" type="xs:unsignedInt" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemRequestForWork">
+    <xs:sequence>
+      <xs:element name="auto_approve" type="xs:string" minOccurs="0"/>
+      <xs:element name="end_after" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="end_before" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="interval_eu" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="long_description" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="rec_by" type="tns:MIMAgent" minOccurs="0"/>
+      <xs:element name="rec_gmt" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="rec_segment" type="tns:ItemId"/>
+      <xs:element name="repeat_interval" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="requestId" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="solution_package" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="start_after" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="start_before" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="to" type="tns:MIMAgent" minOccurs="0"/>
+      <xs:element name="work_manage_type" type="tns:MIMKey3"/>
+      <xs:element name="work_order" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="work_request" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="work_task_type" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HADataEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:DataEvent">
+        <xs:sequence>
+          <xs:element name="diagnosis" type="tns:AmbiguityGroup" minOccurs="0"/>
+          <xs:element name="healthGood" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="itemHealth" type="tns:ItemHealth" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ItemHealth">
+    <xs:sequence>
+      <xs:element name="chgPattType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="healthLevelType" type="tns:HlthLevelType" minOccurs="0"/>
+      <xs:element name="hGradeReal" type="xs:double" minOccurs="0"/>
+      <xs:element name="hLevel" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="item_id" type="tns:ItemId"/>
+      <xs:element name="likelihood" type="xs:double" minOccurs="0"/>
+      <xs:element name="utc_health" type="tns:OsacbmTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HlthLevelType">
+    <xs:sequence>
+      <xs:element name="health_scale" type="xs:unsignedShort"/>
+      <xs:element name="id" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DADataEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:DataEvent">
+        <xs:sequence>
+          <xs:element name="dataStatus" type="tns:DataStatus" minOccurs="0"/>
+          <xs:element name="numAlerts" type="tns:NumAlert" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NumAlert">
+    <xs:sequence>
+      <xs:element name="alertName" type="xs:string" minOccurs="0"/>
+      <xs:element name="alertSeverity" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="alertTypeCode" type="xs:unsignedInt"/>
+      <xs:element name="alertTypeId" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="alertTypeSite" type="tns:Site" minOccurs="0"/>
+      <xs:element name="hiSideAlert" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="lastTrigger" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="regionEnum" type="tns:EnumValue" minOccurs="0"/>
+      <xs:element name="regionRef" type="tns:AlertRegionRef" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DAInt">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DAValueDataSeq">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="values" type="tns:Value"/>
+          <xs:element name="xAxisDeltas" type="tns:Value"/>
+          <xs:element name="xAxisStart" type="tns:Value" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Value">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="CharValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="BooleanValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CmplxArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="imagValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="realValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="LongArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:long" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ByteArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:byte" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="IntArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ByteValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:byte"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="StringValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ShortArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:short" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="IntValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="StringArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ComplexValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="imagValue" type="xs:double"/>
+          <xs:element name="realValue" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DoubleValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FloatArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:float" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DblArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CharArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="BooleanArrayValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="values" type="xs:boolean" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="FloatValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:float"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ShortValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="LongValue">
+    <xs:complexContent>
+      <xs:extension base="tns:Value">
+        <xs:sequence>
+          <xs:element name="value" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DAWaveform">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="values" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="valuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="valuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDelta" type="xs:double"/>
+          <xs:element name="xAxisStart" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DAValueWaveform">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="values" type="tns:Value"/>
+          <xs:element name="xAxisDelta" type="tns:Value"/>
+          <xs:element name="xAxisStart" type="tns:Value" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DADataSeq">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="values" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="valuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="valuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDeltas" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="xAxisDeltasList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="xAxisDeltasBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisStart" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DAReal">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DAVector">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+          <xs:element name="xValue" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DAString">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DABLOBData">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="mEventBlobType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="value" type="tns:BLOB"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="BLOB">
+    <xs:sequence>
+      <xs:element name="contentType" type="tns:Mime"/>
+      <xs:element name="dataBinary" type="xs:base64Binary" minOccurs="0"/>
+      <xs:element name="data" type="xs:byte" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Mime">
+    <xs:sequence>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DABool">
+    <xs:complexContent>
+      <xs:extension base="tns:DADataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMDataEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:DataEvent">
+        <xs:sequence>
+          <xs:element name="dataStatus" type="tns:DataStatus" minOccurs="0"/>
+          <xs:element name="numAlerts" type="tns:NumAlert" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RealFrqSpect">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="realValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="realValuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="realValuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDelta" type="xs:double"/>
+          <xs:element name="xAxisMin" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMDataSeq">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="values" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="valuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="valuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDeltas" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="xAxisDeltasList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="xAxisDeltasBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisStart" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CPB">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="bndWidth" type="xs:double"/>
+          <xs:element name="cntrBnd1Hz" type="xs:double"/>
+          <xs:element name="cpbBndType" type="tns:BndType"/>
+          <xs:element name="values" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="valuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="valuesBinary" type="xs:base64Binary" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CmplxFrqSpect">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="imagValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="imagValuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="imagValuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="realValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="realValuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="realValuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDelta" type="xs:double"/>
+          <xs:element name="xAxisMin" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMVector">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+          <xs:element name="xValue" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMInt">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="UserDef">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="tns:Data"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Data">
+    <xs:sequence>
+      <xs:element name="compositeData" type="tns:Data" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="dataType" type="tns:DataType" minOccurs="0"/>
+      <xs:element name="time" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="value" type="tns:Value" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DataType">
+    <xs:sequence>
+      <xs:element name="dataType" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="id" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RealWaveform">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="realValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="realValuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="realValuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDelta" type="xs:double"/>
+          <xs:element name="xAxisStart" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMBool">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CmplxWaveform">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="imagValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="imagValuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="imagValuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="realValues" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="realValuesList" minOccurs="0">
+            <xs:simpleType>
+              <xs:list itemType="xs:double"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="realValuesBinary" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="xAxisDelta" type="xs:double"/>
+          <xs:element name="xAxisStart" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMBLOBData">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="mEventBlobType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="value" type="tns:BLOB"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DMReal">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Ampl">
+    <xs:complexContent>
+      <xs:extension base="tns:DMDataEvent">
+        <xs:sequence>
+          <xs:element name="phase" type="xs:double" minOccurs="0"/>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDDataEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:DataEvent">
+        <xs:sequence>
+          <xs:element name="dataStatus" type="tns:DataStatus" minOccurs="0"/>
+          <xs:element name="numAlerts" type="tns:NumAlert" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDTestInt">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="evaluation" type="tns:EnumValue"/>
+          <xs:element name="measure" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDReal">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDBool">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="itemEvents" type="tns:ItemEvent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ItemEvent">
+    <xs:sequence>
+      <xs:element name="eventStart" type="tns:OsacbmTime"/>
+      <xs:element name="eventStop" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="eventType" type="tns:MIMKey3"/>
+      <xs:element name="itemId" type="tns:ItemId"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+      <xs:element name="itemEventChar" type="tns:ItemEventChar" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="itemEventNumInt" type="tns:ItemEventNumInt" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="itemEventNumReal" type="tns:ItemEventNumReal" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="itemEventBLOB" type="tns:ItemEventBLOB" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemEventChar">
+    <xs:sequence>
+      <xs:element name="dataValue" type="xs:string"/>
+      <xs:element name="engUnit" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="evCharDataType" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemEventNumInt">
+    <xs:sequence>
+      <xs:element name="dataValue" type="xs:int"/>
+      <xs:element name="engUnit" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="evNumDataType" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemEventNumReal">
+    <xs:sequence>
+      <xs:element name="dataValue" type="xs:double"/>
+      <xs:element name="engUnit" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="evNumDataType" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemEventBLOB">
+    <xs:sequence>
+      <xs:element name="assocFileName" type="xs:string" minOccurs="0"/>
+      <xs:element name="blobContentType" type="tns:MIMKey3"/>
+      <xs:element name="blobDataType" type="tns:MIMKey3"/>
+      <xs:element name="image_data" type="tns:BLOB"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="ordSeq" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SDInt">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDTestReal">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="evaluation" type="tns:EnumValue"/>
+          <xs:element name="measure" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDEnumSet">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="values" type="tns:SDEnumSetDataItem" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SDEnumSetDataItem">
+    <xs:sequence>
+      <xs:element name="tag" type="xs:string" minOccurs="0"/>
+      <xs:element name="value" type="tns:EnumValue" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SDEnum">
+    <xs:complexContent>
+      <xs:extension base="tns:SDDataEvent">
+        <xs:sequence>
+          <xs:element name="value" type="tns:EnumValue"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Algorithm">
+    <xs:sequence>
+      <xs:element name="algorithmOutputs" type="tns:AlgorithmOutput" maxOccurs="unbounded"/>
+      <xs:element name="algorithmType" type="tns:MIMKey3"/>
+      <xs:element name="algProcType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="tns:MIMKey3"/>
+      <xs:element name="inputValues" type="tns:AlgorithmInputValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="inputData" type="tns:AlgorithmInputData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="models" type="tns:AlgorithmModel" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="procBdType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="processDesc" type="xs:string" minOccurs="0"/>
+      <xs:element name="processDescBinary" type="xs:byte" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="startTime" type="tns:OsacbmTime"/>
+      <xs:element name="URIaprocType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="URIbdType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="URIprocessDesc" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+      <xs:element name="verNum" type="xs:unsignedInt"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmOutput">
+    <xs:sequence>
+      <xs:element name="argId" type="xs:unsignedInt"/>
+      <xs:element name="desc" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="outputEu" type="tns:EngUnit"/>
+      <xs:element name="outputRef" type="tns:MonitorId"/>
+      <xs:element name="startTime" type="tns:OsacbmTime"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmInputValue">
+    <xs:sequence>
+      <xs:element name="argId" type="xs:unsignedInt"/>
+      <xs:element name="constant" type="xs:boolean"/>
+      <xs:element name="desc" type="xs:string" minOccurs="0"/>
+      <xs:element name="eu" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="lastUpdate" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+      <xs:element name="compositeValues" type="tns:AlgorithmInputValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmInputChar">
+    <xs:complexContent>
+      <xs:extension base="tns:AlgorithmInputValue">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmInputInt">
+    <xs:complexContent>
+      <xs:extension base="tns:AlgorithmInputValue">
+        <xs:sequence>
+          <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmInputReal">
+    <xs:complexContent>
+      <xs:extension base="tns:AlgorithmInputValue">
+        <xs:sequence>
+          <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmInputData">
+    <xs:sequence>
+      <xs:element name="argId" type="xs:unsignedInt"/>
+      <xs:element name="dataContentType" type="tns:MIMKey3" minOccurs="0"/>
+      <xs:element name="desc" type="xs:string" minOccurs="0"/>
+      <xs:element name="expectedDataType" type="tns:OsacbmDataType" minOccurs="0"/>
+      <xs:element name="expectedEu" type="tns:EngUnit"/>
+      <xs:element name="inputRef" type="tns:MonitorId"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmModel">
+    <xs:sequence>
+      <xs:element name="alg_model_id" type="xs:unsignedInt"/>
+      <xs:element name="algNameForModel" type="xs:string" minOccurs="0"/>
+      <xs:element name="comp_model_id" type="tns:MIMKey3"/>
+      <xs:element name="desc" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastUpdate" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="manufacturer" type="tns:MIMKey3"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AppChange">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AppInfo">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AppRequest">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Asset">
+    <xs:complexContent>
+      <xs:extension base="tns:Item">
+        <xs:sequence>
+          <xs:element name="assetInfo" type="tns:AssetInfo" minOccurs="0"/>
+          <xs:element name="assetType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="serialNo" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element name="id" type="tns:MIMKey2"/>
+      <xs:element name="userTag" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AssetInfo">
+    <xs:sequence>
+      <xs:element name="dataSource" type="tns:DataSource" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="transd" type="tns:Transducer" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DataSource">
+    <xs:sequence>
+      <xs:element name="dataSrcType" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Transducer">
+    <xs:sequence>
+      <xs:element name="calibEU" type="tns:EngUnit" minOccurs="0"/>
+      <xs:element name="lastCalib" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="outAmpl" type="xs:double" minOccurs="0"/>
+      <xs:element name="outEU" type="tns:EngUnit"/>
+      <xs:element name="selfPowered" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="transdType" type="tns:MIMKey3"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Segment">
+    <xs:complexContent>
+      <xs:extension base="tns:Item">
+        <xs:sequence>
+          <xs:element name="segmentType" type="tns:MIMKey3" minOccurs="0"/>
+          <xs:element name="segmGroup" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ConfigRequest">
+    <xs:sequence>
+      <xs:element name="mList" type="tns:MonitorIdGroup" minOccurs="0"/>
+      <xs:element name="rtnAll" type="xs:boolean"/>
+      <xs:element name="rtnConfigRequest" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="rtnModDesc" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="specialReq" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MonitorIdGroup">
+    <xs:sequence>
+      <xs:element name="alertFilter" type="tns:ALERT_FILTER_SETTING" minOccurs="0"/>
+      <xs:element name="dataEventSetId" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="site" type="tns:Site"/>
+      <xs:element name="monitorId" type="tns:MonitorId" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="timeSelect" type="tns:TimeSelect" minOccurs="0"/>
+      <xs:element name="sequenceSelect" type="tns:SequenceSelect" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TimeSelect">
+    <xs:sequence>
+      <xs:element name="decimate" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="snapshotEnd" type="xs:int" minOccurs="0"/>
+      <xs:element name="snapshotStart" type="xs:int" minOccurs="0"/>
+      <xs:element name="timeEnd" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="timeStart" type="tns:OsacbmTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SequenceSelect">
+    <xs:sequence>
+      <xs:element name="sequenceNumEnd" type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name="sequenceNumStart" type="xs:unsignedInt" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Configuration">
+    <xs:sequence>
+      <xs:element name="algorithms" type="tns:Algorithm" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="inportModuleSet" type="tns:ModuleRef" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="moduleId" type="tns:ModuleDescriptor" maxOccurs="unbounded"/>
+      <xs:element name="outPortSet" type="tns:OutPortSet" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="supportingData" type="tns:SupportingData" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModuleRef">
+    <xs:sequence>
+      <xs:element name="chType" type="tns:ChannelType" minOccurs="0"/>
+      <xs:element name="inportRefs" type="tns:PortRef" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="modId" type="tns:MIMKey2"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModuleDescriptor">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="modIdCode" type="xs:int"/>
+      <xs:element name="modIdSite" type="tns:Site"/>
+      <xs:element name="modName" type="xs:string" minOccurs="0"/>
+      <xs:element name="modTag" type="xs:string"/>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OutPortSet">
+    <xs:sequence>
+      <xs:element name="id" type="xs:unsignedInt"/>
+      <xs:element name="lastUpdate" type="tns:OsacbmTime" minOccurs="0"/>
+      <xs:element name="outPorts" type="tns:Port" maxOccurs="unbounded"/>
+      <xs:element name="site" type="tns:Site"/>
+      <xs:element name="templateSite" type="tns:Site" minOccurs="0"/>
+      <xs:element name="verId" type="xs:unsignedInt"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SupportingData">
+    <xs:sequence>
+      <xs:element name="agents" type="tns:MIMAgent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="funcs" type="tns:Function" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="items" type="tns:Item" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ControlChange">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ControlInfo">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ControlRequest">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EPSStatus">
+    <xs:sequence>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ErrorRequest">
+    <xs:sequence>
+      <xs:element name="parameters" type="tns:Parameter" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemAlertRegions">
+    <xs:sequence>
+      <xs:element name="alertRegs" type="tns:AlertRegion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="itemId" type="tns:ItemId"/>
+      <xs:element name="monitorType" type="tns:MIMKey3" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MonitorIdGroupList">
+    <xs:sequence>
+      <xs:element name="monitorIdGroup" type="tns:MonitorIdGroup" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="XmlDataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="boolean"/>
+      <xs:enumeration value="dateTime"/>
+      <xs:enumeration value="decimal"/>
+      <xs:enumeration value="double"/>
+      <xs:enumeration value="float"/>
+      <xs:enumeration value="integer"/>
+      <xs:enumeration value="string"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SITE_CATEGORY">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SITE_ZERO"/>
+      <xs:enumeration value="SITE_SPECIFIC"/>
+      <xs:enumeration value="SITE_PLAT"/>
+      <xs:enumeration value="SITE_TEMPLATE"/>
+      <xs:enumeration value="SITE_ENT_ZERO"/>
+      <xs:enumeration value="SITE_ZERO_ONE"/>
+      <xs:enumeration value="SITE_ZERO_TWO"/>
+      <xs:enumeration value="SITE_PLAT_TRNG_DATA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OsacbmTimeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OSACBM_TIME_MIMOSA"/>
+      <xs:enumeration value="OSACBM_TIME_POSIX_NSEC_8"/>
+      <xs:enumeration value="OSACBM_TIME_POSIX_USEC_8"/>
+      <xs:enumeration value="OSACBM_TIME_POSIX_USEC_6"/>
+      <xs:enumeration value="OSACBM_TIME_POSIX_MSEC_6"/>
+      <xs:enumeration value="OSACBM_TIME_POSIX_SEC_4"/>
+      <xs:enumeration value="OSACBM_TIME_TICK_NSEC"/>
+      <xs:enumeration value="OSACBM_TIME_TICK_USEC"/>
+      <xs:enumeration value="OSACBM_TIME_TICK_MSEC"/>
+      <xs:enumeration value="OSACBM_TIME_SYSTEM_TICK"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SegOrAs">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SEGMENT"/>
+      <xs:enumeration value="ASSET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DataIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="meas_location"/>
+      <xs:enumeration value="agent_id"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OsacbmDataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="InvalidUnsetType"/>
+      <xs:enumeration value="DAWaveform"/>
+      <xs:enumeration value="DABLOBData"/>
+      <xs:enumeration value="DAVector"/>
+      <xs:enumeration value="DADataSeq"/>
+      <xs:enumeration value="DAReal"/>
+      <xs:enumeration value="DAInt"/>
+      <xs:enumeration value="DABool"/>
+      <xs:enumeration value="DMAmpl"/>
+      <xs:enumeration value="DMVector"/>
+      <xs:enumeration value="DMRealFrqSpect"/>
+      <xs:enumeration value="DMCmplxFrqSpect"/>
+      <xs:enumeration value="DMCPB"/>
+      <xs:enumeration value="DMReal"/>
+      <xs:enumeration value="DMInt"/>
+      <xs:enumeration value="DMBool"/>
+      <xs:enumeration value="DMRealWaveform"/>
+      <xs:enumeration value="DMCmplxWaveform"/>
+      <xs:enumeration value="DMDataSeq"/>
+      <xs:enumeration value="DMUserDef"/>
+      <xs:enumeration value="SDReal"/>
+      <xs:enumeration value="SDInt"/>
+      <xs:enumeration value="SDBool"/>
+      <xs:enumeration value="SDEnum"/>
+      <xs:enumeration value="HADataEvent"/>
+      <xs:enumeration value="PADataEvent"/>
+      <xs:enumeration value="PARUL"/>
+      <xs:enumeration value="PARULDist"/>
+      <xs:enumeration value="PAFutureHlth"/>
+      <xs:enumeration value="PAFutureHlthTrend"/>
+      <xs:enumeration value="AGDataEvent"/>
+      <xs:enumeration value="DAUnknown"/>
+      <xs:enumeration value="DMUnknown"/>
+      <xs:enumeration value="SDUnknown"/>
+      <xs:enumeration value="HAUnknown"/>
+      <xs:enumeration value="PAUnknown"/>
+      <xs:enumeration value="AGUnknown"/>
+      <xs:enumeration value="DAInvalid"/>
+      <xs:enumeration value="DMInvalid"/>
+      <xs:enumeration value="SDInvalid"/>
+      <xs:enumeration value="HAInvalid"/>
+      <xs:enumeration value="PAInvalid"/>
+      <xs:enumeration value="AGInvalid"/>
+      <xs:enumeration value="DEUser"/>
+      <xs:enumeration value="SDEnumSet"/>
+      <xs:enumeration value="SDTestReal"/>
+      <xs:enumeration value="SDTestInt"/>
+      <xs:enumeration value="DMBLOBData"/>
+      <xs:enumeration value="DAString"/>
+      <xs:enumeration value="SDEvent"/>
+      <xs:enumeration value="DAValueWaveform"/>
+      <xs:enumeration value="DAValueDataSeq"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DataStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="FAILED"/>
+      <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="NOT_USED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BndType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="octave"/>
+      <xs:enumeration value="percent"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ALERT_FILTER_SETTING">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL_EVENTS"/>
+      <xs:enumeration value="ALERT_EVENTS_ONLY"/>
+      <xs:enumeration value="CHANGED_VALUE_EVENTS"/>
+      <xs:enumeration value="NO_EVENTS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ChannelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MODULE_DEFAULT"/>
+      <xs:enumeration value="RTN_ON_REQUEST"/>
+      <xs:enumeration value="RTN_ALL"/>
+      <xs:enumeration value="RTN_ALERTS"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/strategy"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:strategy="http://ge.com/predix/entity/strategy"
+	xmlns:strategyDetail="http://ge.com/predix/entity/strategydetail"
+	xmlns:Q1="http://ge.com/predix/entity/action"
+	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:strategyIdentifier="http://ge.com/predix/entity/strategy/identifier/strategyidentifier">
+
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://ge.com/predix/entity/util/map">
+	</import>
+	<import schemaLocation="../strategydetail/strategydetail.xsd"
+		namespace="http://ge.com/predix/entity/strategydetail">
+	</import>
+	<import schemaLocation="identifier/strategyidentifier.xsd" namespace="http://ge.com/predix/entity/strategy/identifier/strategyidentifier"></import>
+	<complexType name="Strategy">
+		<sequence>
+            <element name="strategyIdentifier" type="strategyIdentifier:StrategyIdentifier" minOccurs="1"></element>
+            <element ref="strategy:strategyType" minOccurs="0"></element>
+			<element name="sequence" type="int" minOccurs="0"></element>
+			<element name="strategyFactory" type="string" minOccurs="0"></element>
+			<element name="strategyName" type="string" minOccurs="1"></element>
+			<element name="strategyDetail"
+				type="strategyDetail:StrategyDetail" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element ref="map:map" minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	<element name="strategy" type="strategy:Strategy"></element>
+
+	<complexType name="StrategyList">
+		<sequence>
+			<element ref="strategy:strategy" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="strategyList" type="strategy:StrategyList" />
+
+	<complexType name="StrategyType">
+		<sequence>
+			<element name="strategyTypeEnum"
+				type="strategy:StrategyTypeEnum" minOccurs="1">
+			</element>
+			<element name="otherValue" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="strategyType" type="strategy:StrategyType"></element>
+
+	<complexType name="StrategyTypeList">
+		<sequence>
+			<element ref="strategy:strategyType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="strategyTypeList" type="strategy:StrategyTypeList" />
+
+	<simpleType name="StrategyTypeEnum">
+		<restriction base="string">
+			<enumeration value="RETRIEVAL" />
+			<enumeration value="STORAGE" />
+			<enumeration value="CREATE" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+</schema>
