@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/identifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:identifier="http://ge.com/predix/entity/identifier"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:annox="http://annox.dev.java.net"
+	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0">
+
+	<complexType name="Identifier">
+		<annotation>
+			<appinfo>
+				<annox:annotate>
+					<!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->
+					<ja:JsonTypeInfo use="NAME" include="PROPERTY"
+						property="complexType" />
+				</annox:annotate>
+			</appinfo>
+		</annotation>
+		<sequence>
+			<element name="id" type="anySimpleType" minOccurs="0"></element>
+			<element name="name" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="identifier" type="identifier:Identifier"></element>
+
+	<complexType name="IdentifierList">
+		<sequence>
+			<element ref="identifier:identifier" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="identifierList" type="identifier:IdentifierList" />
+
+</schema>

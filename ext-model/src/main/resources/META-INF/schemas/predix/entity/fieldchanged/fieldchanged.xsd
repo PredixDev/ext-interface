@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/fieldchanged"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:fieldChanged="http://ge.com/predix/entity/fieldchanged"
+	xmlns:map="http://ge.com/predix/entity/util/map"
+	xmlns:eventAsset="http://ge.com/predix/entity/eventAsset"
+	xmlns:fieldIdentifierValue="http://ge.com/predix/entity/fieldidentifiervalue">
+
+	<!--  This is XSD for FieldChanged which has properties specific to Field Change Event 
+		
+		1.	solutionIdentifier - SolutuionId for example Water
+		2.  fieldIdentifierList - FieldIdentifierList , which has List<FieldIdentifier> Temp
+		3.  assetList - AssetList which has List<Asset> 
+		4.  externalContext - Any Context related - breadcrumps
+		5.  timeChanged   - Breadcrump passed through for example to Asset handler
+	-->
+
+	<import
+		schemaLocation="../eventasset/eventasset.xsd"
+		namespace="http://ge.com/predix/entity/eventAsset">
+	</import>
+
+	<import
+		schemaLocation="../fieldIdentifierValue/fieldidentifiervalue.xsd"
+		namespace="http://ge.com/predix/entity/fieldidentifiervalue">
+	</import>
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+	<complexType name="FieldChanged">
+		<sequence>
+			<element ref="eventAsset:assetList" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element ref="fieldIdentifierValue:fieldIdentifierValueList"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="timeChanged" type="dateTime" minOccurs="0"></element>
+
+			<element ref="map:externalAttributeMap" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<element name="fieldChanged" type="fieldChanged:FieldChanged"></element>
+
+	<!--  This is XSD for FieldChangedList which has List<FieldChanged> Object-->
+
+	<complexType name="FieldChangedList">
+		<sequence>
+			<element ref="fieldChanged:fieldChanged" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldChangedList"
+		type="fieldChanged:FieldChangedList" />
+
+
+	<simpleType name="FieldTypeEnum">
+		<restriction base="string">
+			<enumeration value="ASSETMODEL" />
+			<enumeration value="PARAMETERMODEL" />
+			<enumeration value="PARAMETER" />
+			<enumeration value="ASSETDATA" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+
+
+</schema>

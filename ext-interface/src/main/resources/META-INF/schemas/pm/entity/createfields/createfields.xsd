@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ge.com/predix/fielddatahandler/entity/createfields"
+	xmlns:createFields="http://ge.com/predix/fielddatahandler/entity/createfields"
+	xmlns:fieldCriteria="http://ge.com/predix/fielddatahandler/entity/fieldcriteria"
+	xmlns:resultInfo="http://ge.com/predix/entity/resultinfo" xmlns:field="http://ge.com/predix/entity/field"
+	xmlns:modelField="http://ge.com/predix/entity/modelfield"
+	xmlns:eventAsset="http://ge.com/predix/entity/eventAsset">
+
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/resultinfo/resultinfo.xsd"
+		namespace="http://ge.com/predix/entity/resultinfo">
+	</import>
+
+
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/modelfield/modelfield.xsd"
+		namespace="http://ge.com/predix/entity/modelfield">
+	</import>
+	<import
+		schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/eventasset/eventasset.xsd"
+		namespace="http://ge.com/predix/entity/eventAsset">
+	</import>
+	<import schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/field/field.xsd" namespace="http://ge.com/predix/entity/field"></import>
+	<element name="createFieldsRequest">
+		<complexType>
+			<sequence>
+				<element ref="modelField:modelField" minOccurs="0" maxOccurs="unbounded"></element>
+				<element ref="eventAsset:asset" minOccurs="0" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<element name="createFieldsResult">
+		<complexType>
+			<sequence>
+				<element ref="resultInfo:resultInfo" minOccurs="1"></element>
+				<element ref="field:field" minOccurs="0" maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
+

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+        xmlns:fieldDataHandler="http://ge.com/predix/fielddatahandler/service"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://ge.com/predix/fielddatahandler/service"
+        xmlns:xsd1="http://ge.com/predix/entity/getfields"
+        xmlns:xsd2="http://ge.com/predix/entity/getfieldvalues"
+        xmlns:xsd3="http://ge.com/predix/entity/getfielddata"
+        xmlns:xsd4="http://ge.com/predix/entity/putfielddata"
+        xmlns:xsd5="http://ge.com/predix/entity/getassets"
+        xmlns:xsd6="http://ge.com/predix/entity/getassetselector"
+        xmlns:xsd7="http://ge.com/predix/fielddatahandler/entity/createfields"
+        >
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import
+                    namespace="http://ge.com/predix/entity/getfielddata"
+                    schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/getfielddata/getfielddata.xsd">
+            </xsd:import>
+            <xsd:import
+                    namespace="http://ge.com/predix/entity/putfielddata"
+                    schemaLocation="../../../../../../../../../ext-model/src/main/resources/META-INF/schemas/predix/entity/putfielddata/putfielddata.xsd">
+            </xsd:import>
+            <xsd:import
+                    namespace="http://ge.com/predix/fielddatahandler/entity/createfields"
+                    schemaLocation="../../entity/createfields/createfields.xsd">
+            </xsd:import>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="getFieldDataRequest">
+        <wsdl:part name="parameters" element="xsd3:getFieldDataRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getFieldDataResponse">
+        <wsdl:part name="parameters" element="xsd3:getFieldDataResult"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="putFieldDataRequest">
+        <wsdl:part name="parameters" element="xsd4:putFieldDataRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="putFieldDataResponse">
+        <wsdl:part name="parameters" element="xsd4:putFieldDataResult"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createFieldsRequest">
+        <wsdl:part name="parameters" element="xsd7:createFieldsRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createFieldsResponse">
+        <wsdl:part name="parameters" element="xsd7:createFieldsResult"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="fielddatahandler">
+        <wsdl:operation name="getFieldData">
+            <wsdl:input message="fieldDataHandler:getFieldDataRequest">
+            </wsdl:input>
+            <wsdl:output message="fieldDataHandler:getFieldDataResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="putFieldData">
+            <wsdl:input message="fieldDataHandler:putFieldDataRequest">
+            </wsdl:input>
+            <wsdl:output message="fieldDataHandler:putFieldDataResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createFields">
+            <wsdl:input message="fieldDataHandler:createFieldsRequest"></wsdl:input>
+            <wsdl:output message="fieldDataHandler:createFieldsResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="fielddatahandlerSOAP" type="fieldDataHandler:fielddatahandler">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="getFieldData">
+            <wsdl:documentation>This entry point to the service will return the values for the list of fields given selection criteria
+                for the fields. One use is to get specific fields values to be input to the analytics at runtime.</wsdl:documentation>
+            <soap:operation soapAction="http://ge.com/predix/service/fielddatahandler/GetFieldData" />
+            <wsdl:input><soap:body use="literal" /></wsdl:input>
+            <wsdl:output><soap:body use="literal" /></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="putFieldData">
+            <wsdl:documentation>This entry point to the service writes field values back to the persistent storage.</wsdl:documentation>
+            <soap:operation soapAction="http://ge.com/predix/service/fielddatahandler/PutFieldData" />
+            <wsdl:input><soap:body use="literal" /></wsdl:input>
+            <wsdl:output><soap:body use="literal" /></wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="fielddatahandler">
+        <wsdl:port binding="fieldDataHandler:fielddatahandlerSOAP"
+                   name="fielddatahandlerSOAP">
+            <soap:address location="http://ge.com/predix/service/fielddatahandler/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

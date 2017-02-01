@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/engunit"
+	xmlns:engUnit="http://ge.com/predix/entity/engunit"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<complexType name="EngUnit">
+		<sequence>
+			<element name="code" type="string" />
+			<element name="name" type="string" minOccurs="0" />
+		</sequence>
+	</complexType>
+	<element name="engUnit" type="engUnit:EngUnit"></element>
+
+</schema>

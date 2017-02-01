@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/field"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:field="http://ge.com/predix/entity/field"
+	xmlns:attributeDef="http://ge.com/predix/entity/attributedef"
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier"
+	>
+
+
+	<import schemaLocation="../attributedef/attributedef.xsd"
+		namespace="http://ge.com/predix/entity/attributedef">
+	</import>
+	<import schemaLocation="identifier/fieldidentifier.xsd"
+		namespace="http://ge.com/predix/entity/field/fieldidentifier">
+	</import>
+	<complexType name="Field">
+		<sequence>
+			<element ref="fieldIdentifier:fieldIdentifier"
+				minOccurs="1">
+			</element>
+
+            <element name="fieldType" type="string" minOccurs="0" maxOccurs="1"></element>
+            <element ref="field:parents" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+			<element ref="attributeDef:attributeDef" minOccurs="0"
+				maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="field" type="field:Field"></element>
+
+	<complexType name="FieldList">
+		<sequence>
+			<element ref="field:field" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="fieldList" type="field:FieldList" />
+	<element name="parents" type="field:Field" />
+
+
+
+	<complexType name="SearchType">
+		<sequence>
+			<element name="searchTypeEnum"
+				type="field:SearchTypeEnum" minOccurs="1">
+			</element>
+			<element name="otherValue" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="searchType" type="field:SearchType"></element>
+
+	<simpleType name="SearchTypeEnum">
+		<restriction base="string">
+			<enumeration value="FIELDINFO" />
+			<enumeration value="INNERFIELDS" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+</schema>

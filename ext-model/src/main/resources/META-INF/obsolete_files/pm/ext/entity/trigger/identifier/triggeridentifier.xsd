@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/trigger/triggeridentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:triggerIdentifier="http://ge.com/predix/entity/trigger/triggeridentifier"
+	xmlns:attribute="http://ge.com/predix/entity/attribute"
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" 
+		namespace="http://ge.com/predix/entity/identifier"></import>
+		
+	<complexType name="TriggerIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="triggerIdentifier"
+		type="triggerIdentifier:TriggerIdentifier">
+	</element>
+
+	<complexType name="TriggerIdentifierList">
+		<sequence>
+			<element ref="triggerIdentifier:triggerIdentifier"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="triggerIdentifierList"
+		type="triggerIdentifier:TriggerIdentifierList" />
+
+</schema>

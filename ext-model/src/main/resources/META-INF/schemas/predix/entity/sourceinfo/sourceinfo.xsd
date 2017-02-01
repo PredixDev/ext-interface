@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/sourceinfo" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sourceInfo="http://ge.com/predix/entity/sourceinfo"
+	xmlns:field="http://ge.com/predix/entity/field" xmlns:strategy="http://ge.com/predix/entity/strategy"
+	xmlns:sourceInfoIdentifier="http://ge.com/predix/entity/sourceinfo/sourceinfoidentifier"
+	xmlns:property="http://ge.com/predix/entity/property" xmlns:source="http://ge.com/predix/entity/source" xmlns:map="http://ge.com/predix/entity/util/map" xmlns:Q1="http://ge.com/predix/entity/attribute">
+
+
+	<import schemaLocation="identifier/sourceinfoidentifier.xsd"
+		namespace="http://ge.com/predix/entity/sourceinfo/sourceinfoidentifier">
+	</import>
+	<import schemaLocation="../property/property.xsd" namespace="http://ge.com/predix/entity/property"></import>
+	<import schemaLocation="../source/source.xsd" namespace="http://ge.com/predix/entity/source"></import>
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+	<complexType name="SourceInfo">
+		<sequence>
+			<element ref="sourceInfoIdentifier:sourceInfoIdentifier" minOccurs="0" maxOccurs="1"></element>
+			<element name="source" type="source:Source" minOccurs="0"></element>
+			<element name="property" type="property:Property" minOccurs="0"></element>
+			<element name="alias" type="string" minOccurs="0"></element>
+			<element name="primaryKeyProperty" type="property:Property" minOccurs="0"></element>
+			<element name="timeProperty" type="property:Property" minOccurs="0"></element>
+			<element name="joinProperty" type="string" minOccurs="0"></element>
+			<element name="sourcecodeProperty" type="property:Property" minOccurs="0"></element>
+			<element name="referenceProperty" type="property:Property" minOccurs="0"></element>
+			<element name="discriminatorPropertyName" type="string" minOccurs="0"></element>
+			<element name="discriminatorValue" type="string" minOccurs="0"></element>
+			<element name="queryDetail" type="string" minOccurs="0"></element>
+			<element name="updateDetail" type="string" minOccurs="0"></element>
+			<element ref="map:map" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<element name="sourceInfo" type="sourceInfo:SourceInfo"></element>
+
+	<complexType name="SourceInfoList">
+		<sequence>
+			<element ref="sourceInfo:sourceInfo" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="sourceInfoList" type="sourceInfo:SourceInfoList" />
+</schema>

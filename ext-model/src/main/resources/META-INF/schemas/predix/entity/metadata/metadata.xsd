@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ge.com/predix/entity/metadata"
+	xmlns:metadata="http://ge.com/predix/entity/metadata"
+	xmlns:field="http://ge.com/predix/entity/field"
+	xmlns:strategy="http://ge.com/predix/entity/strategy"
+	xmlns:sourceInfo="http://ge.com/predix/entity/sourceinfo"
+	xmlns:appIdentifier="http://ge.com/predix/entity/app/appidentifier"
+	xmlns:tenantIdentifier="http://ge.com/predix/entity/tenant/tenantidentifier"
+	xmlns:map="http://ge.com/predix/entity/util/map"
+	xmlns:engUnit="http://ge.com/predix/entity/engunit"
+	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:attribute="http://ge.com/predix/entity/attribute">
+
+	<import schemaLocation="../fielddata/fielddata.xsd"
+		namespace="http://ge.com/predix/entity/fielddata">
+	</import>
+	<import schemaLocation="../attribute/attribute.xsd"
+		namespace="http://ge.com/predix/entity/attribute">
+	</import>
+	<import></import>
+	<complexType name="MetaData">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element name="id" type="string"></element>
+					<element name="name" type="string"></element>
+					<element name="description" type="string"></element>
+					<element name="inputformat" type="string"></element>
+					<element name="source" type="string"></element>
+					<element name="uri" type="string"></element>
+					<element name="filename" type="string"></element>
+					<element name="timestamp" type="string"></element>
+					<element name="uploadby" type="string"></element>
+					<element name="processstatus" type="string"></element>
+					<element name="message" type="string"></element>
+					<element name="size" type="string"></element>
+					<element name="tags" type="string"
+						minOccurs="1" maxOccurs="unbounded">
+				</element>
+				    <element name="additionalAttributes" type="attribute:PositionalAttributes"></element>
+                </sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="metadata" type="metadata:MetaData"></element>
+	
+	<complexType name="MetaDataList">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element ref="metadata:metadata" minOccurs="0" maxOccurs="unbounded">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="metadataList" type="metadata:MetaDataList" />
+
+</schema>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/app/appidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:appIdentifier="http://ge.com/predix/entity/app/appidentifier"
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="AppIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="appIdentifier"
+		type="appIdentifier:AppIdentifier">
+	</element>
+
+	<complexType name="AppIdentifierList">
+		<sequence>
+			<element ref="appIdentifier:appIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="appIdentifierList"
+		type="appIdentifier:AppIdentifierList" />
+
+</schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/source"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:source="http://ge.com/predix/entity/source"
+	xmlns:attribute="http://ge.com/predix/entity/attribute"
+	xmlns:sourceType="http://ge.com/predix/entity/sourcetype" xmlns:map="http://ge.com/predix/entity/util/map" xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1">
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+	<complexType name="Source">
+		<annotation>
+			<documentation>
+				A source is like an Datastore but may cover other
+				concepts such as a File source
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="name" type="string"></element>
+			<element ref="map:map"></element>
+		</sequence>
+	</complexType>
+
+	<element name="source" type="source:Source"></element>
+
+	<complexType name="SourceType">
+		<sequence>
+			<element name="sourceTypeEnum" type="source:SourceTypeEnum"
+				minOccurs="1">
+			</element>
+			<element name="otherValue" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<element name="sourceType" type="source:SourceType"></element>
+
+	<complexType name="SourceTypeList">
+		<sequence>
+			<element ref="source:sourceType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="sourceTypeList" type="source:SourceTypeList" />
+
+	<simpleType name="SourceTypeEnum">
+		<restriction base="string">
+			<enumeration value="CSV" />
+			<enumeration value="RELATIONAL" />
+			<enumeration value="TIMESERIES" />
+			<enumeration value="OTHER" />
+		</restriction>
+	</simpleType>
+</schema>

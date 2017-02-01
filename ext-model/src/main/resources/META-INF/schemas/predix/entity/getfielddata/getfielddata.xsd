@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ge.com/predix/entity/getfielddata"
+	xmlns:fieldDataCriteria="http://ge.com/predix/entity/fielddatacriteria"
+	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:context="http://ge.com/predix/entity/context"
+	xmlns:errorDataEvent="http://ge.com/predix/entity/osa/errordataevent"
+	xmlns:map="http://ge.com/predix/entity/util/map" >
+
+	<import
+		schemaLocation="../fielddata/fielddata.xsd"
+		namespace="http://ge.com/predix/entity/fielddata">
+	</import>
+	<import
+		schemaLocation="../osa/errordataevent/errordataevent.xsd"
+		namespace="http://ge.com/predix/entity/osa/errordataevent">
+	</import>
+	<import schemaLocation="../fielddatacriteria/fielddatacriteria.xsd"
+		namespace="http://ge.com/predix/entity/fielddatacriteria">
+	</import>
+
+	<import
+		schemaLocation="../util/map/map.xsd"
+		namespace="http://ge.com/predix/entity/util/map" />
+
+	<import
+		schemaLocation="../context/context.xsd"
+		namespace="http://ge.com/predix/entity/context">
+	</import>
+
+	<element name="getFieldDataRequest">
+		<complexType>
+			<sequence>
+                <element name="correlationId" type="string"
+					minOccurs="0">
+					<annotation>
+						<documentation>
+							execution context id.
+						</documentation>
+					</annotation>
+				</element>
+				<element ref="fieldDataCriteria:fieldDataCriteria"
+					minOccurs="1" maxOccurs="unbounded">
+				</element>
+				<element minOccurs="0" ref="map:externalAttributeMap" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="getFieldDataResult">
+		<complexType>
+			<sequence>
+
+				<element ref="fieldData:fieldData" minOccurs="0"
+					maxOccurs="unbounded" />
+				<element name="errorEvent" type="string"
+					minOccurs="0" maxOccurs="unbounded">
+				</element>
+				<element minOccurs="0" ref="map:externalAttributeMap" />
+
+			</sequence>
+		</complexType>
+	</element>
+</schema>
+

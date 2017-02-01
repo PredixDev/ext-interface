@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/eventAsset"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:eventAsset="http://ge.com/predix/entity/eventAsset"
+	xmlns:eventAssetIdentifier="http://ge.com/predix/entity/eventAsset/eventAssetidentifier"
+	xmlns:assetSelector="http://ge.com/predix/entity/assetselector"
+	xmlns:fieldIdentifier="http://ge.com/predix/entity/field/fieldidentifier">
+
+	<import schemaLocation="identifier/assetidentifier.xsd"
+		namespace="http://ge.com/predix/entity/eventAsset/eventAssetidentifier">
+	</import>
+	<import schemaLocation="../assetselector/assetselector.xsd"
+		namespace="http://ge.com/predix/entity/assetselector">
+	</import>
+	<import schemaLocation="../field/identifier/fieldidentifier.xsd" namespace="http://ge.com/predix/entity/field/fieldidentifier"></import>
+	<complexType name="Asset">
+		<sequence>
+            <element ref="eventAssetIdentifier:assetIdentifier" minOccurs="1" maxOccurs="1"></element>
+			<element name="assetIdFieldIdentifier"
+				type="fieldIdentifier:FieldIdentifier" minOccurs="0">
+			</element>
+			<element ref="assetSelector:assetSelector" minOccurs="0"
+				maxOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="asset" type="eventAsset:Asset"></element>
+
+	<complexType name="AssetList">
+		<sequence>
+			<element ref="eventAsset:asset" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="assetList" type="eventAsset:AssetList" />
+
+
+</schema>

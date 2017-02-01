@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/message"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:message="http://ge.com/predix/entity/message"
+	>
+	
+	<complexType name="Message">
+		<sequence>
+			<element name="code" type="anySimpleType" minOccurs="0" maxOccurs="unbounded"></element>
+			<element name="value" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="message" type="message:Message"></element>
+
+	<complexType name="MessageList">
+		<sequence>
+			<element ref="message:message" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="messageList" type="message:MessageList" />
+
+</schema>

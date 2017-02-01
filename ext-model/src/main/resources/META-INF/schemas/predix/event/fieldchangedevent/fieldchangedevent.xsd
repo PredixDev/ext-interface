@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://ge.com/predix/event/fieldchanged" 
+	xmlns:fieldChanged="http://ge.com/predix/entity/fieldchanged">
+
+	<import schemaLocation="../../entity/fieldchanged/fieldchanged.xsd"
+		namespace="http://ge.com/predix/entity/fieldchanged">
+	</import>
+
+	<!-- This is XSD for FieldChangedEvent which has FieldChangedList Object -->
+
+	<import schemaLocation="../../entity/fieldchanged/fieldchanged.xsd" namespace="http://ge.com/predix/entity/fieldchanged"></import>
+	<element name="fieldChangedEvent">
+		<complexType>
+			<sequence>
+				<element ref="fieldChanged:fieldChangedList"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>
+

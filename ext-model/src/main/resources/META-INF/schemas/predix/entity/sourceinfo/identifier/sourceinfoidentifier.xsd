@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/sourceinfo/sourceinfoidentifier" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:sourceInfoIdentifier="http://ge.com/predix/entity/sourceinfo/sourceinfoidentifier"
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+
+	<import schemaLocation="../../identifier/identifier.xsd" namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="SourceInfoIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="sourceInfoIdentifier" type="sourceInfoIdentifier:SourceInfoIdentifier"></element>
+
+	<complexType name="SourceInfoIdentifierList">
+		<sequence>
+			<element ref="sourceInfoIdentifier:sourceInfoIdentifier" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="sourceInfoIdentifierList" type="sourceInfoIdentifier:SourceInfoIdentifierList" />
+
+</schema>

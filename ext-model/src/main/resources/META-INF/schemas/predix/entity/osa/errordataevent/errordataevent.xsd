@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/osa/errordataevent"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:errorDataEvent="http://ge.com/predix/entity/osa/errordataevent"
+	xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1">
+
+	<import schemaLocation="../../../../osa/schema1.xsd" namespace="http://www.mimosa.org/OSACBMV3.3.1"></import>
+	<complexType name="ErrorDataEvent">
+		<complexContent>
+			<extension base="osa:DataEvent">
+				<sequence>
+					<element name="errorInfo" type="osa:ErrorInfo"
+						minOccurs="0" maxOccurs="unbounded">
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="errorDataEvent"
+		type="errorDataEvent:ErrorDataEvent">
+	</element>
+
+
+
+
+</schema>

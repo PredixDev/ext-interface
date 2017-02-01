@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/strategydetail"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:strategyDetail="http://ge.com/predix/entity/strategydetail"
+	xmlns:sourceInfo="http://ge.com/predix/entity/sourceinfo"
+	xmlns:Q1="http://ge.com/predix/entity/attribute"
+	xmlns:action="http://ge.com/predix/entity/action"
+	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:strategyDetailIdentifier="http://ge.com/predix/entity/strategydetail/identifier/strategydetailidentifier">
+
+	<import schemaLocation="../sourceinfo/sourceinfo.xsd"
+		namespace="http://ge.com/predix/entity/sourceinfo">
+	</import>
+	<import schemaLocation="../action/action.xsd"
+		namespace="http://ge.com/predix/entity/action">
+	</import>
+	<import schemaLocation="../util/map/map.xsd"
+		namespace="http://ge.com/predix/entity/util/map">
+	</import>
+	<import schemaLocation="identifier/strategydetailidentifier.xsd" namespace="http://ge.com/predix/entity/strategydetail/identifier/strategydetailidentifier"></import>
+	<complexType name="StrategyDetail">
+		<annotation>
+			<documentation>
+				StrategyDetail is the behavior that is driven within a
+				Strategy
+			</documentation>
+		</annotation>
+		<sequence>
+            <element name="strategyDetailIdentifier" type="strategyDetailIdentifier:StrategyDetailIdentifier" minOccurs="0" maxOccurs="1">
+			</element>
+            <element name="sequence" type="int" minOccurs="0"></element>
+			<element ref="sourceInfo:sourceInfo" minOccurs="0"></element>
+			<element ref="action:action" minOccurs="0"></element>
+			<element name="defaultOutboundDataType" type="string"
+				minOccurs="0">
+			</element>
+			<element ref="map:map" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<element name="strategyDetail"
+		type="strategyDetail:StrategyDetail">
+	</element>
+
+
+</schema>

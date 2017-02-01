@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- FIXME - remove the old references to fieldselector, entity/context, 
+	util?, and map -->
+<schema version="1.0" elementFormDefault="qualified"
+	xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ge.com/predix/entity/moduleconfigroot"
+	xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1"
+	xmlns:analyticcorecontext="http://ge.com/predix/entity/context"
+	xmlns:mcr="http://ge.com/predix/entity/moduleconfigroot">
+
+	<import schemaLocation="../context/context.xsd" namespace="http://ge.com/predix/entity/context">
+	</import>
+	<!-- end remove -->
+
+	<import schemaLocation="../../../osa/schema1.xsd" namespace="http://www.mimosa.org/OSACBMV3.3.1">
+	</import>
+
+	<!-- note: this type must be defined as a complexType within an element 
+		we cannot define the complex type separate then declare an element of that 
+		type. The way it is show below triggers JAXB to create the @XMLRootElement 
+		annotation in the code. With the alternative way we do not get the root element 
+		annotation. The parser cannot parse the string <moduleConfigRoot> blocks 
+		without the @XMLRootElement annotation -->
+	<element name="moduleConfigRoot">
+		<complexType>
+			<sequence>
+				<element name="configuration" type="osa:Configuration"
+					minOccurs="0" />
+				<element name="dataEventSets" type="osa:DataEventSet"
+					minOccurs="0" maxOccurs="unbounded" />
+				<element name="orchestrationContext" minOccurs="1"
+					maxOccurs="1" type="analyticcorecontext:OrchestrationContext">
+				</element>
+
+				<element name="analyticContext" minOccurs="0" maxOccurs="1"
+					type="analyticcorecontext:AnalyticContext">
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>
+

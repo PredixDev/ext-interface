@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://ge.com/predix/entity/analytic/port/portidentifier"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:portIdentifier="http://ge.com/predix/entity/analytic/port/portidentifier"
+	xmlns:attribute="http://ge.com/predix/entity/attribute" 
+	xmlns:identifier="http://ge.com/predix/entity/identifier">
+
+	<import schemaLocation="../../identifier/identifier.xsd" namespace="http://ge.com/predix/entity/identifier"></import>
+	<complexType name="PortIdentifier">
+		<complexContent>
+			<extension base="identifier:Identifier"></extension>
+		</complexContent>
+	</complexType>
+	<element name="portIdentifier"
+		type="portIdentifier:PortIdentifier">
+	</element>
+
+	<complexType name="PortIdentifierList">
+		<sequence>
+			<element ref="portIdentifier:portIdentifier" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+	<element name="portIdentifierList"
+		type="portIdentifier:PortIdentifierList" />
+
+</schema>
