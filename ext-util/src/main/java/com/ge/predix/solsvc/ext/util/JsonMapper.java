@@ -40,7 +40,7 @@ import com.ge.predix.entity.model.Typed;
  * @author 212325745
  */
 @Component
-public final class JsonMapper
+public final class JsonMapper implements IJsonMapper
 {
 
     static private ObjectMapper    mapper          = new ObjectMapper()
@@ -93,7 +93,8 @@ public final class JsonMapper
      * @param object -
      * @return -
      */
-    @SuppressWarnings("nls")
+    @Override
+	@SuppressWarnings("nls")
     public <T> String toJsonOrBlank(T object)
     {
         try
@@ -110,7 +111,8 @@ public final class JsonMapper
      * @param object -
      * @return -
      */
-    @SuppressWarnings("nls")
+    @Override
+	@SuppressWarnings("nls")
     public <T> String toJson(T object)
     {
 
@@ -140,7 +142,8 @@ public final class JsonMapper
      * @param object -
      * @return -
      */
-    public <T> String toPrettyJson(T object)
+    @Override
+	public <T> String toPrettyJson(T object)
     {
 
         try
@@ -162,7 +165,8 @@ public final class JsonMapper
      * @param clazz -
      * @return -
      */
-    @SuppressWarnings("all")
+    @Override
+	@SuppressWarnings("all")
     public <T> T fromJson(String json, Class<T> clazz)
     {
         try
@@ -201,7 +205,8 @@ public final class JsonMapper
      * @param json -
      * @return -
      */
-    @SuppressWarnings("nls")
+    @Override
+	@SuppressWarnings("nls")
     public <T> List<T> fromJsonArray(String json, Class<T> clazz)
     {
         Class<?> jsonTypeInfoClass = hasJsonTypeInfo(clazz);
@@ -250,7 +255,8 @@ public final class JsonMapper
      * @param clazz -
      * @return -
      */
-    @SuppressWarnings(
+    @Override
+	@SuppressWarnings(
     {
             "nls", "unchecked"
     })
@@ -289,7 +295,9 @@ public final class JsonMapper
     @SuppressWarnings("nls")
     private String getBaseClassName(String className)
     {
-        if ( className.contains(".") ) className = className.substring(className.lastIndexOf(".") + 1);
+        if ( className == null )
+            return null;
+        if (  className.contains(".") ) className = className.substring(className.lastIndexOf(".") + 1);
         className = className.substring(0, 1).toUpperCase() + className.substring(1);
         return className;
     }
@@ -355,7 +363,8 @@ public final class JsonMapper
      * @param json -
      * @return -
      */
-    public <T> T fromJsonType(TypeReference<T> type, String json)
+    @Override
+	public <T> T fromJsonType(TypeReference<T> type, String json)
     {
 
         try
@@ -374,7 +383,8 @@ public final class JsonMapper
      * @param json -
      * @return -
      */
-    public <T> T fromJsonOrNull(Class<T> clazz, String json)
+    @Override
+	public <T> T fromJsonOrNull(Class<T> clazz, String json)
     {
         try
         {

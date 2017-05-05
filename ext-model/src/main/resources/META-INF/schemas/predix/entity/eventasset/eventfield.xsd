@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/eventfield"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:eventfield="http://ge.com/predix/entity/eventfield">
+
+	<complexType name="Field">
+		<sequence>
+			<element name="fieldKey" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="fieldValue" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="fieldType" type="string" minOccurs="0"
+				maxOccurs="1"/>
+			<element name="timeChanged" type="dateTime" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="FieldList">
+		<sequence>
+			<element ref="eventfield:field" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="field" type="eventfield:Field"></element>
+	<element name="fieldList" type="eventfield:FieldList" />
+
+</schema>

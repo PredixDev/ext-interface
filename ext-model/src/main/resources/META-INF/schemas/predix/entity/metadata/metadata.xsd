@@ -39,7 +39,8 @@
 					<element name="tags" type="string"
 						minOccurs="1" maxOccurs="unbounded">
 				</element>
-				    <element name="additionalAttributes" type="attribute:PositionalAttributes"></element>
+				   	<element name="additionalAttributes" type="map:Map"/>
+				   	
                 </sequence>
 			</extension>
 		</complexContent>

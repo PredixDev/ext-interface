@@ -14,10 +14,6 @@
 		<complexContent>
 			<extension base="filter:Filter">
 				<sequence>
-					<element ref="fieldSelection:fieldSelection" minOccurs="0" maxOccurs="unbounded">
-						<annotation>
-							<documentation>optional for when included as an embedded filter.  Normally you would use a FieldDataCriteria.fieldSelection.</documentation>
-						</annotation></element>
 					<element name="uri" type="string"></element>
 					<element name="filterString" type="string"></element>
 				</sequence>

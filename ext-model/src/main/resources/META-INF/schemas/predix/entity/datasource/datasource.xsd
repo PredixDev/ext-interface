@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/datasource"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:datasource="http://ge.com/predix/entity/datasource" 
+	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:annox="http://annox.dev.java.net"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+	xmlns:jad="http://annox.dev.java.net/com.fasterxml.jackson.databind.annotation"
+	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0"
+	>
+
+
+
+	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+
+
+
+
+
+	<complexType name="Datasource">
+		<complexContent>
+			<extension base="fieldData:Data"></extension>
+		</complexContent>
+	</complexType>
+	<element name="datasource" type="datasource:Datasource" />
+
+	<complexType name="TimeseriesDatasource">
+		<complexContent>
+			<extension base="datasource:Datasource">
+				<sequence>
+					<element name="tag" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="timeseriesDatasource" type="datasource:TimeseriesDatasource" />
+
+	<complexType name="EdgeDatasource">
+		<complexContent>
+			<extension base="datasource:Datasource">
+				<sequence>
+					<element name="nodeName" type="string"></element>
+					<element name="controllerUri" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="edgeDatasource" type="datasource:EdgeDatasource" />
+
+</schema>

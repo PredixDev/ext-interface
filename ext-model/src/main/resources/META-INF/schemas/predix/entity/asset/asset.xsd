@@ -10,7 +10,8 @@
 	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
 	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
 	xmlns:jad="http://annox.dev.java.net/com.fasterxml.jackson.databind.annotation"
-	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0" xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0"
+	xmlns:fieldData="http://ge.com/predix/entity/fielddata" xmlns:datasource="http://ge.com/predix/entity/datasource">
 
 
 	<import schemaLocation="../model/model.xsd"
@@ -19,7 +20,10 @@
 	<import schemaLocation="../util/map/map.xsd"
 		namespace="http://ge.com/predix/entity/util/map">
 	</import>
-	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<import schemaLocation="../fielddata/fielddata.xsd"
+		namespace="http://ge.com/predix/entity/fielddata">
+	</import>
+	<import schemaLocation="../datasource/datasource.xsd" namespace="http://ge.com/predix/entity/datasource"></import>
 	<complexType name="Asset">
 		<complexContent>
 			<extension base="model:TypedModel">
@@ -98,30 +102,24 @@
 			<extension base="model:Typed">
 				<sequence>
 					<element name="tagUri" type="string"></element>
-					<element name="sourceTagId" type="string"></element>
-					<element name="outputMinimum" type="double"></element>
-					<element name="outputMaximum" type="double"></element>
-					<element name="hiAlarmThreshold" type="double"></element>
-					<element name="loAlarmThreshold" type="double"></element>
-					<element name="lastCalibrated" type="dateTime"></element>
-					<element name="locationUUID" type="string"></element>
-					<element ref="asset:tagDatasource"></element>
+					<element name="isKpi" type="string" minOccurs="0" maxOccurs="1"></element>
+					<element name="hiQualityThreshold" type="double" minOccurs="0" maxOccurs="1"></element>
+					<element name="hiAlarmThreshold" type="double" minOccurs="0" maxOccurs="1"></element>
+					<element name="loAlarmThreshold" type="double" minOccurs="0" maxOccurs="1"></element>
+					<element name="loQualityThreshold" type="double" minOccurs="0" maxOccurs="1"></element>
+					<element name="lastCalibrated" type="dateTime" minOccurs="0" maxOccurs="1"></element>
+					<element name="locationUUID" type="string" minOccurs="0" maxOccurs="1"></element>
+					<element name="alertStatusUri" type="string" minOccurs="0" maxOccurs="1"></element>
+					<element name="timeseriesDatasource"
+						type="datasource:TimeseriesDatasource" minOccurs="0" maxOccurs="1">
+					</element>
+					<element name="edgeDatasource"
+						type="datasource:EdgeDatasource" minOccurs="0" maxOccurs="1">
+					</element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
 	<element name="assetTag" type="asset:assetTag" />
-
-	<complexType name="TagDatasource">
-		<sequence>
-			<element name="nodeName" type="string"></element>
-			<element name="isKpi" type="string"></element>
-			<element name="fieldUri" type="string"></element>
-			<element name="controllerUri" type="string"></element>
-			<element name="machineUri" type="string"></element>
-			<element name="tagExtensionsUri" type="string"></element>
-		</sequence>
-	</complexType>
-	<element name="tagDatasource" type="asset:TagDatasource" />
 
 </schema>
