@@ -102,7 +102,9 @@
 			<extension base="model:Typed">
 				<sequence>
 					<element name="tagUri" type="string"></element>
+					<element name="label" type="string" minOccurs="0" maxOccurs="1"></element>
 					<element name="isKpi" type="string" minOccurs="0" maxOccurs="1"></element>
+					<element name="unit" type="string" minOccurs="0" maxOccurs="1"></element>
 					<element name="hiQualityThreshold" type="double" minOccurs="0" maxOccurs="1"></element>
 					<element name="hiAlarmThreshold" type="double" minOccurs="0" maxOccurs="1"></element>
 					<element name="loAlarmThreshold" type="double" minOccurs="0" maxOccurs="1"></element>

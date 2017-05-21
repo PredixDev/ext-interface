@@ -25,7 +25,7 @@ We also define a wsdl contract just in case apis have to be ported to other lang
 
 We also like the tools available to model API contracts.
 
-##APIs
+## APIs
 There are 2 apis that are documented within the repos that use them.  Find the wsdl files in src/main/resources and visulize them in eclipse.
 
 * [Federated Data Handler](https://github.com/PredixDev/fdh-router-service)
@@ -34,7 +34,7 @@ There are 2 apis that are documented within the repos that use them.  Find the w
 > Why a WSDL? It's mostly for the pictures. We really want the XSDs.  We use REST, we like REST, we like JSON.  We like the type-safety validation and generation tools of XSD.  We like to support other languages with the same API.  We like polymorphism.  We like enumerations.  We like contracts. We like the embedded docs.  We work with other XSD Industrial Internet based libraries.  
 
 
-##Events
+## Events
   * Field Changed Event - As data changes downstream systems should be notified.  The FieldChangedEvent has 
     * Field - the field that changed
     * AssetId - the id of the entity containing the Field or leading to the Field
