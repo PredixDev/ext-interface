@@ -43,6 +43,7 @@
 			<enumeration value="PREDIX_TIMESERIES" />
 			<enumeration value="RABBITMQ_QUEUE" />
 			<enumeration value="PREDIX_BLOBSTORE" />
+			<enumeration value="PREDIX_EVENT_HUB" />
 			<enumeration value="OTHER" />
 		</restriction>
 	</simpleType>
