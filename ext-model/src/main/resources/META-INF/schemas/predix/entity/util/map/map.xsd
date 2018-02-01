@@ -68,12 +68,23 @@
 		<complexContent>
 			<extension base="fieldData:Data">
 				<sequence>
-					<element ref="map:map" minOccurs="0" maxOccurs="unbounded"></element>
+					<element ref="map:map" minOccurs="0" maxOccurs="1"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
 	<element name="dataMap" type="map:DataMap" />
+
+	<complexType name="DataMapList">
+		<complexContent>
+			<extension base="fieldData:Data">
+				<sequence>
+					<element ref="map:map" minOccurs="0" maxOccurs="unbounded"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="dataMapList" type="map:DataMapList" />
 
 </schema>
 

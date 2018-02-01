@@ -44,6 +44,7 @@
 			<enumeration value="RABBITMQ_QUEUE" />
 			<enumeration value="PREDIX_BLOBSTORE" />
 			<enumeration value="PREDIX_EVENT_HUB" />
+			<enumeration value="PREDIX_EDGEMANAGER" />
 			<enumeration value="OTHER" />
 		</restriction>
 	</simpleType>

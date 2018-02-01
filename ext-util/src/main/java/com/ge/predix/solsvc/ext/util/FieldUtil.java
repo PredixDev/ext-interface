@@ -21,7 +21,7 @@ import com.ge.predix.entity.field.fieldidentifier.FieldIdentifier;
 import com.ge.predix.entity.fielddata.FieldData;
 import com.ge.predix.entity.fielddata.OsaData;
 import com.ge.predix.entity.fieldidentifiervalue.FieldIdentifierValue;
-import com.ge.predix.entity.util.map.DataMap;
+import com.ge.predix.entity.util.map.DataMapList;
 import com.ge.predix.entity.util.map.Map;
 
 /**
@@ -106,9 +106,9 @@ public class FieldUtil
 	 * @return -
 	 */
 	@SuppressWarnings("unchecked")
-	public static DataMap toDataMap(String json, JsonMapper jsonMapper) {
+	public static DataMapList toDataMapList(String json, JsonMapper jsonMapper) {
 		java.util.Map<?,?> linkedMap = (java.util.Map<?,?>) jsonMapper.fromJson(json, Object.class);
-		DataMap data = new DataMap();
+		DataMapList data = new DataMapList();
 		List<com.ge.predix.entity.util.map.Map> list = new ArrayList<com.ge.predix.entity.util.map.Map>();
 		Map map = new Map();
 		map.putAll(linkedMap);

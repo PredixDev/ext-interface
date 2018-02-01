@@ -1,0 +1,298 @@
+<schema targetNamespace="http://ge.com/predix/entity/edgemanager"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:context="http://ge.com/predix/entity/edgemanager" xmlns:map="http://ge.com/predix/entity/util/map"
+	xmlns:em="http://ge.com/predix/entity/edgemanager" xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map" />
+	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<complexType name="NetworkStatus">
+		<sequence>
+			<element name="displayName" type="string" />
+			<element name="ipv6Addresses" type="string" maxOccurs="unbounded" />
+			<element name="ipv4Addresses" type="string" maxOccurs="unbounded" />
+			<element name="name" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="MemoryStatus">
+		<sequence>
+			<element name="freeBytes" type="integer" />
+			<element name="totalBytes" type="integer" />
+		</sequence>
+	</complexType>
+	<complexType name="DiskStatus">
+		>
+		<sequence>
+			<element name="freeBytes" type="integer" />
+			<element name="machineDisk" type="boolean" />
+			<element name="name" type="string" />
+			<element name="totalBytes" type="integer" />
+			<element name="type" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="CPUStatus">
+		<sequence>
+			<element name="cpuLoadAverage" type="integer" maxOccurs="unbounded" />
+			<element name="cpuPercentIdle" type="integer" />
+			<element name="cpuPercentSystem" type="integer" />
+			<element name="cpuPercentUser" type="integer" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Timestamp">
+		<sequence>
+			<element name="date" type="integer" />
+			<element name="day" type="integer" />
+			<element name="hours" type="integer" />
+			<element name="minutes" type="integer" />
+			<element name="month" type="integer" />
+			<element name="nanos" type="integer" />
+			<element name="seconds" type="integer" />
+			<element name="time" type="integer" />
+			<element name="timezoneOffset" type="integer" />
+			<element name="year" type="integer" />
+		</sequence>
+	</complexType>
+
+	<complexType name="MachineServiceComponent">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="providedServices" type="string" />
+			<element name="state" type="string" /><!-- State of the service 
+				component = ['STATE_UNKNOWN', 'STATE_DISABLED', 'STATE_UNSATISFIED', 'STATE_ACTIVE'] -->
+		</sequence>
+	</complexType>
+
+	<complexType name="OSInfo">
+		<sequence>
+			<element name="OSArch" type="string" />
+			<element name="osName" type="string" />
+			<element name="osVersion" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="MachineBundle">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="state" type="string" /><!-- State of the machine 
+				bundle = ['UNINSTALLED', 'INSTALLED', 'RESOLVED', 'STARTING', 'STOPPING', 
+				'ACTIVE'], -->
+			<element name="version" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="WifiStatus">
+		<sequence>
+			<element name="attributes" type="map:Map" />
+			<element name="connected" type="boolean" />
+			<element name="enabled" type="boolean" />
+			<element name="ssid" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="PowerSupplyStatus">
+		<sequence>
+			<element name="attributes" type="map:Map" />
+			<element name="description" type="string" />
+			<element name="percentageFull" type="integer" />
+			<element name="state" type="string" />
+			<element name="type" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="BluetoothStatus">
+		<sequence>
+			<element name="attributes" type="map:Map" />
+			<element name="connected" type="boolean" />
+			<element name="connectedDevice" type="string" />
+			<element name="enabled" type="boolean" />
+			<element name="profile" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="CellularStatus">
+		<sequence>
+			<element name="attributes" type="map:Map" />
+			<element name="dataVolume" type="integer" />
+			<element name="id" type="string" />
+			<element name="networkMode" type="string" />
+			<element name="signalStrength" type="map:Map" />
+		</sequence>
+	</complexType>
+	<complexType name="DynamicStatus">
+		<sequence>
+			<element name="bootTime" type="em:Timestamp" />
+			<element name="cpuStatus" type="em:CPUStatus" />
+			<element name="diskStatus" type="em:DiskStatus" maxOccurs="unbounded" />
+			<element name="memoryStatus" type="em:MemoryStatus" />
+			<element name="networkStatus" type="em:NetworkStatus"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="MachineInfo">
+		<sequence>
+			<element name="bundle" type="em:MachineBundle" maxOccurs="unbounded" />
+			<element name="javaVendor" type="string" />
+			<element name="javaVersion" type="string" />
+			<element name="machineVersion" type="string" />
+			<element name="OSInfo" type="em:OSInfo" />
+			<element name="prosystKeyExpire" type="string" />
+			<element name="prosystVersion" type="string" />
+			<element name="service" type="em:MachineServiceComponent"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="SimInfo">
+		<sequence>
+			<element name="attributes" type="map:Map" />
+			<element name="iccid" type="string" />
+			<element name="imei" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="OpenVPNInfo">
+		<sequence>
+			<element name="status" type="string" />
+			<element name="vpnClientId" type="string" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ReportedDeviceInfo">
+		<sequence>
+			<element name="capability" type="map:Map" />
+			<element name="deviceProperties" type="map:Map" />
+			<element name="hardwareInfo" type="em:HardwareInfo"
+				maxOccurs="unbounded" />
+			<element name="infoProperties" type="map:Map" />
+			<element name="machineInfo" type="em:MachineInfo" />
+			<element name="simInfo" type="em:SimInfo" maxOccurs="unbounded" />
+			<element name="vpnInfo" type="em:OpenVPNInfo" />
+		</sequence>
+	</complexType>
+	<complexType name="ReportedDeviceStatus">
+		<sequence>
+			<element name="bluetoothStatus" type="em:BluetoothStatus"
+				maxOccurs="unbounded" />
+			<element name="cellularStatus" type="em:CellularStatus"
+				maxOccurs="unbounded" />
+			<element name="dynamicStatus" type="em:DynamicStatus" />
+			<element name="powerSupplyStatus" type="em:PowerSupplyStatus"
+				maxOccurs="unbounded" />
+			<element name="statusProperties" type="map:Map" />
+			<element name="wifiStatus" type="em:WifiStatus" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<complexType name="HardwareInfo">
+		<sequence>
+			<element name="attributes" type="map:Map" />
+			<element name="category" type="string" />
+			<element name="firmware" type="string" />
+			<element name="manufacturer" type="string" />
+			<element name="model" type="string" />
+			<element name="properties" type="map:Map" />
+		</sequence>
+	</complexType>
+
+	<complexType name="BaseDeviceModel">
+		<sequence>
+			<element name="bomId" type="string" />
+			<element name="capability" type="string" />
+			<element name="coreNum" type="string" />
+			<element name="customAttributes" type="map:Map" />
+			<element name="description" type="string" />
+			<element name="icon" type="string" />
+			<element name="memoryGB" type="integer" />
+			<element name="modelId" type="string" />
+			<element name="os" type="string" />
+			<element name="processor" type="string" />
+			<element name="storageGB" type="integer" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Group">
+		<sequence>
+			<element name="groupId" type="string" />
+			<element name="isOpenable" type="boolean" />
+			<element name="name" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="DeviceLocation">
+		<sequence>
+			<element name="city" type="string" />
+			<element name="country" type="string" />
+			<element name="description" type="string" />
+			<element name="elevation" type="integer" />
+			<element name="latitude" type="integer" />
+			<element name="longitude" type="integer" />
+			<element name="photo" type="string" />
+			<element name="state" type="string" />
+			<element name="timezone" type="string" />
+		</sequence>
+	</complexType>
+	<element name="Device">
+		<complexType>
+			<complexContent>
+				<extension base="fieldData:Data">
+					<sequence>
+						<element name="attributes" type="map:Map" />
+						<element name="certIssued" type="integer" />
+						<element name="csn" type="string" />
+						<element name="description" type="string" />
+						<element name="deviceId" type="string" />
+						<element name="deviceModel" type="em:BaseDeviceModel" />
+						<element name="deviceUuid" type="string" />
+						<element name="dockerEnabled" type="string" />
+						<element name="firstSeen" type="integer" />
+						<element name="groupId" type="string" />
+						<element name="groupPath" type="em:Group" maxOccurs="unbounded" />
+						<element name="location" type="em:DeviceLocation" />
+						<element name="modelId" type="string" />
+						<element name="name" type="string" />
+						<element name="reportedInfo" type="em:ReportedDeviceInfo" />
+						<element name="reportedStatus" type="em:ReportedDeviceStatus" />
+						<element name="status" type="string" /> <!-- Device sync status with Edge Manager = ['online', 'offline', 'created'], -->
+						<element name="statusChanged" type="integer" />
+						<element name="sharedSecret" type="string"/>
+						<element name="syncInterval" type="integer" />
+						<element name="technicianId" type="string" />
+						<element name=" upTime" type="integer" />
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<simpleType name="DeviceEnrollmentEnum">
+		<restriction base="string">
+			<enumeration value="CERTIFICATE" />
+			<enumeration value="CERTIFICATE_RENEW" />
+			<enumeration value="URLS" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DeviceGroupEnum">
+		<restriction base="string">
+			<enumeration value="GROUP_LIST" />
+			<enumeration value="GROUP_QUERY" />
+			<enumeration value="CREATE" />
+			<enumeration value="BATCH_CREATE" />
+			<enumeration value="BATCH_DELETE" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DeviceEnum">
+		<restriction base="string">
+			<enumeration value="DEVICE_LIST" />
+			<enumeration value="DEVICE_QUERY" />
+			<enumeration value="DEVICE_CREATE" />
+			<enumeration value="BATCH_CREATE" />
+			<enumeration value="BATCH_DELETE" />
+		</restriction>
+	</simpleType>
+	<simpleType name="DeviceModelEnum">
+		<restriction base="string">
+			<enumeration value="DEVICEMODELS" />
+			<enumeration value="MODEL_QUERY" />
+			<enumeration value="MODEL_CREATE" />
+			<enumeration value="BATCH_CREATE" />
+			<enumeration value="BATCH_DELETE" />
+		</restriction>
+	</simpleType>
+</schema>

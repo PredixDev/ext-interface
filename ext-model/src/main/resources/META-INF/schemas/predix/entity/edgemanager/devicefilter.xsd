@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://predix.ge.com/entity/devicefilter"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:deviceFilter="http://predix.ge.com/entity/devicefilter"
+	xmlns:filter="http://ge.com/predix/entity/filter" xmlns:fieldSelection="http://ge.com/predix/entity/fieldselection" xmlns:Q1="http://www.mimosa.org/OSACBMV3.3.1">
+
+
+	<import schemaLocation="../filter/filter.xsd"
+		namespace="http://ge.com/predix/entity/filter">
+	</import>
+
+	<import schemaLocation="../fieldselection/fieldselection.xsd" namespace="http://ge.com/predix/entity/fieldselection"></import>
+	<complexType name="DeviceFilter">
+		<complexContent>
+			<extension base="filter:Filter">
+				<sequence>
+					<element name="uri" type="string"></element>
+					<element name="filterString" type="string"></element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="deviceFilter" type="deviceFilter:DeviceFilter">
+	</element>
+
+
+</schema>
