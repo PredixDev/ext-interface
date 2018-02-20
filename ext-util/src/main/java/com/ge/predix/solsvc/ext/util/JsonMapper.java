@@ -289,7 +289,7 @@ public final class JsonMapper implements IJsonMapper
     }
 
     /**
-     * @param modelName
+     * @param className -
      * @return -
      */
     @SuppressWarnings("nls")
@@ -471,7 +471,6 @@ public final class JsonMapper implements IJsonMapper
     }
 
     /**
-     * @param class1 -
      */
     public void resetSubtypes()
     {

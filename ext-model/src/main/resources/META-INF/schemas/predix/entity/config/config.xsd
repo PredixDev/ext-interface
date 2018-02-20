@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://ge.com/predix/entity/config"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
-	xmlns:context="http://ge.com/predix/entity/config">
-    
-
-    <element name="PredixConfig" >
-    	<complexType>
-    	<sequence>
-    		<element name="AnalyticsZoneHeaderName" type="string"></element>
-    		<element name="AnalyticsZoneHeaderValue" type="string"></element>
-    		<element name="AssetZoneHeaderName" type="string"></element>
-    		<element name="AssetZoneHeaderValue" type="string"></element>
-    		<element name="AssetHTTPEndPoint" type="string"></element>
-    		<element name="UAAIssuerId" type="string"></element>
-    		<element name="UAAClientId" type="string"></element>
-    		<element name="UAAClientSecret" type="string"></element>
-    		<element name="UAAAccessToken" type="string"></element>
-    		<element name="TimeseriesIngestEndPoint" type="string"></element>
-    		<element name="TimeseriesQueryEndPoint" type="string"></element>
-    		<element name="TimeseriesZoneHeaderName" type="string"></element>
-    		<element name="TimeseriesZoneHeaderValue" type="string"></element>
-    		<element name="EventHubWebsocketEndPoint" type="string"></element>
-    		<element name="EventHubZoneHeaderName" type="string"></element>
-    		<element name="EventHubZoneHeaderValue" type="string"></element>
-    		<element name="EventHubGRPCEndPoint" type="string"></element>
-    	</sequence>
-    </complexType>
-    </element>
+	xmlns:config="http://ge.com/predix/entity/config">
+	<simpleType name="PredixSericeNames">
+		<restriction base="string">
+			<enumeration value="PREDIX_UAA_INSTANCE_NAME" />
+			<enumeration value="PREDIX_ASSET_INSTANCE_NAME" />
+			<enumeration value="PREDIX_TIMESERIES_INSTANCE_NAME" />
+			<enumeration value="RABBITMQ_QUEUE_INSTANCE_NAME" />
+			<enumeration value="PREDIX_BLOBSTORE_INSTANCE_NAME" />
+			<enumeration value="PREDIX_EVENT_HUB_INSTANCE_NAME" />
+		</restriction>
+	</simpleType>
 </schema>
