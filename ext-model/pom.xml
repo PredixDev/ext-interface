@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ext-model</artifactId>
-	<version>2.3.67</version>
+	<version>2.4.2</version>
 
 	<packaging>jar</packaging>
 	<description>A module containing the externally facing data models</description>
 
 	<properties>
-		<ext-mapper.version>2.3.67</ext-mapper.version>
+		<ext-mapper.version>2.4.2</ext-mapper.version>
 		<maven-jaxb2-plugin.version>0.8.1</maven-jaxb2-plugin.version>
 		<cxf.version>3.1.6</cxf.version>
 		<osgi.bundle.version>1.3.0</osgi.bundle.version>
@@ -23,6 +23,8 @@
 		<maven-bundle-plugin.version>2.3.5</maven-bundle-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<maven-jar-plugin.version>2.5</maven-jar-plugin.version>
+		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
 		<jaxb2-basics-annotate.version>0.6.4</jaxb2-basics-annotate.version>
 		<jaxb2-basics-runtime.version>0.6.4</jaxb2-basics-runtime.version>
 		<commons-logging.version>1.1.1</commons-logging.version>
@@ -75,7 +77,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -200,12 +202,6 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>${maven-antrun-plugin.version}</version>
-				<executions>
 					<execution>
 						<id>ext-model-process-resources</id>
 						<phase>process-resources</phase>
@@ -224,6 +220,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
 				<configuration>
 					<excludePackageNames>com.ge.predix.entity:com.ge.predix.event:org.mimosa</excludePackageNames>
 				</configuration>

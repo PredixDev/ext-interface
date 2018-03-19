@@ -4,18 +4,21 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ext-interface</artifactId>
-	<version>2.3.67</version>
+	<version>2.4.2</version>
 	<packaging>jar</packaging>
 
 	<properties>
-		<ext-model.version>2.3.67</ext-model.version>
-		<ext-mapper.version>2.3.67</ext-mapper.version>
+		<ext-model.version>2.4.2</ext-model.version>
+		<ext-mapper.version>2.4.2</ext-mapper.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<cxf.version>3.1.6</cxf.version>
 
 		<java.version>1.8</java.version>
 		<maven-jaxb2-plugin.version>0.8.1</maven-jaxb2-plugin.version>
+		<maven-jar-plugin.version>2.5</maven-jar-plugin.version>
+		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
 		<maven-bundle-plugin.version>2.3.5</maven-bundle-plugin.version>
 		<jaxb2-basics-runtime.version>0.6.4</jaxb2-basics-runtime.version>
 		<jaxb2-basics-annotate.version>0.6.4</jaxb2-basics-annotate.version>
@@ -234,6 +237,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -246,6 +250,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven-jar-plugin.version}</version>
 				<configuration>
 					<archive>
 					</archive>
@@ -259,6 +264,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
 				<configuration>
 					<excludePackageNames>com.ge.predix.entity:com.ge.predix.fielddatahandler:org.mimosa</excludePackageNames>
 				</configuration>
