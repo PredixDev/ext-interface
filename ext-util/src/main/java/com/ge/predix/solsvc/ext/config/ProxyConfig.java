@@ -49,7 +49,7 @@ public class ProxyConfig {
     /**
      * Sets the value of the proxyPort property.
      * 
-     * @param proxyPort
+     * @param proxyPort - Proxy Port
      *     
      */
     public void setProxyPort(String proxyPort) {

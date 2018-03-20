@@ -8,18 +8,21 @@ public interface IJsonMapper {
 
 	/**
 	 * @param object -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> String toJsonOrBlank(T object);
 
 	/**
 	 * @param object -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> String toJson(T object);
 
 	/**
 	 * @param object -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> String toPrettyJson(T object);
@@ -31,6 +34,7 @@ public interface IJsonMapper {
 	 * 
 	 * @param json -
 	 * @param clazz -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> T fromJson(String json, Class<T> clazz);
@@ -42,6 +46,7 @@ public interface IJsonMapper {
 	 * 
 	 * @param clazz -
 	 * @param json -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> List<T> fromJsonArray(String json, Class<T> clazz);
@@ -56,6 +61,7 @@ public interface IJsonMapper {
 	 * 
 	 * @param json -
 	 * @param clazz -
+	 * @param <P> -
 	 * @return -
 	 */
 	<P> List<P> fromJsonArray(String json, String clazz);
@@ -63,6 +69,7 @@ public interface IJsonMapper {
 	/**
 	 * @param type -
 	 * @param json -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> T fromJsonType(TypeReference<T> type, String json);
@@ -70,6 +77,7 @@ public interface IJsonMapper {
 	/**
 	 * @param clazz -
 	 * @param json -
+	 * @param <T> -
 	 * @return -
 	 */
 	<T> T fromJsonOrNull(Class<T> clazz, String json);
