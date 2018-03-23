@@ -18,7 +18,37 @@ public class EventHubConfig {
     @Value("${predix.eventhub.zone.grpc.endpoint:#{null}}")
     private String grpcEndPoint;
 
-    /**
+    @Value("{predix.eventhub.publish.topics:#{null}}")
+    private String publishTopics;
+    
+    @Value("{predix.eventhub.subscribe.topics:#{null}}")
+    private String subscribeTopics;
+    
+    public String getGrpcEndPoint() {
+		return grpcEndPoint;
+	}
+
+	public void setGrpcEndPoint(String grpcEndPoint) {
+		this.grpcEndPoint = grpcEndPoint;
+	}
+
+	public String getPublishTopics() {
+		return publishTopics;
+	}
+
+	public void setPublishTopics(String publishTopics) {
+		this.publishTopics = publishTopics;
+	}
+
+	public String getSubscribeTopics() {
+		return subscribeTopics;
+	}
+
+	public void setSubscribeTopics(String subscribeTopics) {
+		this.subscribeTopics = subscribeTopics;
+	}
+
+	/**
      * Gets the value of the websocketEndPoint property.
      * 
      * @return
