@@ -81,7 +81,10 @@
 
 	<complexType name="PutFieldDataCriteria">
 		<sequence>
-            <element name="namespaces" type="namespace:Namespace" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="namespaces" type="namespace:Namespace"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+            <element name="headers" type="map:Map" minOccurs="0" maxOccurs="1"></element>
             <element ref="fieldData:fieldData" minOccurs="0"
 				maxOccurs="1">
 			</element>

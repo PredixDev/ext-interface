@@ -19,6 +19,8 @@
 	</import>
 
 	<import schemaLocation="../namespace/namespace.xsd" namespace="http://ge.com/predix/entity/field/namespace"></import>
+		<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
+	
 	<complexType name="FieldDataCriteria">
 		<annotation>
 			<documentation>
@@ -27,17 +29,19 @@
 			</documentation>
 		</annotation>
 		<sequence>
-            <element name="namespaces" type="namespace:Namespace"
+			<element name="namespaces" type="namespace:Namespace"
 				maxOccurs="unbounded" minOccurs="0">
 			</element>
+            <element name="headers" type="map:Map" minOccurs="0" maxOccurs="1"></element>
             <element minOccurs="0" name="resultId" type="string">
 				<annotation></annotation>
 			</element>
-            <element ref="fieldSelection:fieldSelection" minOccurs="0"
+			<element ref="fieldSelection:fieldSelection" minOccurs="0"
 				maxOccurs="unbounded">
 			</element>
 			<element ref="filter:filter" minOccurs="0" maxOccurs="1">
-			</element>
+			</element>
+
 
 		</sequence>
 	</complexType>

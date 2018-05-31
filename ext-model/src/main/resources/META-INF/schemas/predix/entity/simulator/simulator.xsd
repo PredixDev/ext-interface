@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://predix.ge.com/entity/simulator"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:simulator="http://predix.ge.com/entity/simulator">
+	
+	<complexType name="Pattern">
+		<sequence>
+       			<element name="start" type="long">
+				<annotation>
+					<documentation>
+						start=0 or null - represents now() or next
+						interval timestamp after previous range ends or
+						start=unix epoch
+
+					</documentation>
+				</annotation>
+			</element>
+            <element name="durationType" type="string">
+				<annotation>
+					<documentation>durationType=FIXED or RANDOM.  If RANDOM, should be a random number between minduration and maxDuration and If FIXED its a min Duration</documentation>
+				</annotation></element>
+            <element name="minDuration" type="int">
+				<annotation>
+					<documentation>minDuration is in sec. if durationType is RANDOM, the end time will vary between minDuration and maxDuration randomly</documentation>
+				</annotation></element>
+			<element name="maxDuration" type="int">
+				<annotation>
+						<documentation>maxDuration is in sec. if durationType is RANDOM, the end time will vary between minDuration and maxDuration randomly</documentation>
+					</annotation>
+			</element>
+			<element name="interval" type="int">
+				<annotation>
+					<documentation>the number of seconds between data points</documentation>
+				</annotation></element>
+		</sequence>
+     </complexType>
+	
+	<element name="subscription" type="simulator:Pattern"></element>
+	
+	<!-- <complexType name="SubscriptionSet">
+		<sequence>
+			<element ref="simulator:subscription" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	
+	<element name="subscriptionSet" type="simulator:SubscriptionSet"></element> -->
+
+     <complexType name="Range">
+		<sequence>
+            <element name="lowerThreshold" type="double">
+            	<annotation>
+            		<documentation>the low end of the range if a RANDOM simulationType is chosen</documentation>
+            	</annotation></element>
+            <element name="upperThreshold" type="double">
+            	<annotation>
+            		<documentation>the upper end of the range if a RANDOM simulationType is chosen</documentation></annotation></element>
+		</sequence>
+     </complexType>
+	<element name="range" type="simulator:Range"></element>
+	
+	<complexType name="Tag">
+		<sequence>
+			<element name="assetId" type="string"></element>
+			<element name="nodeName" type="string"></element>
+			<element name="assetNodeSeperator" type="string" default="."></element>
+			<element name="dataType" type="string">
+				<annotation>
+					<documentation>e.g. DOUBLE, INT</documentation>
+				</annotation></element>
+			<element name="simulationType" type="string">
+				<annotation>
+					<documentation>RANDOM, WAVEFORM</documentation>
+				</annotation></element>
+			<element ref="simulator:range" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>a List of Range objects.  The idea being that a stair stepped set of ranges, or a spike condition can be created.  
+When last Range object is hit, simulation goes back to the first Range object</documentation>
+				</annotation></element>
+		</sequence>
+	</complexType>
+	<element name="tag" type="simulator:Tag"></element>
+
+	<complexType name="TagSet">
+		<sequence>
+			<element ref="simulator:tag" minOccurs="0" maxOccurs="unbounded"></element>
+			<element ref="simulator:subscription" minOccurs="0" maxOccurs="unbounded">
+				 <annotation>
+					<documentation>a List of subscription objects.  This defines the pattern for the simulation, this maps to Range List for min and max values for the Tag</documentation>
+				</annotation>
+			</element>
+			</sequence>
+	</complexType>
+	<element name="tagSet" type="simulator:TagSet"></element>
+
+	<complexType name="Simulation">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element ref="simulator:tagSet" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<element name="simulation" type="simulator:Simulation"></element>
+
+</schema>
