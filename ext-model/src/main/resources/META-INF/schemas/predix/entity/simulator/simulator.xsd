@@ -22,7 +22,8 @@
             	</annotation></element>
             <element name="upperThreshold" type="double">
             	<annotation>
-            		<documentation>the upper end of the range if a RANDOM simulationType is chosen</documentation></annotation></element>            			<element name="duration" type="int">
+            		<documentation>the upper end of the range if a RANDOM simulationType is chosen</documentation></annotation></element>
+            			<element name="duration" type="int">
 				<annotation>
 						<documentation>maxDuration is in sec. if durationType is RANDOM, the end time will vary between minDuration and maxDuration randomly</documentation>
 					</annotation>
@@ -36,7 +37,7 @@
 		<sequence>
 			<element name="assetId" type="string"></element>
 			<element name="nodeName" type="string"></element>
-			<element name="assetNodeSeperator" type="string" default="."></element>
+			<element name="assetNodeSeparator" type="string" default="."></element>
             <element name="start" type="long">
 				<annotation>
 					<documentation>
@@ -70,7 +71,8 @@ When last Range object is hit, simulation goes back to the first Range object</d
 
 	<complexType name="TagSet">
 		<sequence>
-			<element ref="simulator:tag" minOccurs="0" maxOccurs="unbounded"></element>
+			<element ref="simulator:tag" minOccurs="0" maxOccurs="unbounded"></element>
+
         </sequence>
 	</complexType>
 	<element name="tagSet" type="simulator:TagSet"></element>
