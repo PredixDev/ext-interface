@@ -4,17 +4,20 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>ext-interface</artifactId>
-	<version>2.4.9</version>
+	<version>2.4.10</version>
 	<packaging>jar</packaging>
 
 	<properties>
-		<ext-model.version>2.4.9</ext-model.version>
-		<ext-mapper.version>2.4.9</ext-mapper.version>
+		<ext-model.version>2.4.10</ext-model.version>
+		<ext-mapper.version>2.4.10</ext-mapper.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
-		<cxf.version>3.1.6</cxf.version>
+		<cxf.version>3.2.6</cxf.version>
+
+		<!-- Java 10 dependency version -->
+		<jaxb-api.version>2.3.0</jaxb-api.version>
 
 		<java.version>1.8</java.version>
-		<maven-jaxb2-plugin.version>0.8.1</maven-jaxb2-plugin.version>
+		<maven-jaxb2-plugin.version>0.14.0</maven-jaxb2-plugin.version>
 		<maven-jar-plugin.version>2.5</maven-jar-plugin.version>
 		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
@@ -34,7 +37,13 @@
 			<artifactId>ext-model</artifactId>
 			<version>${ext-model.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>javax.ws.rs</groupId> <artifactId>javax.ws.rs-api</artifactId> 
+		<!-- Java 10 dependencies -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb-api.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>javax.ws.rs</groupId> <artifactId>javax.ws.rs-api</artifactId>
 			<version>${javax.ws.rs.version}</version> </dependency> -->
 	</dependencies>
 	<build>
@@ -118,7 +127,7 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<defaultOptions>
-								<!-- <bindingFiles> <bindingFile>${basedir}/src/main/resources/META-INF/schemas/jaxb-bindings.xml 
+								<!-- <bindingFiles> <bindingFile>${basedir}/src/main/resources/META-INF/schemas/jaxb-bindings.xml
 									</bindingFile> </bindingFiles> -->
 								<noAddressBinding>true</noAddressBinding>
 							</defaultOptions>
@@ -272,7 +281,7 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
+				<!--This plugin's configuration is used to store Eclipse m2e settings
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
