@@ -42,4 +42,4 @@ There are 2 apis that are documented within the repos that use them.  Find the w
     * Map - key/value map to pass to downstream systems
     
  
-[![Analytics](https://ga-beacon.appspot.com/UA-82773213-1/ext-interface/readme?pixel)](https://github.com/PredixDev)
+[![Analytics](https://predix-beacon.appspot.com/UA-82773213-1/ext-interface/readme?pixel)](https://github.com/PredixDev)
