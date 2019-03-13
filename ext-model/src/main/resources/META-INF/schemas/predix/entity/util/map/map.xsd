@@ -10,10 +10,11 @@
 	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
 	xmlns:jad="http://annox.dev.java.net/com.fasterxml.jackson.databind.annotation"
 	xmlns:inheritance="http://jaxb2-commons.dev.java.net/basic/inheritance"
-	jaxb:extensionBindingPrefixes="inheritance xjc annox" xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+	jaxb:extensionBindingPrefixes="inheritance xjc annox" 
+	xmlns:data="http://ge.com/predix/entity/data">
 
 
-	<import schemaLocation="../../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<import schemaLocation="../../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 	<annotation>
 		<appinfo>
 			<jaxb:schemaBindings>
@@ -66,7 +67,7 @@
 
 	<complexType name="DataMap">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element ref="map:map" minOccurs="0" maxOccurs="1"></element>
 				</sequence>
@@ -77,7 +78,7 @@
 
 	<complexType name="DataMapList">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element ref="map:map" minOccurs="0" maxOccurs="unbounded"></element>
 				</sequence>

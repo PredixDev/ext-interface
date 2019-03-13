@@ -4,15 +4,15 @@
 	targetNamespace="http://predix.ge.com/entity/timeseries/datapoints/ingestionrequest"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:ingestionrequest="http://predix.ge.com/entity/timeseries/datapoints/ingestionrequest"
-	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:data="http://ge.com/predix/entity/data">
 
 	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
-	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 
 	<element name="DatapointsIngestion">
 		<complexType>
 			<complexContent>
-				<extension base="fieldData:Data">
+				<extension base="data:Data">
 					<sequence>
 						<element name="messageId" type="string"></element>
 						<element ref="ingestionrequest:body" minOccurs="0"

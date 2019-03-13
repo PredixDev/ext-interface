@@ -2,9 +2,9 @@
 <schema targetNamespace="http://predix.ge.com/entity/timeseries/aggregations"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:aggregations="http://predix.ge.com/entity/timeseries/aggregations"
-	xmlns:fieldData="http://ge.com/predix/entity/fielddata" xmlns:map="http://ge.com/predix/entity/util/map">
+	xmlns:data="http://ge.com/predix/entity/data" xmlns:map="http://ge.com/predix/entity/util/map">
 
-	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 
 
 	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
@@ -12,7 +12,7 @@
 	<element name="AggregationsList">
 		<complexType>
 			<complexContent>
-				<extension base="fieldData:Data">
+				<extension base="data:Data">
 					<sequence>
 						<element name="results" type="map:Map" minOccurs="0"
 							maxOccurs="unbounded"></element>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://ge.com/predix/entity/asset"
-	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" 
+	xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:asset="http://ge.com/predix/entity/asset"
 	xmlns:model="http://ge.com/predix/entity/model"
-	xmlns:data="http://ge.com/predix/entity/fielddata"
+	xmlns:data="http://ge.com/predix/entity/data"
 	xmlns:map="http://ge.com/predix/entity/util/map"
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
 	xmlns:annox="http://annox.dev.java.net"
@@ -11,7 +12,7 @@
 	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
 	xmlns:jad="http://annox.dev.java.net/com.fasterxml.jackson.databind.annotation"
 	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0"
-	xmlns:fieldData="http://ge.com/predix/entity/fielddata" xmlns:datasource="http://ge.com/predix/entity/datasource">
+	xmlns:datasource="http://ge.com/predix/entity/datasource">
 
 
 	<import schemaLocation="../model/model.xsd"
@@ -20,9 +21,8 @@
 	<import schemaLocation="../util/map/map.xsd"
 		namespace="http://ge.com/predix/entity/util/map">
 	</import>
-	<import schemaLocation="../fielddata/fielddata.xsd"
-		namespace="http://ge.com/predix/entity/fielddata">
-	</import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
+
 	<import schemaLocation="../datasource/datasource.xsd" namespace="http://ge.com/predix/entity/datasource"></import>
 	<complexType name="Asset">
 		<complexContent>

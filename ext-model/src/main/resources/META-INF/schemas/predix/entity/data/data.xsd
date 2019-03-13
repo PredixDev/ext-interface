@@ -1,0 +1,54 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<schema targetNamespace="http://ge.com/predix/entity/data"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:data="http://ge.com/predix/entity/data"
+	xmlns:engUnit="http://ge.com/predix/entity/engunit"
+		xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+		xmlns:annox="http://annox.dev.java.net"
+		xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:extensionBindingPrefixes="xjc annox" 
+	jaxb:version="2.0" 
+	>
+
+
+
+
+
+	<complexType name="Data">
+		<annotation>
+			<documentation>
+				For new objects that you want to pass around the SOA,
+				inherit from Data so that marshaling/unmarshaling is
+				seamless when using a FieldData object. For JSON
+				unmarshaling add the complexType attribute and register the
+				Data parent class with the Unmarshaler (e.g.
+				JacksonJsonProvider). For standard Jaxb xml unmarshaling
+				simply define the XSD and auto-generate the classes. Or
+				manually create the Java class with the @XmlElement
+				(etc) annotations and ensure it's in the classpath.
+			</documentation>
+			<appinfo>
+				<annox:annotate>
+					<!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->
+					<ja:JsonTypeInfo use="NAME" include="PROPERTY"
+						property="complexType" />
+				</annox:annotate>
+			</appinfo>
+		</annotation>		
+	</complexType>
+	<element name="data" type="data:Data" />
+	
+	
+	
+	
+
+	
+
+	
+	
+
+
+
+
+</schema>

@@ -6,21 +6,20 @@
 	xmlns:appIdentifier="http://ge.com/predix/entity/app/appidentifier"
 	xmlns:tenantIdentifier="http://ge.com/predix/entity/tenant/tenantidentifier"
 	xmlns:map="http://ge.com/predix/entity/util/map" xmlns:engUnit="http://ge.com/predix/entity/engunit"
-	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:data="http://ge.com/predix/entity/data"
 	xmlns:attribute="http://ge.com/predix/entity/attribute" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
 	xmlns:annox="http://annox.dev.java.net" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
 	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
 	xmlns:jad="http://annox.dev.java.net/com.fasterxml.jackson.databind.annotation"
 	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0">
 
-	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata">
-	</import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 	<import schemaLocation="../attribute/attribute.xsd" namespace="http://ge.com/predix/entity/attribute">
 	</import>
 	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
 	<complexType name="Model">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="uri" type="string"></element>
 					<element name="name" type="string"></element>
@@ -35,7 +34,7 @@
 
 	<complexType name="ModelList">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element ref="model:model" minOccurs="0" maxOccurs="unbounded">
 					</element>

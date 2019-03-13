@@ -1,17 +1,16 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <schema targetNamespace="http://ge.com/predix/entity/fielddata"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:data="http://ge.com/predix/entity/data"
 	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
 	xmlns:field="http://ge.com/predix/entity/field"
 	xmlns:osa="http://www.mimosa.org/OSACBMV3.3.1"
 	xmlns:engUnit="http://ge.com/predix/entity/engunit"
-		xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-		xmlns:annox="http://annox.dev.java.net"
-		xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
-		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-	jaxb:extensionBindingPrefixes="xjc annox" 
-	jaxb:version="2.0" 
-	>
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xmlns:annox="http://annox.dev.java.net"
+	xmlns:ja="http://annox.dev.java.net/com.fasterxml.jackson.annotation"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:extensionBindingPrefixes="xjc annox" jaxb:version="2.0">
 
 	<import schemaLocation="../field/field.xsd"
 		namespace="http://ge.com/predix/entity/field">
@@ -22,16 +21,22 @@
 	<import schemaLocation="../engunit/engunit.xsd"
 		namespace="http://ge.com/predix/entity/engunit">
 	</import>
-	<import schemaLocation="../../../osa/schema1.xsd" namespace="http://www.mimosa.org/OSACBMV3.3.1"></import>
+	<import schemaLocation="../../../osa/schema1.xsd"
+		namespace="http://www.mimosa.org/OSACBMV3.3.1">
+	</import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 	<complexType name="FieldData">
 		<sequence>
-            <element name="resultId" type="string" minOccurs="0" maxOccurs="1"></element>
-            <element ref="field:field" minOccurs="0" maxOccurs="unbounded">
+			<element name="resultId" type="string" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element ref="field:field" minOccurs="0"
+				maxOccurs="unbounded">
 				<annotation>
 					<documentation></documentation>
 				</annotation>
 			</element>
-            <element name="data" type="fieldData:Data" minOccurs="0"
+			<element name="data" type="data:Data" minOccurs="0"
 				maxOccurs="1">
 			</element>
 			<element ref="engUnit:engUnit" minOccurs="0"
@@ -58,63 +63,41 @@
 
 
 
-	<complexType name="Data">
-		<annotation>
-			<documentation>
-				For new objects that you want to pass around the SOA,
-				inherit from Data so that marshaling/unmarshaling is
-				seamless when using a FieldData object. For JSON
-				unmarshaling add the complexType attribute and register the
-				Data parent class with the Unmarshaler (e.g.
-				JacksonJsonProvider). For standard Jaxb xml unmarshaling
-				simply define the XSD and auto-generate the classes. Or
-				manually create the Java class with the @XmlElement
-				(etc) annotations and ensure it's in the classpath.
-			</documentation>
-			<appinfo>
-				<annox:annotate>
-					<!-- <ja:JsonTypeInfo use="CLASS" include="PROPERTY" property="@class"/> -->
-					<ja:JsonTypeInfo use="NAME" include="PROPERTY"
-						property="complexType" />
-				</annox:annotate>
-			</appinfo>
-		</annotation>		
-	</complexType>
-	<element name="data" type="fieldData:Data" />
-	
+	<element name="data" type="string" />
+
 	<complexType name="PredixBoolean">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="boolean" type="boolean"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<complexType name="PredixDate">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="date" type="date"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<complexType name="PredixDateTime">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="dateTime" type="dateTime"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<complexType name="PredixDecimal">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="decimal" type="decimal"></element>
 				</sequence>
@@ -124,17 +107,17 @@
 
 	<complexType name="PredixDouble">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="double" type="double"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<complexType name="PredixFloat">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="float" type="float"></element>
 				</sequence>
@@ -144,28 +127,28 @@
 
 	<complexType name="PredixHexBinary">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="hexBinary" type="hexBinary"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<complexType name="PredixInt">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="int" type="int"></element>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 
 	<complexType name="PredixString">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="string" type="string"></element>
 				</sequence>
@@ -175,7 +158,7 @@
 
 	<complexType name="PredixTime">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="time" type="time"></element>
 				</sequence>
@@ -185,7 +168,7 @@
 
 	<complexType name="OsaData">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element ref="osa:DataEvent"></element>
 				</sequence>
@@ -195,9 +178,11 @@
 
 	<complexType name="Fields">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
-					<element ref="field:field" minOccurs="0" maxOccurs="unbounded"></element>
+					<element ref="field:field" minOccurs="0"
+						maxOccurs="unbounded">
+					</element>
 				</sequence>
 			</extension>
 		</complexContent>

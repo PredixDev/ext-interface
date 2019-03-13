@@ -2,14 +2,14 @@
 <schema targetNamespace="http://predix.ge.com/entity/timeseries/tags"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:tagsrequest="http://predix.ge.com/entity/timeseries/tags"
-	xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+	xmlns:data="http://ge.com/predix/entity/data">
 
-	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 
 	<element name="TagsList">
 		<complexType>
 			<complexContent>
-				<extension base="fieldData:Data">
+				<extension base="data:Data">
 					<sequence>
 						<element name="results" type="string" minOccurs="0"
 							maxOccurs="unbounded"></element>

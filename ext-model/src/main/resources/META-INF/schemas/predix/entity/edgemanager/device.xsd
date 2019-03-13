@@ -1,10 +1,11 @@
 <schema targetNamespace="http://ge.com/predix/entity/edgemanager"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:context="http://ge.com/predix/entity/edgemanager" xmlns:map="http://ge.com/predix/entity/util/map"
-	xmlns:em="http://ge.com/predix/entity/edgemanager" xmlns:fieldData="http://ge.com/predix/entity/fielddata">
+	xmlns:em="http://ge.com/predix/entity/edgemanager" 
+	xmlns:data="http://ge.com/predix/entity/data">
 
 	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map" />
-	<import schemaLocation="../fielddata/fielddata.xsd" namespace="http://ge.com/predix/entity/fielddata"></import>
+	<import schemaLocation="../data/data.xsd" namespace="http://ge.com/predix/entity/data"></import>
 	<complexType name="NetworkStatus">
 		<sequence>
 			<element name="displayName" type="string" />
@@ -232,7 +233,7 @@
 	<element name="Device">
 		<complexType>
 			<complexContent>
-				<extension base="fieldData:Data">
+				<extension base="data:Data">
 					<sequence>
 						<element name="attributes" type="map:Map" />
 						<element name="certIssued" type="integer" />

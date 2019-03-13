@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ge.predix.entity.fielddata.Data;
+import com.ge.predix.entity.data.Data;
 import com.ge.predix.entity.filter.Filter;
 import com.ge.predix.entity.identifier.Identifier;
 import com.ge.predix.entity.model.Model;

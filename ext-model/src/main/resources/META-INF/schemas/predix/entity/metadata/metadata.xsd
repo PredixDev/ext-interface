@@ -10,19 +10,20 @@
 	xmlns:tenantIdentifier="http://ge.com/predix/entity/tenant/tenantidentifier"
 	xmlns:map="http://ge.com/predix/entity/util/map"
 	xmlns:engUnit="http://ge.com/predix/entity/engunit"
-	xmlns:fieldData="http://ge.com/predix/entity/fielddata"
+	xmlns:data="http://ge.com/predix/entity/data"
 	xmlns:attribute="http://ge.com/predix/entity/attribute">
 
-	<import schemaLocation="../fielddata/fielddata.xsd"
-		namespace="http://ge.com/predix/entity/fielddata">
+	<import schemaLocation="../data/data.xsd"
+		namespace="http://ge.com/predix/entity/data">
 	</import>
 	<import schemaLocation="../attribute/attribute.xsd"
 		namespace="http://ge.com/predix/entity/attribute">
 	</import>
-	<import></import>
+
+	<import schemaLocation="../util/map/map.xsd" namespace="http://ge.com/predix/entity/util/map"></import>
 	<complexType name="MetaData">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
 					<element name="id" type="string"></element>
 					<element name="name" type="string"></element>
@@ -36,22 +37,23 @@
 					<element name="processstatus" type="string"></element>
 					<element name="message" type="string"></element>
 					<element name="size" type="string"></element>
-					<element name="tags" type="string"
-						minOccurs="1" maxOccurs="unbounded">
-				</element>
-				   	<element name="additionalAttributes" type="map:Map"/>
-				   	
-                </sequence>
+					<element name="tags" type="string" minOccurs="1"
+						maxOccurs="unbounded">
+					</element>
+					<element name="additionalAttributes" type="map:Map" />
+
+				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
 	<element name="metadata" type="metadata:MetaData"></element>
-	
+
 	<complexType name="MetaDataList">
 		<complexContent>
-			<extension base="fieldData:Data">
+			<extension base="data:Data">
 				<sequence>
-					<element ref="metadata:metadata" minOccurs="0" maxOccurs="unbounded">
+					<element ref="metadata:metadata" minOccurs="0"
+						maxOccurs="unbounded">
 					</element>
 				</sequence>
 			</extension>
